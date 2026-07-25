@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resources — Contextbook</title>
+<meta name="description" content="Where to read next: official documentation, open-source repositories, and the advanced concepts worth learning, each explained in one plain sentence.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        ink:'#131522', ink2:'#2A2E44', paper:'#ECEDF1', card:'#FFFFFF',
+        rule:'#D3D6E0', muted:'#5C6178', sig:'#2A34E8', sigpale:'#C5CAFB',
+        mem:'#6E3BD1', convo:'#8A90A8', waste:'#D31F5C', wastepale:'#F3A9C2'
+      },
+      fontFamily: {
+        display:['"Bricolage Grotesque"','system-ui','sans-serif'],
+        body:['"Source Serif 4"','Georgia','serif'],
+        mono:['"JetBrains Mono"','ui-monospace','monospace']
+      },
+      maxWidth: { readable: '68ch' }
+    }
+  }
+}
+</script>
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+
+<body class="bg-paper text-ink font-body antialiased">
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="site-header">
+  <div class="mx-auto flex max-w-6xl items-center gap-4 px-5 py-3.5">
+    <a href="index.html" class="font-display text-[17px] font-extrabold tracking-tight">
+      Context<span class="text-sig">book</span>
+    </a>
+
+    <nav class="nav-desktop ml-auto" aria-label="Main">
+      <a href="index.html#curriculum">Curriculum</a>
+      <a href="index.html#start">How to use this</a>
+      <a href="resources.html" aria-current="page" style="color:var(--ink)">Resources</a>
+      <a href="#" class="nav-cta">GitHub</a>
+    </nav>
+
+    <button type="button" class="nav-toggle ml-auto" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav">
+      <span class="sr-only">Menu</span>
+      <span aria-hidden="true">Menu</span>
+    </button>
+  </div>
+
+  <nav id="mobile-nav" class="nav-mobile" hidden aria-label="Main, mobile">
+    <a href="index.html#curriculum">Curriculum</a>
+    <a href="index.html#start">How to use this</a>
+    <a href="resources.html">Resources</a>
+    <a href="#">GitHub</a>
+  </nav>
+</header>
+
+<main id="main">
+
+<section class="mx-auto max-w-6xl px-5 pt-14 pb-10 md:pt-20">
+  <p class="font-mono text-[11px] uppercase tracking-[0.16em] text-sig">Resources</p>
+  <h1 class="mt-4 max-w-[20ch] font-display text-[2.2rem] font-extrabold leading-[1.03] tracking-[-0.02em] sm:text-5xl md:text-6xl">
+    Where to read next.
+  </h1>
+  <p class="mt-6 max-w-readable text-lg leading-relaxed text-ink2">
+    A short, checked list rather than a long one. Everything here is free to read, and each entry
+    says who wrote it — because documentation from the company that built a model and a blog post
+    about that model are not the same kind of evidence.
+  </p>
+</section>
+
+<!-- ── how we label sources ── -->
+<section class="mx-auto max-w-6xl px-5 pb-14">
+  <div class="callout">
+    <h2 class="callout-title">What the labels mean</h2>
+    <ul class="callout-list">
+      <li><strong>Official</strong> — written and maintained by the people who build the thing. Correct by default; check the date, not the claim.</li>
+      <li><strong>Community</strong> — collected by volunteers. Broad and genuinely useful, but nobody guarantees any single entry is current.</li>
+    </ul>
+    <p class="callout-foot">
+      If a page here ever cites a company's own benchmark of its own product, it will say so plainly.
+    </p>
+  </div>
+</section>
+
+<!-- ── official documentation ── -->
+<section class="mx-auto max-w-6xl px-5 pb-16">
+  <h2 class="font-display text-3xl font-extrabold tracking-tight sm:text-4xl">Start with the documentation</h2>
+  <p class="mt-3 max-w-readable text-lg leading-relaxed text-ink2">
+    Nearly every question a beginner has is answered properly in one of these four, and they stay
+    current in a way that tutorials do not.
+  </p>
+
+  <div class="mt-8 grid gap-4 md:grid-cols-2">
+    <a class="res-card" href="https://platform.openai.com/docs" target="_blank" rel="noopener noreferrer">
+      <span class="res-tier tier-official">Official</span>
+      <p class="res-name mt-2">OpenAI Platform Docs</p>
+      <p class="res-desc">Prompting, structured outputs, tools, agents, memory, and the API reference itself.</p>
+      <span class="res-url">platform.openai.com/docs</span>
+    </a>
+
+    <a class="res-card" href="https://docs.anthropic.com" target="_blank" rel="noopener noreferrer">
+      <span class="res-tier tier-official">Official</span>
+      <p class="res-name mt-2">Anthropic Documentation</p>
+      <p class="res-desc">The strongest published guides on context engineering, long-context prompting, and caching. Closest thing to a textbook for Level 3.</p>
+      <span class="res-url">docs.anthropic.com</span>
+    </a>
+
+    <a class="res-card" href="https://cookbook.openai.com" target="_blank" rel="noopener noreferrer">
+      <span class="res-tier tier-official">Official</span>
+      <p class="res-name mt-2">OpenAI Cookbook</p>
+      <p class="res-desc">Worked examples rather than explanations. Go here once you know what you want to build.</p>
+      <span class="res-url">cookbook.openai.com</span>
+    </a>
+
+    <a class="res-card" href="https://modelcontextprotocol.io" target="_blank" rel="noopener noreferrer">
+      <span class="res-tier tier-official">Official</span>
+      <p class="res-name mt-2">Model Context Protocol (MCP)</p>
+      <p class="res-desc">The open standard for connecting assistants to your tools and data. Read this before Level 5.</p>
+      <span class="res-url">modelcontextprotocol.io</span>
+    </a>
+  </div>
+</section>
+
+<!-- ── repositories ── -->
+<section class="border-y border-rule bg-card">
+  <div class="mx-auto max-w-6xl px-5 py-16">
+    <h2 class="font-display text-3xl font-extrabold tracking-tight sm:text-4xl">Code you can read</h2>
+    <p class="mt-3 max-w-readable text-lg leading-relaxed text-ink2">
+      Reading someone else's working repository teaches faster than any article. Clone one, break
+      it, and watch what happens.
+    </p>
+
+    <div class="mt-8 grid gap-4 md:grid-cols-2">
+      <a class="res-card" href="https://github.com/openai/openai-cookbook" target="_blank" rel="noopener noreferrer">
+        <span class="res-tier tier-official">Official</span>
+        <p class="res-name mt-2">openai/openai-cookbook</p>
+        <p class="res-desc">The notebooks behind the Cookbook. Runnable, and updated as the API changes.</p>
+        <span class="res-url">github.com/openai/openai-cookbook</span>
+      </a>
+
+      <a class="res-card" href="https://github.com/anthropics/courses" target="_blank" rel="noopener noreferrer">
+        <span class="res-tier tier-official">Official</span>
+        <p class="res-name mt-2">anthropics/courses</p>
+        <p class="res-desc">Structured lessons and exercises straight from Anthropic. A good companion to Levels 2 and 3.</p>
+        <span class="res-url">github.com/anthropics/courses</span>
+      </a>
+
+      <a class="res-card" href="https://github.com/langchain-ai/langchain" target="_blank" rel="noopener noreferrer">
+        <span class="res-tier tier-official">Official</span>
+        <p class="res-name mt-2">langchain-ai/langchain</p>
+        <p class="res-desc">A framework for chaining models, tools, and memory. Heavy, but the source is an education in agent plumbing.</p>
+        <span class="res-url">github.com/langchain-ai/langchain</span>
+      </a>
+
+      <a class="res-card" href="https://github.com/run-llama/llama_index" target="_blank" rel="noopener noreferrer">
+        <span class="res-tier tier-official">Official</span>
+        <p class="res-name mt-2">run-llama/llama_index</p>
+        <p class="res-desc">Focused on retrieval: getting your own documents in front of a model without drowning the window.</p>
+        <span class="res-url">github.com/run-llama/llama_index</span>
+      </a>
+
+      <a class="res-card" href="https://github.com/Shubhamsaboo/awesome-llm-apps" target="_blank" rel="noopener noreferrer">
+        <span class="res-tier tier-community">Community</span>
+        <p class="res-name mt-2">awesome-llm-apps</p>
+        <p class="res-desc">A large index of working applications. Best used to see what is possible, then copy one pattern.</p>
+        <span class="res-url">github.com/Shubhamsaboo/awesome-llm-apps</span>
+      </a>
+
+      <a class="res-card" href="https://github.com/e2b-dev/awesome-ai-agents" target="_blank" rel="noopener noreferrer">
+        <span class="res-tier tier-community">Community</span>
+        <p class="res-name mt-2">awesome-ai-agents</p>
+        <p class="res-desc">A catalogue of agent frameworks and products. Useful for orientation before Level 5.</p>
+        <span class="res-url">github.com/e2b-dev/awesome-ai-agents</span>
+      </a>
+
+      <a class="res-card" href="https://github.com/promptslab/Awesome-Prompt-Engineering" target="_blank" rel="noopener noreferrer">
+        <span class="res-tier tier-community">Community</span>
+        <p class="res-name mt-2">Awesome-Prompt-Engineering</p>
+        <p class="res-desc">Papers and techniques in one place. Skim the papers; the summaries age faster than the research.</p>
+        <span class="res-url">github.com/promptslab/Awesome-Prompt-Engineering</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── concepts ── -->
+<section class="mx-auto max-w-6xl px-5 py-20">
+  <h2 class="font-display text-3xl font-extrabold tracking-tight sm:text-4xl">The concepts worth learning</h2>
+  <p class="mt-3 max-w-readable text-lg leading-relaxed text-ink2">
+    These are the terms you will meet everywhere once you move past basic prompting. One plain
+    sentence each, and where this book covers it — so a word you don't know never stops you.
+  </p>
+
+  <div class="mt-10 border-t border-rule">
+
+    <div class="concept">
+      <p class="concept-name">Context engineering</p>
+      <p class="concept-plain">Choosing what goes into the model's limited window, in what order, and what gets left out. The skill this whole book is organised around.</p>
+      <p class="concept-where">Level 3</p>
+    </div>
+
+    <div class="concept">
+      <p class="concept-name">Memory architectures</p>
+      <p class="concept-plain">Files or databases that let an assistant pick up where it left off, instead of starting from nothing every session.</p>
+      <p class="concept-where">Level 3</p>
+    </div>
+
+    <div class="concept">
+      <p class="concept-name">Conversation summarisation</p>
+      <p class="concept-plain">Replacing a long history with a short record of what was decided, so the important parts survive and the bulk doesn't.</p>
+      <p class="concept-where">Level 3</p>
+    </div>
+
+    <div class="concept">
+      <p class="concept-name">Prompt compression</p>
+      <p class="concept-plain">Shrinking text before it is sent, so more of what matters fits in the same space for the same money.</p>
+      <p class="concept-where">Level 3</p>
+    </div>
+
+    <div class="concept">
+      <p class="concept-name">Long-context management</p>
+      <p class="concept-plain">Deciding what to keep and what to drop first once the window is full. Every long session eventually runs into this.</p>
+      <p class="concept-where">Level 3</p>
+    </div>
+
+    <div class="concept">
+      <p class="concept-name">Retrieval-Augmented Generation (RAG)</p>
+      <p class="concept-plain">Looking up the handful of documents relevant to a question and pasting them in before the model answers, rather than hoping it already knows.</p>
+      <p class="concept-where">Levels 3 and 4</p>
+    </div>
+
+    <div class="concept">
+      <p class="concept-name">Knowledge graphs</p>
+      <p class="concept-plain">Storing facts as connected things — people, projects, dates — instead of loose paragraphs, so relationships can be looked up directly.</p>
+      <p class="concept-where">Level 4</p>
+    </div>
+
+    <div class="concept">
+      <p class="concept-name">Prompt optimisation</p>
+      <p class="concept-plain">Improving a prompt by measuring versions against a test set, rather than rewriting it until it feels better.</p>
+      <p class="concept-where">Level 2</p>
+    </div>
+
+    <div class="concept">
+      <p class="concept-name">Tool calling (function calling)</p>
+      <p class="concept-plain">Letting the model ask your code to do something — search a database, send a file — and then use the result.</p>
+      <p class="concept-where">Level 5</p>
+    </div>
+
+    <div class="concept">
+      <p class="concept-name">MCP servers</p>
+      <p class="concept-plain">A shared standard for exposing your tools and data to any assistant, so you write the connection once instead of once per product.</p>
+      <p class="concept-where">Level 5</p>
+    </div>
+
+    <div class="concept">
+      <p class="concept-name">Agentic workflows</p>
+      <p class="concept-plain">The model runs in a loop, choosing its own next action and reacting to what happened, instead of answering once and stopping.</p>
+      <p class="concept-where">Level 5</p>
+    </div>
+
+    <div class="concept">
+      <p class="concept-name">Planning versus execution</p>
+      <p class="concept-plain">Separating "work out what to do" from "do it". Keeping the two apart makes failures much easier to find.</p>
+      <p class="concept-where">Level 5</p>
+    </div>
+
+    <div class="concept">
+      <p class="concept-name">Reflection and self-critique</p>
+      <p class="concept-plain">Having the model check its own work against the goal before it hands anything over.</p>
+      <p class="concept-where">Level 5</p>
+    </div>
+
+    <div class="concept">
+      <p class="concept-name">Multi-agent systems and A2A</p>
+      <p class="concept-plain">Several assistants with different jobs passing work between them, and the conventions they use to talk.</p>
+      <p class="concept-where">Level 5</p>
+    </div>
+
+    <div class="concept">
+      <p class="concept-name">Tool orchestration</p>
+      <p class="concept-plain">Running several tools in a reliable order, and deciding what happens when one of them fails.</p>
+      <p class="concept-where">Level 5</p>
+    </div>
+
+    <div class="concept">
+      <p class="concept-name">Local models (Ollama, vLLM)</p>
+      <p class="concept-plain">Running a model on your own machine or server — slower and smaller, but private and free per token.</p>
+      <p class="concept-where">Level 4</p>
+    </div>
+
+    <div class="concept">
+      <p class="concept-name">Evaluation frameworks</p>
+      <p class="concept-plain">Measuring whether a change actually improved anything. Without this, every other technique here is guesswork.</p>
+      <p class="concept-where">Levels 4 and 6</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── markdown conventions ── -->
+<section class="border-t border-rule bg-card">
+  <div class="mx-auto grid max-w-6xl gap-12 px-5 py-20 md:grid-cols-2 md:gap-16">
+    <div>
+      <h2 class="font-display text-3xl font-extrabold tracking-tight sm:text-4xl">The Markdown files people keep</h2>
+      <div class="mt-6 max-w-readable space-y-5 text-lg leading-relaxed text-ink2">
+        <p>
+          Since an assistant starts each session with no memory, the common fix is to write things
+          down where it can read them again. Most projects settle on a handful of plain Markdown
+          files at the repository root.
+        </p>
+        <p>
+          <strong>PROJECT.md</strong> holds what the project is and why. <strong>MEMORY.md</strong>
+          keeps facts and decisions worth surviving. <strong>SUMMARY.md</strong> is a short record
+          of a long conversation, loaded instead of replaying the whole thing.
+          <strong>TASKS.md</strong> tracks what is done, what is next, and what is blocked.
+        </p>
+        <p>
+          Alongside them sits a <strong>skills</strong> folder: one file per capability, describing
+          how a job should be done. The assistant reads only the titles until one matches, then
+          opens that file. That is progressive disclosure, and it is why the red band in the
+          homepage demo disappears.
+        </p>
+      </div>
+
+      <details class="helper mt-8">
+        <summary>Is this an official standard?</summary>
+        <p>
+          No. These filenames are a widely copied convention, not a specification, and different
+          tools expect different names — some want <code>CLAUDE.md</code>, some read a
+          <code>memory-bank/</code> folder, some use none of this. Pick one scheme and keep it
+          consistent inside a project; that matters far more than which names you chose.
+        </p>
+      </details>
+    </div>
+
+    <div class="rounded-md border border-rule bg-paper p-5 font-mono text-[13px] leading-[1.9] sm:p-6">
+      <p class="mb-3 text-[10px] uppercase tracking-[0.14em] text-muted">a common layout</p>
+<pre class="tree overflow-x-auto"><span class="d">project/</span>
+├── README.md      <span class="c">for humans</span>
+├── PROJECT.md     <span class="c">what this is, and why</span>
+├── MEMORY.md      <span class="c">decisions worth keeping</span>
+├── SUMMARY.md     <span class="c">the long conversation, shortened</span>
+├── TASKS.md       <span class="c">done · next · blocked</span>
+├── CHANGELOG.md   <span class="c">what changed, when</span>
+├── <span class="d">prompts/</span>
+├── <span class="d">skills/</span>
+│   ├── coding.skill
+│   ├── research.skill
+│   └── writing.skill
+└── <span class="d">docs/</span>
+</pre>
+    </div>
+  </div>
+</section>
+
+<section class="mx-auto max-w-6xl px-5 py-20">
+  <h2 class="max-w-[26ch] font-display text-3xl font-extrabold leading-[1.05] tracking-tight sm:text-4xl">
+    Know something that belongs here?
+  </h2>
+  <p class="mt-5 max-w-readable text-lg leading-relaxed text-ink2">
+    This list stays short on purpose, but it should not stay wrong. Suggest an addition, or tell
+    us when a link rots.
+  </p>
+  <div class="mt-8 flex flex-wrap gap-3">
+    <a href="#" class="btn-solid">Suggest a resource</a>
+    <a href="index.html#curriculum" class="btn-outline">Back to the curriculum</a>
+  </div>
+</section>
+
+</main>
+
+<footer class="border-t border-rule bg-card">
+  <div class="mx-auto max-w-6xl px-5 py-12">
+    <div class="grid gap-8 sm:grid-cols-3">
+      <div>
+        <p class="font-display text-[15px] font-extrabold">Context<span class="text-sig">book</span></p>
+        <p class="mt-2 max-w-[32ch] text-[15px] leading-snug text-muted">
+          A free, open textbook for practical AI engineering.
+        </p>
+      </div>
+      <nav class="foot-nav" aria-label="Curriculum">
+        <p class="foot-head">Curriculum</p>
+        <a href="index.html#level-1">1 · Foundations</a>
+        <a href="index.html#level-2">2 · Prompting</a>
+        <a href="index.html#level-3">3 · Context engineering</a>
+        <a href="index.html#level-4">4 · Workflows</a>
+        <a href="index.html#level-5">5 · Agents</a>
+        <a href="index.html#level-6">6 · Projects</a>
+      </nav>
+      <nav class="foot-nav" aria-label="More">
+        <p class="foot-head">More</p>
+        <a href="resources.html">Resources</a>
+        <a href="index.html#start">How to use this site</a>
+        <a href="index.html#contribute">Contribute</a>
+        <a href="#">GitHub</a>
+      </nav>
+    </div>
+    <p class="mt-10 border-t border-rule pt-6 font-mono text-[11px] uppercase tracking-[0.1em] text-muted">
+      Free forever · MIT licensed · Draft in progress
+    </p>
+  </div>
+</footer>
+
+<script src="assets/js/nav.js"></script>
+</body>
+</html>

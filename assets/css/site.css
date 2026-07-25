@@ -1,7 +1,8 @@
 /* Contextbook — custom layer.
    Tailwind (CDN) handles layout and spacing utilities.
-   This file owns the things Tailwind is clumsy at: the context-window strip,
-   the curriculum ladder, and the accessibility floor.                        */
+   This file owns the components Tailwind is clumsy at, plus the
+   accessibility floor. Keep component classes here and utilities in the
+   markup, so the two never fight over the same property.                    */
 
 :root {
   --ink:       #131522;
@@ -24,6 +25,16 @@ body { text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; 
 
 /* ── accessibility floor ─────────────────────────────────────────── */
 
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .skip-link {
   position: absolute;
   left: -9999px;
@@ -43,10 +54,77 @@ body { text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; 
   border-radius: 2px;
 }
 
+/* ── header and navigation ───────────────────────────────────────── */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid var(--rule);
+  background: rgba(236, 237, 241, 0.92);
+  backdrop-filter: blur(8px);
+}
+
+.nav-desktop {
+  display: none;
+  align-items: center;
+  gap: 1.4rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.nav-desktop a { color: var(--muted); transition: color 160ms ease; }
+.nav-desktop a:hover { color: var(--ink); }
+.nav-desktop .nav-cta {
+  padding: 0.45rem 0.85rem;
+  border-radius: 2px;
+  background: var(--ink);
+  color: var(--card);
+  transition: background-color 160ms ease;
+}
+.nav-desktop .nav-cta:hover { background: var(--sig); color: var(--card); }
+
+.nav-toggle {
+  padding: 0.5rem 0.8rem;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  background: var(--card);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink);
+}
+
+.nav-mobile {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--rule);
+  background: var(--card);
+}
+.nav-mobile a {
+  padding: 0.95rem 1.25rem;
+  border-bottom: 1px solid var(--rule);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+}
+.nav-mobile a:last-child { border-bottom: 0; }
+.nav-mobile[hidden] { display: none; }
+
+@media (min-width: 768px) {
+  .nav-desktop { display: flex; }
+  .nav-toggle,
+  .nav-mobile { display: none; }
+}
+
 /* ── hero mark ───────────────────────────────────────────────────── */
 
-/* The headline phrase sits inside a drawn window, boundaries and all —
-   the one ornament on the page, and it is literally the subject.        */
+/* The phrase sits inside a drawn window, boundaries and all — the one
+   ornament on the page, and it is literally the subject.               */
 .hl-window {
   position: relative;
   white-space: nowrap;
@@ -55,6 +133,171 @@ body { text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; 
   background-size: 100% 0.34em;
   background-position: 0 82%;
   box-shadow: inset 2px 0 0 var(--sig), inset -2px 0 0 var(--sig);
+}
+
+/* ── the two doors ───────────────────────────────────────────────── */
+
+.door {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1.4rem 1.5rem 1.25rem;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--card);
+  transition: border-color 180ms ease, transform 180ms ease;
+}
+.door:hover { border-color: var(--ink); transform: translateY(-2px); }
+.door-accent { border-color: var(--sig-pale); }
+.door-accent:hover { border-color: var(--sig); }
+
+.door-kicker {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+}
+.door-title {
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+}
+.door-note {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.door-go {
+  margin-top: 0.5rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--sig);
+}
+
+/* ── panels and buttons ──────────────────────────────────────────── */
+
+.panel {
+  padding: 1.25rem;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: var(--card);
+}
+@media (min-width: 640px) { .panel { padding: 2rem; } }
+
+.btn-solid,
+.btn-outline {
+  display: inline-block;
+  padding: 0.8rem 1.25rem;
+  border-radius: 2px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.btn-solid {
+  background: var(--sig);
+  color: var(--card);
+  transition: transform 160ms ease;
+}
+.btn-solid:hover { transform: translateY(-1px); }
+.btn-outline {
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  transition: background-color 160ms ease, color 160ms ease;
+}
+.btn-outline:hover { background: var(--ink); color: var(--card); }
+
+/* ── the "explain it to me" disclosure ───────────────────────────── */
+
+.helper {
+  border: 1px solid var(--sig-pale);
+  border-radius: 4px;
+  background: #F6F7FE;
+}
+.helper > summary {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--sig);
+  list-style: none;
+}
+.helper > summary::-webkit-details-marker { display: none; }
+.helper > summary::before { content: "+ "; }
+.helper[open] > summary::before { content: "− "; }
+.helper > p {
+  padding: 0 1rem 1rem;
+  max-width: 68ch;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--ink2);
+}
+.helper strong { font-weight: 600; color: var(--ink); }
+
+/* ── the three steps ─────────────────────────────────────────────── */
+
+.step { padding-top: 1.25rem; border-top: 2px solid var(--ink); }
+.step-num {
+  display: block;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--sig);
+}
+.step-title {
+  margin-top: 0.5rem;
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+}
+.step-text {
+  margin-top: 0.6rem;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--ink2);
+}
+
+/* ── callout ─────────────────────────────────────────────────────── */
+
+.callout {
+  padding: 1.5rem;
+  border-left: 3px solid var(--sig);
+  background: var(--paper);
+  border-radius: 0 4px 4px 0;
+}
+.callout-title {
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+.callout-list { margin-top: 0.9rem; display: grid; gap: 0.5rem; max-width: 74ch; }
+.callout-list li {
+  position: relative;
+  padding-left: 1.4rem;
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: var(--ink2);
+}
+.callout-list li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--sig);
+}
+.callout-foot {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: var(--muted);
 }
 
 /* ── the context-window strip ────────────────────────────────────── */
@@ -143,22 +386,19 @@ body { text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; 
   transition: background-color 180ms ease, color 180ms ease;
 }
 .mode-btn:hover { color: var(--ink); }
-.mode-btn.is-active {
-  background: var(--ink);
-  color: var(--card);
-}
+.mode-btn.is-active { background: var(--ink); color: var(--card); }
 
 /* ── curriculum ladder ───────────────────────────────────────────── */
 
 .level {
   display: grid;
-  grid-template-columns: 4.5rem 1fr;
-  gap: 0 1.25rem;
+  grid-template-columns: 3rem 1fr;
+  gap: 0 1rem;
   padding: 2rem 0;
   border-bottom: 1px solid var(--rule);
 }
 @media (min-width: 768px) {
-  .level { grid-template-columns: 6rem 1fr 8rem; }
+  .level { grid-template-columns: 6rem 1fr 9rem; gap: 0 1.5rem; }
 }
 
 .level-num {
@@ -203,25 +443,141 @@ body { text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; 
 }
 .level.is-core .tags li { border-color: var(--sig-pale); color: var(--sig); }
 
-.level-state {
+.level-meta {
   grid-column: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
   margin-top: 1rem;
+}
+@media (min-width: 768px) {
+  .level-meta {
+    grid-column: 3;
+    grid-row: 1;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.45rem;
+    margin-top: 0.35rem;
+    text-align: right;
+  }
+}
+
+.badge {
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
   font-family: "JetBrains Mono", monospace;
   font-size: 10px;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.1em;
+}
+.badge-1 { background: #E4F0E8; color: #2E6B45; }
+.badge-2 { background: #E6E8FD; color: var(--sig); }
+.badge-3 { background: #F2E6FB; color: var(--mem); }
+
+.level-time,
+.level-state {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
   color: var(--muted);
 }
 .level-state.is-core { color: var(--sig); }
-@media (min-width: 768px) {
-  .level-state { grid-column: 3; margin-top: 0.5rem; text-align: right; }
-}
 
 /* ── repository tree ─────────────────────────────────────────────── */
 
 .tree { margin: 0; }
 .tree .d { color: var(--ink); font-weight: 500; }
 .tree .c { color: var(--muted); }
+
+/* ── footer ──────────────────────────────────────────────────────── */
+
+.foot-nav { display: flex; flex-direction: column; gap: 0.4rem; }
+.foot-head {
+  margin-bottom: 0.35rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+}
+.foot-nav a {
+  font-size: 1rem;
+  color: var(--ink2);
+  transition: color 160ms ease;
+}
+.foot-nav a:hover { color: var(--sig); }
+
+/* ── resources page ──────────────────────────────────────────────── */
+
+.res-tier {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+.tier-official  { background: #E4F0E8; color: #2E6B45; }
+.tier-community { background: #FDF0DC; color: #8A5A12; }
+
+.res-card {
+  display: block;
+  padding: 1.15rem 1.35rem;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--card);
+  transition: border-color 180ms ease, transform 180ms ease;
+}
+.res-card:hover { border-color: var(--sig); transform: translateY(-2px); }
+.res-name {
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+.res-desc {
+  margin-top: 0.35rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--ink2);
+}
+.res-url {
+  margin-top: 0.6rem;
+  display: block;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  color: var(--muted);
+  word-break: break-all;
+}
+
+.concept {
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.concept-name {
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+.concept-plain {
+  margin-top: 0.3rem;
+  max-width: 74ch;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--ink2);
+}
+.concept-where {
+  margin-top: 0.4rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--sig);
+}
 
 /* ── motion preference ───────────────────────────────────────────── */
 
@@ -230,5 +586,12 @@ body { text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; 
   .seg,
   .seg::after,
   .mode-btn,
+  .door,
+  .res-card,
+  .btn-solid,
+  .btn-outline,
   a { transition: none !important; }
+  .door:hover,
+  .res-card:hover,
+  .btn-solid:hover { transform: none; }
 }

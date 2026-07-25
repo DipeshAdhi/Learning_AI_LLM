@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contextbook — a free, open textbook for practical AI engineering</title>
-<meta name="description" content="Stop treating AI as a stateless query engine. Learn to design context windows: agent skills, memory banks, prompt caching, and compression.">
+<title>Contextbook — learn to use AI properly, for free</title>
+<meta name="description" content="A free, plain-English course on getting real work out of AI: tokens, prompting, context windows, memory, and agents. No signup, no ads.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,23 +16,14 @@ tailwind.config = {
   theme: {
     extend: {
       colors: {
-        ink:    '#131522',
-        ink2:   '#2A2E44',
-        paper:  '#ECEDF1',
-        card:   '#FFFFFF',
-        rule:   '#D3D6E0',
-        muted:  '#5C6178',
-        sig:    '#2A34E8',
-        sigpale:'#C5CAFB',
-        mem:    '#6E3BD1',
-        convo:  '#8A90A8',
-        waste:  '#D31F5C',
-        wastepale:'#F3A9C2'
+        ink:'#131522', ink2:'#2A2E44', paper:'#ECEDF1', card:'#FFFFFF',
+        rule:'#D3D6E0', muted:'#5C6178', sig:'#2A34E8', sigpale:'#C5CAFB',
+        mem:'#6E3BD1', convo:'#8A90A8', waste:'#D31F5C', wastepale:'#F3A9C2'
       },
       fontFamily: {
-        display: ['"Bricolage Grotesque"', 'system-ui', 'sans-serif'],
-        body:    ['"Source Serif 4"', 'Georgia', 'serif'],
-        mono:    ['"JetBrains Mono"', 'ui-monospace', 'monospace']
+        display:['"Bricolage Grotesque"','system-ui','sans-serif'],
+        body:['"Source Serif 4"','Georgia','serif'],
+        mono:['"JetBrains Mono"','ui-monospace','monospace']
       },
       maxWidth: { readable: '68ch' }
     }
@@ -47,72 +38,92 @@ tailwind.config = {
 <a href="#main" class="skip-link">Skip to content</a>
 
 <!-- ─────────────────────────── header ─────────────────────────── -->
-<header class="sticky top-0 z-50 border-b border-rule bg-paper/90 backdrop-blur">
-  <div class="mx-auto flex max-w-6xl items-center gap-6 px-5 py-3.5">
-    <a href="#main" class="font-display text-[17px] font-extrabold tracking-tight">
+<header class="site-header">
+  <div class="mx-auto flex max-w-6xl items-center gap-4 px-5 py-3.5">
+    <a href="index.html" class="font-display text-[17px] font-extrabold tracking-tight">
       Context<span class="text-sig">book</span>
     </a>
-    <span class="hidden font-mono text-[10px] uppercase tracking-[0.14em] text-muted sm:inline">v0.1 · draft</span>
-    <nav class="ml-auto flex items-center gap-5 font-mono text-[11px] uppercase tracking-[0.1em]">
-      <a href="#curriculum" class="text-muted transition-colors hover:text-ink">Curriculum</a>
-      <a href="#library" class="hidden text-muted transition-colors hover:text-ink sm:inline">Library</a>
-      <a href="#contribute" class="hidden text-muted transition-colors hover:text-ink sm:inline">Contribute</a>
-      <a href="#" class="rounded-sm bg-ink px-3 py-1.5 text-card transition-colors hover:bg-sig">GitHub</a>
+
+    <nav class="nav-desktop ml-auto" aria-label="Main">
+      <a href="#curriculum">Curriculum</a>
+      <a href="#start">How to use this</a>
+      <a href="resources.html">Resources</a>
+      <a href="#" class="nav-cta">GitHub</a>
     </nav>
+
+    <button type="button" class="nav-toggle ml-auto" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav">
+      <span class="sr-only">Menu</span>
+      <span aria-hidden="true">Menu</span>
+    </button>
   </div>
+
+  <nav id="mobile-nav" class="nav-mobile" hidden aria-label="Main, mobile">
+    <a href="#curriculum">Curriculum</a>
+    <a href="#start">How to use this</a>
+    <a href="resources.html">Resources</a>
+    <a href="#">GitHub</a>
+  </nav>
 </header>
 
 <main id="main">
 
 <!-- ─────────────────────────── hero ─────────────────────────── -->
-<section class="mx-auto max-w-6xl px-5 pt-16 pb-10 md:pt-24">
+<section class="mx-auto max-w-6xl px-5 pt-14 pb-10 md:pt-20">
 
   <p class="font-mono text-[11px] uppercase tracking-[0.16em] text-sig">
-    Free · Open source · Built in public
+    Free · No signup · Beginner to advanced
   </p>
 
-  <h1 class="mt-5 max-w-[19ch] font-display text-[2.6rem] font-extrabold leading-[0.98] tracking-[-0.02em] sm:text-6xl md:text-7xl">
-    You are not using a chatbot. You are programming a
-    <span class="hl-window">context window</span>.
+  <h1 class="mt-5 max-w-[17ch] font-display text-[2.4rem] font-extrabold leading-[1.02] tracking-[-0.02em] sm:text-6xl md:text-7xl">
+    Use AI like an engineer, not a search box.
   </h1>
 
-  <p class="mt-7 max-w-readable font-body text-lg leading-relaxed text-ink2 sm:text-xl">
-    Most teams still send the model everything they own, every single turn, and call the
-    result unpredictable. It is not unpredictable — it is unbudgeted. This is a working
-    textbook on the part nobody teaches: deciding what the model sees, what it remembers,
-    and what it is allowed to forget.
+  <p class="mt-7 max-w-readable text-lg leading-relaxed text-ink2 sm:text-xl">
+    Almost everything that makes AI useful comes down to one thing: what you put inside the
+    <span class="hl-window">context window</span>, and what you leave out. This is a free
+    course on exactly that — written in plain English, starting from your very first token.
   </p>
 
-  <div class="mt-8 flex flex-wrap items-center gap-3">
-    <a href="#curriculum" class="rounded-sm bg-sig px-5 py-3 font-mono text-xs uppercase tracking-[0.1em] text-card transition-transform hover:-translate-y-px">
-      Start at Level 1
+  <p class="mt-4 font-mono text-[12px] leading-relaxed text-muted">
+    Nothing to install · No account · Every page free forever
+  </p>
+
+  <!-- two honest doors, so nobody has to guess where to begin -->
+  <div class="mt-9 grid gap-3 sm:grid-cols-2 sm:gap-4 md:max-w-3xl">
+    <a href="#level-1" class="door">
+      <span class="door-kicker">New to this</span>
+      <span class="door-title">Start at the beginning</span>
+      <span class="door-note">What a token is, why AI forgets, and how to tell a good answer from a confident one.</span>
+      <span class="door-go">Level 1 →</span>
     </a>
-    <a href="#level-3" class="rounded-sm border border-ink px-5 py-3 font-mono text-xs uppercase tracking-[0.1em] transition-colors hover:bg-ink hover:text-card">
-      Jump to context engineering
+    <a href="#level-3" class="door door-accent">
+      <span class="door-kicker">Already comfortable</span>
+      <span class="door-title">Skip to context engineering</span>
+      <span class="door-note">Skills, memory files, caching, and compression — the part most guides never reach.</span>
+      <span class="door-go">Level 3 →</span>
     </a>
   </div>
 </section>
 
 <!-- ───────────────── signature: the context window ───────────────── -->
-<section class="mx-auto max-w-6xl px-5 pb-24">
-  <div class="rounded-md border border-rule bg-card p-5 shadow-[0_1px_0_rgba(19,21,34,0.04)] sm:p-8">
+<section class="mx-auto max-w-6xl px-5 pb-20">
+  <div class="panel">
 
     <div class="flex flex-wrap items-end justify-between gap-4 border-b border-rule pb-5">
       <div>
-        <h2 class="font-display text-xl font-bold tracking-tight">One task, two architectures</h2>
-        <p class="mt-1 max-w-[52ch] text-[15px] leading-snug text-muted">
-          The same request — "refactor this PDF parser" — sent to a 200,000-token window.
-          Toggle the architecture and watch what the window actually holds.
+        <h2 class="font-display text-xl font-bold tracking-tight">See it once and it sticks</h2>
+        <p class="mt-1 max-w-[54ch] text-[15px] leading-snug text-muted">
+          Below is one ordinary request — "refactor this PDF parser" — packed two different ways
+          into the same 200,000-token window. Press the other button and watch the red disappear.
         </p>
       </div>
 
       <div class="flex rounded-sm border border-rule p-0.5 font-mono text-[11px] uppercase tracking-[0.08em]" role="group" aria-label="Choose an architecture">
         <button type="button" data-mode="monolithic" class="mode-btn is-active px-3.5 py-2">Everything up front</button>
-        <button type="button" data-mode="progressive" class="mode-btn px-3.5 py-2">Progressive disclosure</button>
+        <button type="button" data-mode="progressive" class="mode-btn px-3.5 py-2">Loaded on demand</button>
       </div>
     </div>
 
-    <!-- readout -->
     <div class="mt-6 flex flex-wrap items-baseline gap-x-8 gap-y-3">
       <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-muted">
         Window filled
@@ -129,7 +140,6 @@ tailwind.config = {
       </p>
     </div>
 
-    <!-- the strip -->
     <div class="mt-5">
       <div class="strip" data-strip role="img" aria-label="Context window composition" aria-describedby="strip-legend"></div>
       <div class="mt-2 flex justify-between font-mono text-[10px] uppercase tracking-[0.1em] text-muted">
@@ -137,42 +147,101 @@ tailwind.config = {
       </div>
     </div>
 
-    <!-- legend -->
     <ul id="strip-legend" class="mt-6 grid gap-x-8 gap-y-1 sm:grid-cols-2" data-legend></ul>
 
     <p class="mt-6 border-t border-rule pt-4 text-[14px] leading-relaxed text-muted" data-note></p>
 
-    <p class="mt-3 font-mono text-[10px] leading-relaxed text-muted">
+    <details class="helper mt-4">
+      <summary>New here? What am I actually looking at?</summary>
+      <p>
+        AI models read text in chunks called <strong>tokens</strong> — roughly three quarters of a
+        word each. Everything the model can see at once has to fit in a fixed space called the
+        <strong>context window</strong>, and you pay for every token you put in it, every single
+        time you send a message. The red stripes are text that was sent and paid for on every
+        turn without ever being useful. Level&nbsp;1 explains all of this slowly; Level&nbsp;3
+        shows you how to fix it.
+      </p>
+    </details>
+
+    <p class="mt-4 font-mono text-[10px] leading-relaxed text-muted">
       Illustrative figures, priced at $3 per million input tokens. Token counts are modelled,
       not measured — Level&nbsp;3 shows you how to measure your own.
     </p>
   </div>
 </section>
 
+<!-- ─────────────────────────── how to use ─────────────────────────── -->
+<section id="start" class="border-y border-rule bg-card">
+  <div class="mx-auto max-w-6xl px-5 py-16">
+    <h2 class="font-display text-3xl font-extrabold tracking-tight sm:text-4xl">How to use this site</h2>
+    <p class="mt-3 max-w-readable text-lg leading-relaxed text-ink2">
+      There is no course to enrol in and nothing to unlock. Three suggestions, that's all.
+    </p>
+
+    <ol class="mt-10 grid gap-8 md:grid-cols-3">
+      <li class="step">
+        <span class="step-num">1</span>
+        <h3 class="step-title">Read in order the first time</h3>
+        <p class="step-text">
+          The levels build on each other. Budgeting a context window is hard if you are still
+          fuzzy on what a token is, so start at Level&nbsp;1 even if it looks basic.
+        </p>
+      </li>
+      <li class="step">
+        <span class="step-num">2</span>
+        <h3 class="step-title">Try each idea on your own work</h3>
+        <p class="step-text">
+          Every page ends with something small you can run against a real project of yours.
+          Reading about token waste convinces nobody; measuring your own does.
+        </p>
+      </li>
+      <li class="step">
+        <span class="step-num">3</span>
+        <h3 class="step-title">Take the templates with you</h3>
+        <p class="step-text">
+          The skill files, memory templates, and prompts are plain Markdown. Copy them into your
+          project, change the names, keep what works.
+        </p>
+      </li>
+    </ol>
+
+    <div class="callout mt-12">
+      <h3 class="callout-title">Is this for you?</h3>
+      <ul class="callout-list">
+        <li>You use ChatGPT or Claude often, but the results feel like luck.</li>
+        <li>You are a developer wiring a model into something real and hitting cost or memory walls.</li>
+        <li>You are a student or researcher who wants AI to hold a long project in its head.</li>
+        <li>You have heard "agents", "RAG", and "MCP" enough times to feel behind. You are not.</li>
+      </ul>
+      <p class="callout-foot">No maths background needed. Some pages show code; none of them require you to write any.</p>
+    </div>
+  </div>
+</section>
+
 <!-- ─────────────────────────── thesis ─────────────────────────── -->
-<section class="border-y border-rule bg-ink text-paper">
+<section class="bg-ink text-paper">
   <div class="mx-auto grid max-w-6xl gap-10 px-5 py-20 md:grid-cols-[minmax(0,20ch)_1fr] md:gap-16">
     <h2 class="font-display text-3xl font-extrabold leading-[1.05] tracking-tight md:sticky md:top-24 md:self-start">
-      The gap is not the model.
+      Why AI keeps forgetting.
     </h2>
     <div class="max-w-readable space-y-6 text-lg leading-relaxed text-paper/85">
       <p>
-        A language model is stateless. Every request is a mathematically isolated event: no
-        recollection of yesterday's architectural decision, no memory of the convention you
-        agreed on an hour ago, no idea which of your forty internal rules matters right now.
-        Everything it appears to know, someone put in the window.
+        A language model has no memory of its own. Every message you send starts it from nothing —
+        no recollection of yesterday's decision, no idea what you agreed an hour ago, no sense of
+        which of your rules matter right now. Everything it appears to remember, something put
+        back in front of it.
       </p>
       <p>
-        So the leverage sits almost entirely in that assembly step — and it is the step the
-        tutorials skip. They teach you to phrase a question. The harder discipline is deciding
-        <em class="not-italic text-card">what gets loaded, in what order, and what gets thrown away first</em>
-        when the window runs out.
+        Which means the real skill is not phrasing a clever question. It is deciding
+        <em class="not-italic text-card">what gets loaded, in what order, and what gets dropped first</em>
+        when there is no more room. That is the part the tutorials skip, and it is where the
+        difference between frustrating AI and useful AI actually lives.
       </p>
       <p>
-        That discipline has real machinery behind it: procedural knowledge packaged as skills
-        and loaded only on a match; state externalised to files the agent rereads on wake;
-        prefixes ordered static-to-dynamic so the cache actually holds; histories compressed
-        into schemas instead of truncated into amnesia. Each of those is a chapter here.
+        There is real machinery for it: instructions packaged as skills and opened only when they
+        match; state written to files the assistant rereads when it wakes up; stable text placed
+        first so it can be cached and paid for once; long histories compressed instead of
+        forgotten. Each of those gets its own chapter here.
       </p>
     </div>
   </div>
@@ -183,8 +252,8 @@ tailwind.config = {
   <div class="flex flex-wrap items-end justify-between gap-4">
     <h2 class="font-display text-4xl font-extrabold tracking-tight">Six levels</h2>
     <p class="max-w-[46ch] text-[15px] leading-snug text-muted">
-      Ordered, because the order is load-bearing — you cannot budget a context window before
-      you can count a token. Written openly, one level at a time.
+      Written one level at a time, in the open. Times are rough estimates for a first read —
+      take longer, nobody is counting.
     </p>
   </div>
 
@@ -194,76 +263,100 @@ tailwind.config = {
       <span class="level-num">01</span>
       <div class="level-body">
         <h3 class="level-title">AI foundations</h3>
-        <p class="level-desc">What the machine actually is, in the only terms that later matter: units, limits, and failure modes.</p>
+        <p class="level-desc">What the thing actually is, in the plainest terms that still hold up later: how it reads, what it costs, and where it goes wrong.</p>
         <ul class="tags">
           <li>What is an LLM</li><li>Tokens</li><li>Context windows</li><li>Temperature</li><li>Reasoning models</li><li>Embeddings</li><li>Hallucinations</li>
         </ul>
       </div>
-      <span class="level-state">Drafting</span>
+      <span class="level-meta">
+        <span class="badge badge-1">Beginner</span>
+        <span class="level-time">~45 min</span>
+        <span class="level-state">Drafting</span>
+      </span>
     </li>
 
     <li id="level-2" class="level">
       <span class="level-num">02</span>
       <div class="level-body">
         <h3 class="level-title">Prompt engineering</h3>
-        <p class="level-desc">The techniques, and — more usefully — the conditions under which each one stops earning its tokens.</p>
+        <p class="level-desc">The techniques worth knowing — and, more usefully, the moment each one stops being worth its tokens.</p>
         <ul class="tags">
-          <li>Zero-shot</li><li>Few-shot</li><li>Chain of thought</li><li>Role prompting</li><li>Structured outputs</li><li>Templates</li><li>Debugging</li>
+          <li>Zero-shot</li><li>Few-shot</li><li>Chain of thought</li><li>Role prompting</li><li>Structured outputs</li><li>Templates</li><li>Debugging prompts</li>
         </ul>
       </div>
-      <span class="level-state">Planned</span>
+      <span class="level-meta">
+        <span class="badge badge-1">Beginner</span>
+        <span class="level-time">~1 hr</span>
+        <span class="level-state">Planned</span>
+      </span>
     </li>
 
     <li id="level-3" class="level is-core">
       <span class="level-num">03</span>
       <div class="level-body">
-        <p class="font-mono text-[10px] uppercase tracking-[0.16em] text-sig">The core of this book</p>
+        <p class="font-mono text-[10px] uppercase tracking-[0.16em] text-sig">Start here if you already prompt well</p>
         <h3 class="level-title">Context engineering</h3>
         <p class="level-desc">
-          Everything the window holds and everything it drops. Built on real skill files and
-          real measurements rather than a survey of blog posts.
+          Everything the window holds, and everything it drops. Built on real skill files and real
+          measurements rather than a tour of other people's blog posts.
         </p>
         <ul class="tags">
           <li>Agent skills</li><li>Progressive disclosure</li><li>Memory banks</li><li>Prompt caching</li><li>Compression</li><li>Eviction</li><li>Long-context management</li>
         </ul>
       </div>
-      <span class="level-state is-core">In progress</span>
+      <span class="level-meta">
+        <span class="badge badge-2">Intermediate</span>
+        <span class="level-time">~3 hrs</span>
+        <span class="level-state is-core">In progress</span>
+      </span>
     </li>
 
     <li id="level-4" class="level">
       <span class="level-num">04</span>
       <div class="level-body">
         <h3 class="level-title">AI workflows</h3>
-        <p class="level-desc">Complete builds, each dissected the same way: architecture, prompt, tools, memory, evaluation.</p>
+        <p class="level-desc">Whole builds, each taken apart the same way: architecture, prompt, tools, memory, evaluation.</p>
         <ul class="tags">
           <li>Research assistant</li><li>Coding assistant</li><li>Study assistant</li><li>Meeting summariser</li><li>Email assistant</li>
         </ul>
       </div>
-      <span class="level-state">Planned</span>
+      <span class="level-meta">
+        <span class="badge badge-2">Intermediate</span>
+        <span class="level-time">~2 hrs</span>
+        <span class="level-state">Planned</span>
+      </span>
     </li>
 
     <li id="level-5" class="level">
       <span class="level-num">05</span>
       <div class="level-body">
         <h3 class="level-title">AI agents</h3>
-        <p class="level-desc">Where the loop closes: the model chooses the next action, and every context decision compounds.</p>
+        <p class="level-desc">Where the model starts choosing its own next step — and every context decision you made begins to compound.</p>
         <ul class="tags">
           <li>Tool calling</li><li>MCP</li><li>Planning</li><li>Multi-agent systems</li><li>Reflection</li><li>Self-correction</li><li>Task decomposition</li>
         </ul>
       </div>
-      <span class="level-state">Planned</span>
+      <span class="level-meta">
+        <span class="badge badge-3">Advanced</span>
+        <span class="level-time">~3 hrs</span>
+        <span class="level-state">Planned</span>
+      </span>
     </li>
 
     <li id="level-6" class="level">
       <span class="level-num">06</span>
       <div class="level-body">
         <h3 class="level-title">Build projects</h3>
-        <p class="level-desc">Real briefs with real constraints — a dissertation, a business plan, a shipping codebase — not toy demos.</p>
+        <p class="level-desc">Real briefs with real constraints — a dissertation, a business plan, a working codebase — instead of toy demos.</p>
         <ul class="tags">
           <li>Personal tutor</li><li>PDF chatbot</li><li>AI CRM</li><li>Ticket routing</li><li>Coding assistant</li>
         </ul>
       </div>
-      <span class="level-state">Planned</span>
+      <span class="level-meta">
+        <span class="badge badge-3">Advanced</span>
+        <span class="level-time">Project-based</span>
+        <span class="level-state">Planned</span>
+      </span>
     </li>
 
   </ol>
@@ -276,25 +369,26 @@ tailwind.config = {
       <h2 class="font-display text-4xl font-extrabold tracking-tight">Everything is a file</h2>
       <div class="mt-6 max-w-readable space-y-5 text-lg leading-relaxed text-ink2">
         <p>
-          The book has a repository attached, and the repository is the point. Skills, memory
-          templates, prompts, and evaluations live as plain Markdown you can read, diff, fork,
-          and drop straight into your own project.
+          The book comes with a repository, and the repository is half the point. Skills, memory
+          templates, prompts, and evaluations are plain Markdown you can read, copy, and drop
+          straight into a project of your own.
         </p>
         <p>
-          Nothing here is a screenshot of a technique. If a chapter claims a structure saves
-          tokens, the structure is in the tree, and you can run it.
+          Nothing here is a screenshot of a technique. If a chapter says a structure saves tokens,
+          the structure is in the tree and you can run it yourself.
         </p>
       </div>
-      <a href="#" class="mt-8 inline-block rounded-sm border border-ink px-5 py-3 font-mono text-xs uppercase tracking-[0.1em] transition-colors hover:bg-ink hover:text-card">
-        Browse the repository
-      </a>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="#" class="btn-solid">Browse the repository</a>
+        <a href="resources.html" class="btn-outline">See recommended reading</a>
+      </div>
     </div>
 
     <div class="rounded-md border border-rule bg-paper p-5 font-mono text-[13px] leading-[1.9] sm:p-6">
       <p class="mb-3 text-[10px] uppercase tracking-[0.14em] text-muted">contextbook/</p>
-<pre class="tree overflow-x-auto"><span class="d">skills/</span>        <span class="c">procedural memory, one folder each</span>
+<pre class="tree overflow-x-auto"><span class="d">skills/</span>        <span class="c">reusable instructions, one folder each</span>
 <span class="d">prompts/</span>       <span class="c">templates worth stealing</span>
-<span class="d">memory/</span>        <span class="c">memory-bank scaffolds</span>
+<span class="d">memory/</span>        <span class="c">MEMORY.md, TASKS.md and friends</span>
 <span class="d">workflows/</span>     <span class="c">end-to-end builds</span>
 <span class="d">agents/</span>        <span class="c">loops, planners, tool sets</span>
 <span class="d">mcp/</span>           <span class="c">servers and configs</span>
@@ -312,26 +406,52 @@ tailwind.config = {
     Written in the open, corrected in the open.
   </h2>
   <p class="mt-6 max-w-readable text-lg leading-relaxed text-ink2">
-    This field moves faster than any one person can verify. Every page carries its sources,
-    marked by tier — provider documentation, peer-reviewed work, and vendor claims are not
-    the same thing and will never be printed as though they were. If a number here is wrong,
-    open an issue and it gets fixed in public.
+    This field moves faster than any one person can check. Every page carries its sources, marked
+    by how much they can be trusted — official documentation, peer-reviewed work, and a company
+    describing its own product are three different things and will never be printed as though
+    they were the same. Find a wrong number here and it gets fixed in public.
   </p>
   <div class="mt-8 flex flex-wrap gap-3">
-    <a href="#" class="rounded-sm bg-sig px-5 py-3 font-mono text-xs uppercase tracking-[0.1em] text-card transition-transform hover:-translate-y-px">Open an issue</a>
-    <a href="#" class="rounded-sm border border-ink px-5 py-3 font-mono text-xs uppercase tracking-[0.1em] transition-colors hover:bg-ink hover:text-card">Contributing guide</a>
+    <a href="#" class="btn-solid">Report a mistake</a>
+    <a href="#" class="btn-outline">How to contribute</a>
   </div>
 </section>
 
 </main>
 
-<footer class="border-t border-rule">
-  <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 py-8 font-mono text-[11px] uppercase tracking-[0.1em] text-muted">
-    <p>Contextbook — free forever, MIT licensed</p>
-    <p>Draft in progress · <a href="#main" class="underline decoration-rule underline-offset-4 transition-colors hover:text-ink">Back to top</a></p>
+<footer class="border-t border-rule bg-card">
+  <div class="mx-auto max-w-6xl px-5 py-12">
+    <div class="grid gap-8 sm:grid-cols-3">
+      <div>
+        <p class="font-display text-[15px] font-extrabold">Context<span class="text-sig">book</span></p>
+        <p class="mt-2 max-w-[32ch] text-[15px] leading-snug text-muted">
+          A free, open textbook for practical AI engineering.
+        </p>
+      </div>
+      <nav class="foot-nav" aria-label="Curriculum">
+        <p class="foot-head">Curriculum</p>
+        <a href="#level-1">1 · Foundations</a>
+        <a href="#level-2">2 · Prompting</a>
+        <a href="#level-3">3 · Context engineering</a>
+        <a href="#level-4">4 · Workflows</a>
+        <a href="#level-5">5 · Agents</a>
+        <a href="#level-6">6 · Projects</a>
+      </nav>
+      <nav class="foot-nav" aria-label="More">
+        <p class="foot-head">More</p>
+        <a href="resources.html">Resources</a>
+        <a href="#start">How to use this site</a>
+        <a href="#contribute">Contribute</a>
+        <a href="#">GitHub</a>
+      </nav>
+    </div>
+    <p class="mt-10 border-t border-rule pt-6 font-mono text-[11px] uppercase tracking-[0.1em] text-muted">
+      Free forever · MIT licensed · Draft in progress
+    </p>
   </div>
 </footer>
 
+<script src="assets/js/nav.js"></script>
 <script src="assets/js/context-window.js"></script>
 </body>
 </html>
