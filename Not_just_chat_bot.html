@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Mastery: The Efficient Developer's Curriculum</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="assets/css/site.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap');
+        
+        :root {
+            --bg-main: #F9F7F2;
+            --accent-primary: #4F46E5;
+            --accent-secondary: #10B981;
+            --text-main: #1F2937;
+            --card-bg: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            scroll-behavior: smooth;
+        }
+
+        .code-font { font-family: 'Fira+Code', monospace; }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(229, 231, 235, 1);
+        }
+
+        .nav-link {
+            transition: all 0.2s ease;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-link.active {
+            border-bottom: 2px solid var(--accent-primary);
+            color: var(--accent-primary);
+        }
+
+        .skill-node {
+            transition: transform 0.2s ease;
+            cursor: pointer;
+        }
+
+        .skill-node:hover {
+            transform: translateY(-2px);
+        }
+
+        .memory-file {
+            transition: all 0.2s ease;
+        }
+
+        .memory-file:hover {
+            background-color: #F3F4F6;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- Chosen Palette: Warm Neutral & Indigo Professional -->
+    <!-- Application Structure Plan: 
+        The SPA is organized into five core modules reflecting the report's curriculum: 
+        1. Agentic Capabilities (Agent Skills): Interactive anatomy of .skill files.
+        2. Persistent State (Memory Bank): Visual file hierarchy explorer.
+        3. Computational Economics (Caching): Data-driven charts comparing provider implementations.
+        4. Resource Efficiency (Compression & SLMs): Strategic matrix for model selection and context pruning.
+        5. The Perfect Cycle: A synthesized workflow overview.
+        
+        This structure prioritizes logical progression from "How the agent thinks" to "How the agent remembers" and finally "How to scale efficiently," allowing developers to drill down into specific architectural components.
+    -->
+    <!-- Visualization & Content Choices:
+        - Agent Skills Anatomy: Interactive code block -> Goal: Inform -> Method: Annotated HTML/CSS -> Justification: Highlighting specific YAML constraints is best done via direct text inspection.
+        - Caching Savings: Bar/Line charts -> Goal: Compare -> Method: Chart.js -> Justification: Clearly visualizes the 90% discount differences between Anthropic and OpenAI.
+        - Memory Hierarchy: Directory Tree -> Goal: Organize -> Method: Styled HTML + JS -> Justification: Mimics the IDE environment developers already use.
+        - Model Selection: Matrix/Table -> Goal: Compare -> Method: HTML Grid -> Justification: Provides a fast reference for SLM vs LLM use cases.
+        - CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. 
+    -->
+
+    <header class="site-header">
+        <div class="mx-auto flex max-w-6xl items-center gap-4 px-5 py-3.5">
+            <a href="index.html" class="font-display text-[17px] font-extrabold tracking-tight">
+                Context<span class="text-sig">book</span>
+            </a>
+
+            <nav class="nav-desktop ml-auto" aria-label="Main">
+                <a href="index.html">Home</a>
+                <a href="index.html#curriculum">Curriculum</a>
+                <a href="index.html#start">How to use this</a>
+                <a href="resources.html">Resources</a>
+                <a href="Not_just_chat_bot.html" aria-current="page">AI Mastery</a>
+                <a href="#" class="nav-cta">GitHub</a>
+            </nav>
+
+            <button type="button" class="nav-toggle ml-auto" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav">
+                <span class="sr-only">Menu</span>
+                <span aria-hidden="true">Menu</span>
+            </button>
+        </div>
+
+        <nav id="mobile-nav" class="nav-mobile" hidden aria-label="Main, mobile">
+            <a href="index.html">Home</a>
+            <a href="index.html#curriculum">Curriculum</a>
+            <a href="index.html#start">How to use this</a>
+            <a href="resources.html">Resources</a>
+            <a href="Not_just_chat_bot.html" aria-current="page">AI Mastery</a>
+            <a href="#">GitHub</a>
+        </nav>
+    </header>
+
+    <main id="main" class="pt-24 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        
+        <!-- Hero Section -->
+        <header class="mb-16 text-center">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight">
+                Beyond the Chatbox
+            </h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                A technical curriculum for building persistent, stateful, and autonomous AI systems. Transition from stateless queries to high-efficiency agentic workflows.
+            </p>
+        </header>
+
+        <!-- Section 1: Agent Skills -->
+        <section id="skills" class="mb-20 scroll-mt-24">
+            <div class="bg-white rounded-2xl shadow-sm border p-6 md:p-10">
+                <div class="flex flex-col lg:flex-row gap-12">
+                    <div class="lg:w-1/2">
+                        <span class="text-indigo-600 font-bold uppercase tracking-wider text-xs">Module 01</span>
+                        <h2 class="text-3xl font-bold mt-2 mb-4">Procedural Memory: Agent Skills</h2>
+                        <p class="text-gray-600 mb-6">
+                            Stop using monolithic system prompts. Agent Skills provide a modular framework for injecting procedural knowledge—how to perform specific tasks—without bloating the context window.
+                        </p>
+                        
+                        <div class="space-y-4">
+                            <div class="p-4 rounded-xl border border-indigo-100 bg-indigo-50/30">
+                                <h3 class="font-bold text-indigo-900 mb-2">Progressive Disclosure</h3>
+                                <p class="text-sm text-indigo-800">
+                                    The agent doesn't load everything at once. It indexes metadata first, then loads the body only when a semantic match occurs.
+                                </p>
+                            </div>
+                            <div class="grid grid-cols-3 gap-2">
+                                <button onclick="updateSkillView('index')" class="px-3 py-2 text-xs font-bold rounded border bg-white hover:border-indigo-500 transition-colors">Phase 1: Index</button>
+                                <button onclick="updateSkillView('load')" class="px-3 py-2 text-xs font-bold rounded border bg-white hover:border-indigo-500 transition-colors">Phase 2: Load</button>
+                                <button onclick="updateSkillView('exec')" class="px-3 py-2 text-xs font-bold rounded border bg-white hover:border-indigo-500 transition-colors">Phase 3: Execute</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="lg:w-1/2">
+                        <div class="bg-gray-900 rounded-xl p-6 text-gray-300 shadow-xl overflow-hidden relative">
+                            <div class="flex items-center gap-2 mb-4 border-b border-gray-800 pb-2">
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                                <span class="text-xs ml-2 code-font text-gray-500">path: /skills/pdf-handler/SKILL.md</span>
+                            </div>
+                            <pre id="skill-code-block" class="text-sm code-font leading-relaxed whitespace-pre-wrap"><span class="text-pink-400">---</span>
+<span class="text-indigo-400">name:</span> pdf-handler
+<span class="text-indigo-400">description:</span> Extracts text and tables from PDFs, 
+             fills forms, and merges files.
+<span class="text-indigo-400">allowed-tools:</span> [shell, python]
+<span class="text-pink-400">---</span>
+
+<span class="text-green-400"># Procedure</span>
+1. Analyze the PDF structure.
+2. If encrypted, request user passphrase.
+3. Utilize the Python `PyPDF2` library...</pre>
+                            <div id="skill-token-counter" class="absolute bottom-4 right-4 bg-indigo-600 text-white text-[10px] px-2 py-1 rounded font-bold">~120 Tokens</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Memory Bank -->
+        <section id="memory" class="mb-20 scroll-mt-24">
+            <div class="grid lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-1">
+                    <h2 class="text-3xl font-bold mb-4">The Memory Bank</h2>
+                    <p class="text-gray-600 mb-6">
+                        LLMs are stateless. The Memory Bank pattern creates a persistent "external brain" using hierarchical Markdown files, reducing redundant explanations by 23%.
+                    </p>
+                    <div class="space-y-3" id="memory-description-box">
+                        <div class="p-4 bg-white rounded-lg border shadow-sm">
+                            <h4 class="font-bold text-sm mb-1">Click a file to explore its role</h4>
+                            <p class="text-xs text-gray-500">Understand how temporal state is orchestrated across sessions.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:col-span-2">
+                    <div class="bg-white rounded-2xl shadow-sm border overflow-hidden">
+                        <div class="grid grid-cols-1 md:grid-cols-2">
+                            <div class="p-6 border-r bg-gray-50">
+                                <h3 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Project Root</h3>
+                                <div class="space-y-2">
+                                    <div class="flex items-center gap-2 text-sm text-gray-500 mb-2">
+                                        <span class="opacity-50">📂</span> .cursor/memory/
+                                    </div>
+                                    <div class="ml-4 space-y-1" id="file-tree">
+                                        <!-- JS Inject -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">File Content Focus</h3>
+                                <div id="file-preview" class="space-y-4">
+                                    <p class="text-gray-400 italic text-sm text-center py-20">Select a file from the explorer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Economics -->
+        <section id="economics" class="mb-20 scroll-mt-24">
+            <div class="bg-indigo-900 rounded-3xl p-8 md:p-12 text-white overflow-hidden relative">
+                <div class="relative z-10">
+                    <h2 class="text-3xl font-bold mb-8">Computational Economics</h2>
+                    <div class="grid lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <h3 class="text-xl font-semibold mb-4 text-indigo-200">The Power of Prefix Caching</h3>
+                            <p class="text-indigo-100/80 mb-6">
+                                Prompt caching reduces latency by 85% and slashes input costs by 90% by storing Key-Value (KV) tensors. Success depends on placing static data at the absolute beginning of the prompt.
+                            </p>
+                            
+                            <div class="space-y-4">
+                                <div class="flex justify-between items-end">
+                                    <span class="text-sm font-medium">Standard Request Cost</span>
+                                    <span class="text-sm font-bold text-red-300">100%</span>
+                                </div>
+                                <div class="w-full h-3 bg-indigo-800 rounded-full overflow-hidden">
+                                    <div class="h-full bg-red-400 w-full"></div>
+                                </div>
+                                
+                                <div class="flex justify-between items-end mt-4">
+                                    <span class="text-sm font-medium">Cached Read Cost (Anthropic)</span>
+                                    <span class="text-sm font-bold text-green-300">10%</span>
+                                </div>
+                                <div class="w-full h-3 bg-indigo-800 rounded-full overflow-hidden">
+                                    <div class="h-full bg-green-400" style="width: 10%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white/5 p-6 rounded-2xl backdrop-blur-sm border border-white/10">
+                            <h4 class="text-center text-sm font-bold mb-6 text-indigo-200 uppercase tracking-widest">Cache Architecture Comparison</h4>
+                            <div class="chart-container">
+                                <canvas id="economicsChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Efficiency Matrix -->
+        <section id="compression" class="mb-20 scroll-mt-24">
+            <div class="flex flex-col md:flex-row gap-4 mb-8 items-end">
+                <div class="flex-grow">
+                    <h2 class="text-3xl font-bold mb-2">Compression & Model Strategy</h2>
+                    <p class="text-gray-600">Managing token exhaustion and choosing the right compute tier.</p>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1 -->
+                <div class="bg-white p-6 rounded-2xl border shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center mb-4 font-bold">SLM</div>
+                    <h3 class="font-bold mb-2">When to use SLMs?</h3>
+                    <ul class="text-xs text-gray-500 space-y-2">
+                        <li>• Routine document classification</li>
+                        <li>• Tool call JSON generation</li>
+                        <li>• Local RAG embeddings</li>
+                        <li>• Edge/Mobile environments</li>
+                    </ul>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-white p-6 rounded-2xl border shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-10 h-10 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center mb-4 font-bold">∑</div>
+                    <h3 class="font-bold mb-2">Rolling Summary</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed mb-3">
+                        Uses a cheaper LLM to generate prose summaries of old logs. 
+                    </p>
+                    <span class="text-[10px] font-bold text-blue-500 bg-blue-50 px-2 py-1 rounded">LOSS RATIO: MEDIUM</span>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-white p-6 rounded-2xl border shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-10 h-10 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center mb-4 font-bold">⚓</div>
+                    <h3 class="font-bold mb-2">Anchored Incremental</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed mb-3">
+                        Maintains a structured JSON document, only updating with new facts.
+                    </p>
+                    <span class="text-[10px] font-bold text-orange-500 bg-orange-50 px-2 py-1 rounded">LOSS RATIO: LOW</span>
+                </div>
+                <!-- Card 4 -->
+                <div class="bg-white p-6 rounded-2xl border shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-10 h-10 rounded-lg bg-purple-100 text-purple-600 flex items-center justify-center mb-4 font-bold">⚡</div>
+                    <h3 class="font-bold mb-2">Kompact Proxy</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed mb-3">
+                        Middleware that uses 8 adaptive transforms to strip syntax.
+                    </p>
+                    <span class="text-[10px] font-bold text-purple-500 bg-purple-50 px-2 py-1 rounded">COST SAVING: 40-70%</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final synthesis -->
+        <section class="text-center max-w-3xl mx-auto py-12 border-t">
+            <h2 class="text-2xl font-bold mb-4">The Perfect Agent Lifecycle</h2>
+            <div class="flex flex-col items-center">
+                <canvas id="cycleCanvas" width="600" height="150" class="w-full max-w-lg mb-6"></canvas>
+                <p class="text-sm text-gray-500 px-8">
+                    Initialize with cached Memory Bank files → Index metadata → Load required Skills → Run loop with incremental summarization → Externalize state to Memory Bank → End.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-50 border-t py-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-sm text-gray-400">© 2024 AI Mastery Curriculum. All methodologies based on enterprise agentic research.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Data Store
+        const memoryFiles = [
+            { id: 'pb', name: 'projectbrief.md', type: 'Static', desc: 'Core requirements and project vision.', color: 'text-blue-500', content: '## Core Vision\nBuild a decentralized task agent...\n\n## Metrics\n- Latency < 2s\n- Accuracy > 95%' },
+            { id: 'sp', name: 'systemPatterns.md', type: 'Static', desc: 'Architectural rules and design patterns.', color: 'text-blue-500', content: '## Architecture\nUse a modular plugin system...\n\n## Constraints\n- No global state\n- Strict typing' },
+            { id: 'ac', name: 'activeContext.md', type: 'Dynamic', desc: 'Current focus and active blockers.', color: 'text-red-500', content: '## Current Focus\nFixing authentication timeout...\n\n## Blockers\nAPI rate limit on dev environment.' },
+            { id: 'pg', name: 'progress.md', type: 'Dynamic', desc: 'Task list and recent completions.', color: 'text-red-500', content: '## Completed\n- User login\n- Database migration\n\n## To Do\n- [ ] Multi-region support' }
+        ];
+
+        const skillViews = {
+            index: {
+                tokens: '~100 per skill',
+                code: `<span class="text-pink-400">---</span>\n<span class="text-indigo-400">name:</span> pdf-handler\n<span class="text-indigo-400">description:</span> Extracts text and tables from PDFs...\n<span class="text-pink-400">---</span>\n\n<span class="text-gray-500 italic">// Body truncated for indexing phase...</span>`
+            },
+            load: {
+                tokens: '~2.5k Tokens',
+                code: `<span class="text-pink-400">---</span>\n<span class="text-indigo-400">name:</span> pdf-handler\n<span class="text-indigo-400">description:</span> Extracts text and tables from PDFs...\n<span class="text-pink-400">---</span>\n\n<span class="text-green-400"># Procedure</span>\n1. Analyze structure.\n2. Execute python extraction...\n<span class="text-indigo-400">scripts/</span>\n - extract.py\n - merge.py`
+            },
+            exec: {
+                tokens: 'Variable (On-Demand)',
+                code: `<span class="text-pink-400">---</span>\n<span class="text-indigo-400">EXECUTION LOG:</span>\n> RUN scripts/extract.py\n> LOADING asset/template-A.json\n> SUCCESS: 22 pages processed.\n<span class="text-pink-400">---</span>`
+            }
+        };
+
+        // UI Controllers
+        function updateSkillView(phase) {
+            const block = document.getElementById('skill-code-block');
+            const counter = document.getElementById('skill-token-counter');
+            block.innerHTML = skillViews[phase].code;
+            counter.innerText = skillViews[phase].tokens;
+        }
+
+        function initFileTree() {
+            const tree = document.getElementById('file-tree');
+            memoryFiles.forEach(file => {
+                const div = document.createElement('div');
+                div.className = 'memory-file flex items-center justify-between p-2 rounded cursor-pointer';
+                div.innerHTML = `
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs">📄</span>
+                        <span class="text-xs font-medium text-gray-700">${file.name}</span>
+                    </div>
+                    <span class="text-[9px] px-1.5 py-0.5 rounded-full border ${file.type === 'Static' ? 'bg-blue-50 text-blue-600' : 'bg-red-50 text-red-600'}">${file.type}</span>
+                `;
+                div.onclick = () => selectFile(file);
+                tree.appendChild(div);
+            });
+        }
+
+        function selectFile(file) {
+            const preview = document.getElementById('file-preview');
+            const desc = document.getElementById('memory-description-box');
+            
+            preview.innerHTML = `
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="text-lg">📄</span>
+                    <h4 class="font-bold text-gray-800">${file.name}</h4>
+                </div>
+                <div class="bg-gray-50 border p-4 rounded-lg text-xs code-font text-gray-600 whitespace-pre-wrap h-40 overflow-y-auto">
+                    ${file.content}
+                </div>
+            `;
+            
+            desc.innerHTML = `
+                <div class="p-4 bg-white rounded-lg border shadow-sm border-indigo-200">
+                    <h4 class="font-bold text-sm text-indigo-700 mb-1">${file.name}</h4>
+                    <p class="text-xs text-gray-600 mb-2">${file.desc}</p>
+                    <div class="flex items-center gap-2">
+                        <div class="w-2 h-2 rounded-full ${file.type === 'Static' ? 'bg-blue-500' : 'bg-red-500'}"></div>
+                        <span class="text-[10px] font-bold uppercase">${file.type} Volatility</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Charts
+        function initCharts() {
+            const ctx = document.getElementById('economicsChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Hit Rate Reliability', 'Cache Read Discount', 'Write Surcharge', 'Min. Token Threshold'],
+                    datasets: [
+                        {
+                            label: 'Anthropic (Explicit)',
+                            data: [100, 90, 25, 1024],
+                            backgroundColor: 'rgba(99, 102, 241, 0.8)',
+                            borderColor: 'white',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'OpenAI (Implicit)',
+                            data: [50, 50, 0, 1024],
+                            backgroundColor: 'rgba(16, 185, 129, 0.8)',
+                            borderColor: 'white',
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { labels: { color: '#E0E7FF', font: { size: 10 } } },
+                        tooltip: { mode: 'index', intersect: false }
+                    },
+                    scales: {
+                        y: { 
+                            beginAtZero: true, 
+                            grid: { color: 'rgba(255,255,255,0.1)' },
+                            ticks: { color: '#E0E7FF', font: { size: 9 } }
+                        },
+                        x: { 
+                            grid: { display: false },
+                            ticks: { color: '#E0E7FF', font: { size: 9 } }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Cycle Canvas Visualization
+        function drawCycle() {
+            const canvas = document.getElementById('cycleCanvas');
+            const ctx = canvas.getContext('2d');
+            const steps = ['Init', 'Index', 'Load', 'Act', 'Summarize', 'Save'];
+            const colors = ['#6366F1', '#4F46E5', '#4338CA', '#10B981', '#F59E0B', '#EF4444'];
+            
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            const margin = 50;
+            const width = (canvas.width - margin * 2) / (steps.length - 1);
+            
+            // Draw Line
+            ctx.beginPath();
+            ctx.setLineDash([5, 5]);
+            ctx.moveTo(margin, 75);
+            ctx.lineTo(canvas.width - margin, 75);
+            ctx.strokeStyle = '#D1D5DB';
+            ctx.stroke();
+            ctx.setLineDash([]);
+            
+            steps.forEach((step, i) => {
+                const x = margin + (i * width);
+                const y = 75;
+                
+                // Draw Node
+                ctx.beginPath();
+                ctx.arc(x, y, 10, 0, Math.PI * 2);
+                ctx.fillStyle = colors[i];
+                ctx.fill();
+                ctx.strokeStyle = 'white';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+                
+                // Label
+                ctx.fillStyle = '#4B5563';
+                ctx.font = 'bold 10px Inter';
+                ctx.textAlign = 'center';
+                ctx.fillText(step, x, y + 25);
+            });
+        }
+
+        // Init
+        window.onload = () => {
+            initFileTree();
+            initCharts();
+            drawCycle();
+            
+            // Intersection Observer for Nav
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        document.querySelectorAll('.nav-link').forEach(link => {
+                            link.classList.toggle('active', link.getAttribute('href').substring(1) === entry.target.id);
+                        });
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            document.querySelectorAll('section[id]').forEach(section => observer.observe(section));
+        };
+    </script>
+    <script src="assets/js/nav.js"></script>
+</body>
+</html>
