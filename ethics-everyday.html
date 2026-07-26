@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Regular use — Contextbook</title>
+<meta name="description" content="Using AI honestly in everyday work: what to verify, what never to paste in, and when to tell people.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = { theme: { extend: {
+  colors: { ink:'#131522', ink2:'#2A2E44', paper:'#ECEDF1', card:'#FFFFFF', rule:'#D3D6E0',
+            muted:'#5C6178', sig:'#2A34E8', sigpale:'#C5CAFB' },
+  fontFamily: { display:['"Bricolage Grotesque"','system-ui','sans-serif'],
+                body:['"Source Serif 4"','Georgia','serif'],
+                mono:['"JetBrains Mono"','ui-monospace','monospace'] } } } }
+</script>
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+
+<body class="eth font-body antialiased">
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="site-header">
+  <div class="mx-auto flex max-w-6xl items-center gap-4 px-5 py-3.5">
+    <a href="index.html" class="font-display text-[17px] font-extrabold tracking-tight">
+      Context<span style="color:#1B6E48">book</span>
+    </a>
+    <nav class="nav-desktop ml-auto" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="index.html#curriculum">Curriculum</a>
+      <a href="resources.html">Resources</a>
+      <a href="ethics.html" class="nav-eth">Ethical use</a>
+    </nav>
+    <button type="button" class="nav-toggle ml-auto" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav">
+      <span class="sr-only">Menu</span><span aria-hidden="true">Menu</span>
+    </button>
+  </div>
+  <nav id="mobile-nav" class="nav-mobile" hidden aria-label="Main, mobile">
+    <a href="index.html">Home</a>
+    <a href="index.html#curriculum">Curriculum</a>
+    <a href="resources.html">Resources</a>
+    <a href="ethics.html" class="nav-eth">Ethical use</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- green band: this section announces itself as different -->
+  <section class="eth-band px-5 py-16 md:py-20">
+    <div class="eth-wrap">
+      <p class="eth-kicker"><a href="ethics.html" style="color:#9FD9BC">Ethical use</a> / Regular use</p>
+      <h1 class="eth-h1 mt-5">Everyday use, without the quiet mistakes.</h1>
+      <p class="eth-lede">Six habits for work, personal projects, writing, and code. None of them slow you down much; all of them prevent the kind of mistake that is embarrassing to explain afterwards.</p>
+    </div>
+  </section>
+
+  <section class="px-5 py-16 md:py-20">
+    <div class="eth-wrap">
+      <section id="p1" class="eth-principle">
+        <span class="eth-n">01</span>
+        <h2>You are accountable for whatever you send</h2>
+<p>The model produces text that is plausible. Plausible is not the same as true, and nothing checks the difference before it reaches you. If you forward it, publish it, or ship it, it is your claim now.</p>
+<p>This is not a reason to avoid AI. It is a reason to read what it gives you. The failure mode is not obvious rubbish — it is a confident, well-written paragraph with one wrong number in the middle.</p>
+<div class="eth-rule-card"><span class="eth-rule-label">Practical test</span><p>Before you send it: could you defend every factual claim in this if someone challenged it? If not, check those parts or cut them.</p></div>
+      </section>
+      <section id="p2" class="eth-principle">
+        <span class="eth-n">02</span>
+        <h2>Do not paste other people's information into it</h2>
+<p>The single most common ethical mistake is casual. Someone pastes in a customer email, a colleague's CV, a medical letter, or a full client contract to get a quick summary — and hands another person's private information to a third party without asking them.</p>
+<p>The other person did not consent, and often it is not yours to share in the first place.</p>
+<ul><li><strong>Never paste:</strong> anything identifying a real person — health, finances, immigration status, contact details, private messages.</li><li><strong>Be careful with:</strong> employer data, unreleased work, anything under an NDA. Check whether your workplace has an approved tool before using a personal account.</li><li><strong>Safer habit:</strong> strip the names and details first. A summary rarely needs to know who it is about.</li></ul>
+      </section>
+      <section id="p3" class="eth-principle">
+        <span class="eth-n">03</span>
+        <h2>Say so when it would change how someone reads it</h2>
+<p>You do not need to announce AI on every email. The honest test is whether the person would feel misled to find out.</p>
+<p>Using it to tidy your grammar is like using a spellchecker — nobody expects a disclosure. Sending a condolence message, a personal recommendation, or a performance review that AI wrote is different, because the value of those was supposed to be that <em>you</em> wrote them.</p>
+<ul><li><strong>No disclosure needed:</strong> grammar, formatting, rewording your own draft, brainstorming.</li><li><strong>Say something:</strong> published or professional work substantially generated by AI, anything presented as personal, and any context where someone is relying on your expertise.</li></ul>
+      </section>
+      <section id="p4" class="eth-principle">
+        <span class="eth-n">04</span>
+        <h2>Never use it to imitate a real person</h2>
+<p>These tools are good at mimicking a specific voice, and that capability has an obvious misuse. Generating text, audio, or images that present a real person as saying something they did not is deception regardless of intent — and depending on where you live, potentially illegal.</p>
+<p>The same applies to reviews, testimonials, and support messages written to look like they came from real customers or staff.</p>
+      </section>
+      <section id="p5" class="eth-principle">
+        <span class="eth-n">05</span>
+        <h2>Know what it is not qualified to be</h2>
+<p>It will answer medical, legal, and financial questions fluently and at length, because fluent answers are what it produces. That fluency is not competence, and it has no idea what it does not know.</p>
+<p>Use it to understand terminology, prepare questions, or make sense of a document you already have. Do not let it replace a doctor, a lawyer, or an accountant — and if you are in crisis, please talk to a real person or a crisis line rather than a chatbot.</p>
+      </section>
+      <section id="p6" class="eth-principle">
+        <span class="eth-n">06</span>
+        <h2>Assume it inherited the internet's biases</h2>
+<p>It learned from human writing, including all the stereotyping in it. That shows up quietly: in whose name gets attached to which job, whose English gets called unprofessional, which candidate gets described as a 'culture fit'.</p>
+<p>Be especially careful using it for anything that sorts people — hiring, admissions, lending, moderation. If you must, keep a human decision-maker who can be questioned, and check the outputs for patterns rather than assuming neutrality.</p>
+      </section>
+      <p class="mt-16 flex flex-wrap gap-3">
+        <a href="ethics.html" class="eth-back">← Back to ethical use</a>
+        <a href="index.html" class="eth-back">Home</a>
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="border-t" style="border-color:#CFDDD4; background:#FFFFFF">
+  <div class="mx-auto max-w-6xl px-5 py-10 flex flex-wrap items-center justify-between gap-4">
+    <p class="font-mono text-[11px] uppercase tracking-[0.1em]" style="color:#5C6178">
+      Contextbook · Ethical use
+    </p>
+    <nav class="flex flex-wrap gap-5 font-mono text-[11px] uppercase tracking-[0.1em]">
+      <a href="ethics-everyday.html" style="color:#1B6E48">Regular use</a>
+      <a href="ethics-academic.html" style="color:#1B6E48">Academic use</a>
+      <a href="index.html" style="color:#5C6178">Home</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="assets/js/nav.js"></script>
+</body>
+</html>
