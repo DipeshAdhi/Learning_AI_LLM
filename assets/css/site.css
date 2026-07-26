@@ -18,6 +18,15 @@
   --waste:     #D31F5C;
   --waste-pale:#F3A9C2;
   --empty:     #DFE2EA;
+
+  /* Semantic colour, used the same way everywhere on the site:
+     blue = base / neutral, green = correct, red = wrong.
+     Nothing is coloured for decoration. */
+  --base:      #2A34E8;
+  --ok:        #1B6E48;
+  --ok-pale:   #DCEBE2;
+  --bad:       #C0224E;
+  --bad-pale:  #F6D5DF;
 }
 
 html { scroll-behavior: smooth; }
@@ -862,6 +871,7 @@ body { text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; 
 .nav-mobile .nav-eth { border-radius: 0; }
 
 body.eth {
+<<<<<<< HEAD
   --eth-ink:    #10231A;
   --eth-body:   #33473D;
   --eth-paper:  #F1F5F2;
@@ -885,11 +895,29 @@ body.eth .breadcrumb a:hover { color: var(--eth-green); }
 }
 .eth-band .eth-kicker { color: #9FD9BC; }
 
+=======
+  --eth-ink:   #10231A;
+  --eth-body:  #33473D;
+  --eth-paper: #F1F5F2;
+  --eth-card:  #FFFFFF;
+  --eth-rule:  #CFDDD4;
+  --eth-green: #1B6E48;
+  --eth-pale:  #DCEBE2;
+  background: #F1F5F2;
+  color: var(--eth-ink);
+}
+body.eth .site-header { background: rgba(241,245,242,0.93); border-bottom-color: var(--eth-rule); }
+body.eth .breadcrumb a:hover { color: var(--eth-green); }
+
+.eth-band { background: var(--eth-green); color: #EAF3EE; }
+.eth-band .eth-kicker { color: #9FD9BC; }
+>>>>>>> 7b5597c (update on UI of the page)
 .eth-wrap { max-width: 46rem; margin: 0 auto; }
 
 .eth-h1 {
   font-family: "Bricolage Grotesque", system-ui, sans-serif;
   font-size: clamp(2.1rem, 6vw, 3.4rem);
+<<<<<<< HEAD
   font-weight: 800;
   letter-spacing: -0.025em;
   line-height: 1.02;
@@ -909,39 +937,65 @@ body.eth .breadcrumb a:hover { color: var(--eth-green); }
 }
 
 /* the two routes */
+=======
+  font-weight: 800; letter-spacing: -0.025em; line-height: 1.02;
+  color: #FFFFFF;
+}
+.eth-lede { margin-top: 1.4rem; font-size: 1.2rem; line-height: 1.65; color: #CFE6DA; }
+.eth-kicker {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em;
+}
+
+>>>>>>> 7b5597c (update on UI of the page)
 .eth-doors { display: grid; gap: 1rem; }
 @media (min-width: 720px) { .eth-doors { grid-template-columns: 1fr 1fr; gap: 1.25rem; } }
 
 .eth-door {
+<<<<<<< HEAD
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   padding: 2rem 1.9rem;
   border: 1px solid var(--eth-rule);
   border-radius: 6px;
+=======
+  display: flex; flex-direction: column; gap: 0.5rem;
+  padding: 2rem 1.9rem;
+  border: 1px solid var(--eth-rule); border-radius: 6px;
+>>>>>>> 7b5597c (update on UI of the page)
   background: var(--eth-card);
   transition: border-color 180ms ease, transform 180ms ease;
 }
 .eth-door:hover { border-color: var(--eth-green); transform: translateY(-3px); }
 .eth-door-icon {
   font-family: "JetBrains Mono", monospace;
+<<<<<<< HEAD
   font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+=======
+  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+>>>>>>> 7b5597c (update on UI of the page)
   color: var(--eth-green);
 }
 .eth-door-title {
   font-family: "Bricolage Grotesque", system-ui, sans-serif;
+<<<<<<< HEAD
   font-size: 1.6rem;
   font-weight: 800;
   letter-spacing: -0.02em;
   line-height: 1.1;
+=======
+  font-size: 1.6rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1;
+>>>>>>> 7b5597c (update on UI of the page)
   color: var(--eth-ink);
 }
 .eth-door-note { font-size: 1.05rem; line-height: 1.55; color: var(--eth-body); }
 .eth-door-go {
   margin-top: 0.6rem;
   font-family: "JetBrains Mono", monospace;
+<<<<<<< HEAD
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -952,20 +1006,33 @@ body.eth .breadcrumb a:hover { color: var(--eth-green); }
 .eth-principle {
   padding-top: 1.6rem;
   margin-top: 2.6rem;
+=======
+  font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--eth-green);
+}
+
+.eth-principle {
+  padding-top: 1.6rem; margin-top: 2.6rem;
+>>>>>>> 7b5597c (update on UI of the page)
   border-top: 2px solid var(--eth-ink);
   scroll-margin-top: 5.5rem;
 }
 .eth-n {
   font-family: "JetBrains Mono", monospace;
+<<<<<<< HEAD
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.14em;
+=======
+  font-size: 12px; font-weight: 700; letter-spacing: 0.14em;
+>>>>>>> 7b5597c (update on UI of the page)
   color: var(--eth-green);
 }
 .eth-principle h2 {
   margin-top: 0.6rem;
   font-family: "Bricolage Grotesque", system-ui, sans-serif;
   font-size: clamp(1.5rem, 3.6vw, 2rem);
+<<<<<<< HEAD
   font-weight: 800;
   letter-spacing: -0.02em;
   line-height: 1.12;
@@ -996,22 +1063,45 @@ body.eth .breadcrumb a:hover { color: var(--eth-green); }
 .eth-rule-card {
   margin-top: 1.4rem;
   padding: 1.2rem 1.4rem;
+=======
+  font-weight: 800; letter-spacing: -0.02em; line-height: 1.12;
+  color: var(--eth-ink);
+}
+.eth-principle p { margin-top: 1rem; font-size: 1.125rem; line-height: 1.7; color: var(--eth-body); }
+.eth-principle strong { color: var(--eth-ink); font-weight: 600; }
+.eth-principle ul { margin-top: 1rem; display: grid; gap: 0.55rem; }
+.eth-principle ul li {
+  position: relative; padding-left: 1.5rem;
+  font-size: 1.1rem; line-height: 1.6; color: var(--eth-body);
+}
+.eth-principle ul li::before { content: "→"; position: absolute; left: 0; color: var(--eth-green); }
+
+.eth-rule-card {
+  margin-top: 1.4rem; padding: 1.2rem 1.4rem;
+>>>>>>> 7b5597c (update on UI of the page)
   border-left: 3px solid var(--eth-green);
   border-radius: 0 5px 5px 0;
   background: var(--eth-pale);
 }
 .eth-rule-card p { margin-top: 0; font-size: 1.05rem; color: #1D3A2B; }
 .eth-rule-label {
+<<<<<<< HEAD
   display: block;
   margin-bottom: 0.35rem;
   font-family: "JetBrains Mono", monospace;
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 0.14em;
+=======
+  display: block; margin-bottom: 0.35rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em;
+>>>>>>> 7b5597c (update on UI of the page)
   color: var(--eth-green);
 }
 
 .eth-back {
+<<<<<<< HEAD
   display: inline-block;
   padding: 0.8rem 1.25rem;
   border: 1px solid var(--eth-green);
@@ -1020,6 +1110,12 @@ body.eth .breadcrumb a:hover { color: var(--eth-green); }
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.1em;
+=======
+  display: inline-block; padding: 0.8rem 1.25rem;
+  border: 1px solid var(--eth-green); border-radius: 3px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em;
+>>>>>>> 7b5597c (update on UI of the page)
   color: var(--eth-green);
   transition: background-color 160ms ease, color 160ms ease;
 }
@@ -1032,6 +1128,7 @@ body.eth .breadcrumb a:hover { color: var(--eth-green); }
 
 /* ═══════════════════════════════════════════════════════════════════
    LANDING — cinematic treatment
+<<<<<<< HEAD
    Big type, deep space, one moving thing at a time. Everything here is
    scoped to .lp- so the article pages stay calm.
    ═══════════════════════════════════════════════════════════════════ */
@@ -1055,10 +1152,27 @@ body.eth .breadcrumb a:hover { color: var(--eth-green); }
     radial-gradient(38% 44% at 22% 32%, rgba(42,52,232,0.55) 0%, transparent 62%),
     radial-gradient(34% 40% at 78% 30%, rgba(110,59,209,0.45) 0%, transparent 64%),
     radial-gradient(42% 38% at 55% 82%, rgba(211,31,92,0.30) 0%, transparent 66%);
+=======
+   Big type, deep space, one moving thing at a time. Scoped to .lp-.
+   ═══════════════════════════════════════════════════════════════════ */
+
+.lp-hero {
+  position: relative; min-height: 92vh;
+  display: flex; align-items: center; overflow: hidden;
+  background: #08080E; color: #FFFFFF;
+}
+.lp-aurora {
+  position: absolute; inset: -30%; pointer-events: none;
+  background:
+    radial-gradient(38% 44% at 22% 32%, rgba(42,52,232,0.52) 0%, transparent 62%),
+    radial-gradient(34% 40% at 78% 30%, rgba(110,59,209,0.42) 0%, transparent 64%),
+    radial-gradient(42% 38% at 55% 82%, rgba(60,40,120,0.28) 0%, transparent 66%);
+>>>>>>> 7b5597c (update on UI of the page)
   filter: blur(28px);
   animation: lp-drift 26s ease-in-out infinite alternate;
 }
 @keyframes lp-drift {
+<<<<<<< HEAD
   0%   { transform: translate3d(-2%, -1%, 0) scale(1); }
   50%  { transform: translate3d(2%, 2%, 0) scale(1.06); }
   100% { transform: translate3d(-1%, 1%, 0) scale(1.02); }
@@ -1094,6 +1208,26 @@ body.eth .breadcrumb a:hover { color: var(--eth-green); }
   width: 6px; height: 6px; border-radius: 50%;
   background: #4ADE80;
   box-shadow: 0 0 0 0 rgba(74,222,128,0.7);
+=======
+  0%   { transform: translate3d(-2%,-1%,0) scale(1); }
+  50%  { transform: translate3d(2%,2%,0) scale(1.06); }
+  100% { transform: translate3d(-1%,1%,0) scale(1.02); }
+}
+#lp-canvas { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.85; }
+.lp-hero-inner { position: relative; z-index: 2; }
+
+.lp-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.55rem;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid rgba(255,255,255,0.18); border-radius: 999px;
+  background: rgba(255,255,255,0.06); backdrop-filter: blur(10px);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em;
+  color: #C5CAFB;
+}
+.lp-dot {
+  width: 6px; height: 6px; border-radius: 50%; background: #4ADE80;
+>>>>>>> 7b5597c (update on UI of the page)
   animation: lp-pulse 2.4s infinite;
 }
 @keyframes lp-pulse {
@@ -1106,6 +1240,7 @@ body.eth .breadcrumb a:hover { color: var(--eth-green); }
   margin-top: 1.6rem;
   font-family: "Bricolage Grotesque", system-ui, sans-serif;
   font-size: clamp(2.9rem, 9vw, 7.5rem);
+<<<<<<< HEAD
   font-weight: 800;
   letter-spacing: -0.038em;
   line-height: 0.94;
@@ -1169,11 +1304,48 @@ body.eth .breadcrumb a:hover { color: var(--eth-green); }
   font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
+=======
+  font-weight: 800; letter-spacing: -0.038em; line-height: 0.94;
+}
+.lp-shimmer {
+  background: linear-gradient(96deg,#FFFFFF 12%,#9AA4FF 34%,#E4B6F5 52%,#FFFFFF 76%);
+  background-size: 250% 100%;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: lp-sweep 7s ease-in-out infinite;
+}
+@keyframes lp-sweep { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+
+.lp-sub {
+  margin-top: 1.9rem; max-width: 40ch;
+  font-size: clamp(1.05rem, 2.1vw, 1.45rem); line-height: 1.55;
+  color: rgba(255,255,255,0.72);
+}
+.lp-cta-row { margin-top: 2.4rem; display: flex; flex-wrap: wrap; gap: 0.85rem; }
+
+.lp-btn {
+  position: relative; display: inline-flex; align-items: center; gap: 0.6rem;
+  padding: 1rem 1.7rem; border-radius: 999px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em;
+  overflow: hidden;
+  transition: transform 260ms cubic-bezier(.2,.7,.3,1), box-shadow 260ms ease;
+}
+.lp-btn-primary { background:#FFFFFF; color:#08080E; box-shadow:0 10px 34px -10px rgba(255,255,255,0.5); }
+.lp-btn-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow:0 18px 44px -12px rgba(255,255,255,0.62); }
+.lp-btn-ghost { border:1px solid rgba(255,255,255,0.28); color:#FFFFFF; backdrop-filter: blur(10px); }
+.lp-btn-ghost:hover { transform: translateY(-3px); background: rgba(255,255,255,0.08); }
+
+.lp-scrollcue {
+  position: absolute; left: 50%; bottom: 2.2rem; transform: translateX(-50%); z-index: 2;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+>>>>>>> 7b5597c (update on UI of the page)
   color: rgba(255,255,255,0.5);
   animation: lp-bob 2.6s ease-in-out infinite;
 }
 @keyframes lp-bob { 0%,100%{transform:translate(-50%,0)} 50%{transform:translate(-50%,7px)} }
 
+<<<<<<< HEAD
 /* ── scroll reveals ──────────────────────────────────────────────── */
 
 .reveal {
@@ -1232,17 +1404,59 @@ body.eth .breadcrumb a:hover { color: var(--eth-green); }
 .lp-card::before {
   content: "";
   position: absolute; inset: 0; z-index: -2;
+=======
+/* Hidden only when JS is present to un-hide it. Without the html.js guard,
+   a JS failure would leave the entire page blank. */
+html.js .reveal {
+  opacity: 0; transform: translateY(26px);
+  transition: opacity 750ms cubic-bezier(.2,.7,.3,1), transform 750ms cubic-bezier(.2,.7,.3,1);
+}
+html.js .reveal.is-in { opacity: 1; transform: none; }
+html.js .reveal[data-d="1"] { transition-delay: 90ms; }
+html.js .reveal[data-d="2"] { transition-delay: 180ms; }
+html.js .reveal[data-d="3"] { transition-delay: 270ms; }
+
+.lp-stats { display: grid; gap: 2.5rem 1rem; grid-template-columns: repeat(2,1fr); }
+@media (min-width: 860px) { .lp-stats { grid-template-columns: repeat(4,1fr); } }
+.lp-stat-n {
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: clamp(2.4rem,5.4vw,3.9rem); font-weight: 800;
+  letter-spacing: -0.03em; line-height: 1;
+  background: linear-gradient(180deg,#131522 45%,#3B45C9 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.lp-stat-l { margin-top: 0.7rem; font-size: 0.98rem; line-height: 1.45; color: var(--muted); max-width: 22ch; }
+
+.lp-cards { display: grid; gap: 1.1rem; }
+@media (min-width: 760px)  { .lp-cards { grid-template-columns: repeat(2,1fr); } }
+@media (min-width: 1180px) { .lp-cards { grid-template-columns: repeat(4,1fr); } }
+
+.lp-card {
+  position: relative; display: flex; flex-direction: column;
+  min-height: 21rem; padding: 1.7rem;
+  border-radius: 18px; overflow: hidden; color: #FFFFFF; isolation: isolate;
+  transition: transform 420ms cubic-bezier(.2,.7,.3,1), box-shadow 420ms ease;
+}
+.lp-card::before {
+  content: ""; position: absolute; inset: 0; z-index: -2;
+>>>>>>> 7b5597c (update on UI of the page)
   background: var(--card-grad);
   transition: transform 620ms cubic-bezier(.2,.7,.3,1);
 }
 .lp-card::after {
+<<<<<<< HEAD
   content: "";
   position: absolute; inset: 0; z-index: -1;
   background: radial-gradient(120% 90% at 50% 0%, rgba(255,255,255,0.20), transparent 58%);
+=======
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: radial-gradient(120% 90% at 50% 0%, rgba(255,255,255,0.14), transparent 58%);
+>>>>>>> 7b5597c (update on UI of the page)
   opacity: 0; transition: opacity 420ms ease;
 }
 .lp-card:hover { transform: translateY(-9px); box-shadow: 0 26px 60px -26px rgba(19,21,34,0.6); }
 .lp-card:hover::before { transform: scale(1.09) rotate(1.5deg); }
+<<<<<<< HEAD
 .lp-card:hover::after  { opacity: 1; }
 
 .lp-card-n {
@@ -1283,6 +1497,35 @@ body.eth .breadcrumb a:hover { color: var(--eth-green); }
   font-family: "Bricolage Grotesque", system-ui, sans-serif;
   font-size: clamp(1.9rem, 5vw, 3.4rem);
   font-weight: 800; letter-spacing: -0.03em; line-height: 1.06;
+=======
+.lp-card:hover::after { opacity: 1; }
+
+.lp-card-n { font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:0.2em; color:rgba(255,255,255,0.62); }
+.lp-card-t {
+  margin-top: 0.8rem;
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: 1.65rem; font-weight: 800; letter-spacing: -0.022em; line-height: 1.06;
+}
+.lp-card-d { margin-top: 0.75rem; font-size: 1rem; line-height: 1.5; color: rgba(255,255,255,0.78); }
+.lp-card-go {
+  margin-top: auto; padding-top: 1.4rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: #FFFFFF;
+}
+.lp-card-go span { display:inline-block; transition: transform 300ms cubic-bezier(.2,.7,.3,1); }
+.lp-card:hover .lp-card-go span { transform: translateX(7px); }
+
+.lp-dark { background:#08080E; color:#FFFFFF; position:relative; overflow:hidden; }
+.lp-dark-glow {
+  position:absolute; inset:auto -20% -60% -20%; height:70%;
+  background: radial-gradient(50% 100% at 50% 100%, rgba(42,52,232,0.26), transparent 72%);
+  pointer-events:none;
+}
+.lp-quiet {
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: clamp(1.9rem,5vw,3.4rem); font-weight: 800;
+  letter-spacing: -0.03em; line-height: 1.06;
+>>>>>>> 7b5597c (update on UI of the page)
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1291,3 +1534,13 @@ body.eth .breadcrumb a:hover { color: var(--eth-green); }
   .lp-btn, .lp-card, .lp-card::before, .lp-card::after, .lp-card-go span { transition: none !important; }
   .lp-btn:hover, .lp-card:hover { transform: none !important; }
 }
+<<<<<<< HEAD
+=======
+
+/* semantic stat variants — red for the number that is a problem,
+   green for the one that is the fix, blue for plain facts */
+.lp-stat-n.is-bad { background: linear-gradient(180deg,#7A1433 40%,#C0224E 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent; }
+.lp-stat-n.is-ok  { background: linear-gradient(180deg,#0F3D28 40%,#1B6E48 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent; }
+>>>>>>> 7b5597c (update on UI of the page)
