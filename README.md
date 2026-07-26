@@ -28,6 +28,8 @@ Plus:
   modules on skills, memory, economics, compression, and the agent lifecycle
 - [`resources.html`](resources.html) — curated documentation and repositories, each labelled by
   how much it can be trusted
+- [`ethics.html`](ethics.html) — **Ethical use of AI**, a separately styled section that routes to
+  [regular use](ethics-everyday.html) and [academic use](ethics-academic.html)
 - [`skill collection/`](skill%20collection/) — hand-written agent skills used as worked examples
 
 See [SUMMARY.md](SUMMARY.md) for a full section-by-section index.

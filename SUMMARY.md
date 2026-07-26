@@ -5,6 +5,11 @@ part of the page it names.
 
 Live site: https://dipeshadhi.github.io/Learning_AI_LLM/
 
+## [Ethical use of AI](ethics.html)
+
+- [Regular use](ethics-everyday.html)
+- [Academic use](ethics-academic.html)
+
 ## [Home](index.html)
 
 - [How to use this site](index.html#start)
@@ -64,3 +69,22 @@ Live site: https://dipeshadhi.github.io/Learning_AI_LLM/
 - [Code you can read](resources.html#repos)
 - [The concepts worth learning](resources.html#concepts)
 - [The Markdown files people keep](resources.html#markdown-files)
+
+## [Ethical use · Regular use](ethics-everyday.html)
+
+- [You are accountable for whatever you send](ethics-everyday.html#p1)
+- [Do not paste other people's information into it](ethics-everyday.html#p2)
+- [Say so when it would change how someone reads it](ethics-everyday.html#p3)
+- [Never use it to imitate a real person](ethics-everyday.html#p4)
+- [Know what it is not qualified to be](ethics-everyday.html#p5)
+- [Assume it inherited the internet's biases](ethics-everyday.html#p6)
+
+## [Ethical use · Academic use](ethics-academic.html)
+
+- [Your institution's policy is the real rule](ethics-academic.html#p1)
+- [Where the line actually sits](ethics-academic.html#p2)
+- [Verify every single citation](ethics-academic.html#p3)
+- [Declare it clearly when required](ethics-academic.html#p4)
+- [Other people's data is not yours to paste](ethics-academic.html#p5)
+- [AI cannot be an author, and cannot take the blame](ethics-academic.html#p6)
+- [Keep the evidence that the work is yours](ethics-academic.html#p7)
