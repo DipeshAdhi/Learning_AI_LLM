@@ -621,6 +621,10 @@ body { text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; 
 @media (min-width: 640px) { .phase-rail .rail-name { display: block; margin-top: 0.2rem; } }
 
 .article-grid { display: grid; gap: 2.5rem; }
+/* Grid items default to a min-content minimum, so the long <pre> blocks in
+   .prose set the column floor and push the whole grid past the container.
+   min-width:0 lets them shrink and scroll internally instead. */
+.article-grid > * { min-width: 0; }
 @media (min-width: 1024px) {
   .article-grid { grid-template-columns: 15rem minmax(0, 1fr); gap: 4rem; }
 }
@@ -884,8 +888,13 @@ body.eth {
 body.eth .site-header { background: rgba(241,245,242,0.93); border-bottom-color: var(--eth-rule); }
 body.eth .breadcrumb a:hover { color: var(--eth-green); }
 
-.eth-band { background: var(--eth-green); color: #EAF3EE; }
-.eth-band .eth-kicker { color: #9FD9BC; }
+.eth-band {
+  background: linear-gradient(135deg, #14563a 0%, #1b6e48 45%, #2a855f 100%);
+  color: #EAF3EE;
+  border-bottom: 1px solid rgba(255,255,255,0.16);
+  box-shadow: inset 0 -1px 0 rgba(255,255,255,0.12);
+}
+.eth-band .eth-kicker { color: #bfe4cf; }
 .eth-wrap { max-width: 46rem; margin: 0 auto; }
 
 .eth-h1 {
@@ -1503,15 +1512,26 @@ body.dark .shadow-xl { box-shadow: none !important; }
    the body does the merge; no extra wrappers needed.
    ═══════════════════════════════════════════════════════════════════ */
 
-body.top-dark {
-  background-image: linear-gradient(
+/* The dark field is anchored to .top-zone, not to the body — a fixed
+   pixel fade cannot know how tall the title block is at a given width,
+   and the tail ended up washing over the content below it. */
+.top-zone { position: relative; }
+.top-zone::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -10rem;
+  bottom: -1.5rem;
+  left: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+  background: linear-gradient(
     180deg,
-    #0A0C07 0px,
-    #10140C 380px,
-    #171C10 540px,
-    rgba(23,28,16,0) 780px
+    #0A0C07 0%,
+    #0E1209 42%,
+    #141A0F 72%,
+    rgba(20,26,15,0) 100%
   );
-  background-repeat: no-repeat;
 }
 
 body.top-dark .site-header {

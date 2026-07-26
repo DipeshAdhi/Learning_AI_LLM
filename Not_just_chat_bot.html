@@ -93,7 +93,7 @@
     -->
 
     <header class="site-header">
-        <div class="mx-auto flex max-w-6xl items-center gap-4 px-5 py-3.5">
+        <div class="mx-auto flex max-w-6xl items-center gap-4 px-4 py-3.5">
             <a href="index.html" class="font-display text-[17px] font-extrabold tracking-tight">
                 Context<span class="text-sig">book</span>
             </a>
@@ -127,6 +127,7 @@
 
     <main id="main" class="pt-24 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         
+        <div class="top-zone">
         <nav class="breadcrumb" aria-label="Breadcrumb">
             <a href="index.html">Home</a>
             <span aria-hidden="true">/</span>
@@ -135,18 +136,24 @@
 
         <!-- Hero Section -->
         <header class="mb-10 mt-8 text-center">
-            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight">
-                Beyond the Chatbox
-            </h1>
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                A technical curriculum for building persistent, stateful, and autonomous AI systems. Transition from stateless queries to high-efficiency agentic workflows.
-            </p>
-            <p class="mt-5 text-[15px] text-gray-500 max-w-2xl mx-auto leading-relaxed">
-                Five modules, each a working technique rather than a definition. If you are new to
-                any of this, <a href="phase-1.html" class="text-indigo-600 underline underline-offset-4">start with Phase&nbsp;1</a>
-                and come back — this page assumes you already know what a token is.
-            </p>
+            <div class="mx-auto max-w-4xl rounded-3xl border border-indigo-100 bg-white/80 px-6 py-8 shadow-sm backdrop-blur sm:px-8 sm:py-10 md:px-10">
+                <p class="mb-3 text-[11px] font-semibold uppercase tracking-[0.24em] text-indigo-600">
+                    Advanced curriculum · practical systems
+                </p>
+                <h1 class="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
+                    Beyond the Chatbox
+                </h1>
+                <p class="mx-auto mt-5 max-w-3xl text-lg leading-relaxed text-gray-600 sm:text-xl">
+                    A technical curriculum for building persistent, stateful, and autonomous AI systems. Transition from stateless queries to high-efficiency agentic workflows.
+                </p>
+                <p class="mx-auto mt-5 max-w-2xl text-[15px] leading-relaxed text-gray-500">
+                    Five modules, each a working technique rather than a definition. If you are new to
+                    any of this, <a href="phase-1.html" class="font-semibold text-indigo-600 underline decoration-indigo-300 underline-offset-4 transition hover:text-indigo-700">start with Phase&nbsp;1</a>
+                    and come back — this page assumes you already know what a token is.
+                </p>
+            </div>
         </header>
+        </div>
 
         <!-- Module navigation: sticky, and it tracks where you are -->
         <nav class="modulebar" aria-label="Modules">
