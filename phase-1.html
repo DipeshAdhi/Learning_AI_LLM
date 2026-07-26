@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phase 1: The basics — Contextbook</title>
+<meta name="description" content="What AI actually does in software development, what vibe coding means, and which kind of tool you should be using.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = { theme: { extend: {
+  colors: { ink:'#131522', ink2:'#2A2E44', paper:'#ECEDF1', card:'#FFFFFF', rule:'#D3D6E0',
+            muted:'#5C6178', sig:'#2A34E8', sigpale:'#C5CAFB', mem:'#6E3BD1', convo:'#8A90A8',
+            waste:'#D31F5C', wastepale:'#F3A9C2' },
+  fontFamily: { display:['"Bricolage Grotesque"','system-ui','sans-serif'],
+                body:['"Source Serif 4"','Georgia','serif'],
+                mono:['"JetBrains Mono"','ui-monospace','monospace'] },
+  maxWidth: { readable: '68ch' } } } }
+</script>
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+
+<body class="bg-paper text-ink font-body antialiased">
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="site-header">
+  <div class="mx-auto flex max-w-6xl items-center gap-4 px-5 py-3.5">
+    <a href="index.html" class="font-display text-[17px] font-extrabold tracking-tight">
+      Context<span class="text-sig">book</span>
+    </a>
+    <nav class="nav-desktop ml-auto" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="index.html#curriculum" aria-current="page">Curriculum</a>
+      <a href="resources.html">Resources</a>
+      <a href="https://github.com/DipeshAdhi/Learning_AI_LLM" class="nav-cta" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </nav>
+    <button type="button" class="nav-toggle ml-auto" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav">
+      <span class="sr-only">Menu</span><span aria-hidden="true">Menu</span>
+    </button>
+  </div>
+  <nav id="mobile-nav" class="nav-mobile" hidden aria-label="Main, mobile">
+    <a href="index.html">Home</a>
+    <a href="index.html#curriculum" aria-current="page">Curriculum</a>
+    <a href="resources.html">Resources</a>
+    <a href="https://github.com/DipeshAdhi/Learning_AI_LLM" target="_blank" rel="noopener noreferrer">GitHub</a>
+  </nav>
+</header>
+
+<main id="main" class="mx-auto max-w-6xl px-5 pb-24 pt-8">
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="index.html">Home</a>
+    <span aria-hidden="true">/</span>
+    <a href="index.html#curriculum">Curriculum</a>
+    <span aria-hidden="true">/</span>
+    <span aria-current="page">Phase 1</span>
+  </nav>
+
+  <ol class="phase-rail" aria-label="Course progress">
+    <li><span class="is-here"><span class="rail-n">01</span><span class="rail-name">The basics</span></span></li>
+    <li><a href="phase-2.html"><span class="rail-n">02</span><span class="rail-name">Intermediate</span></a></li>
+    <li><a href="phase-3.html"><span class="rail-n">03</span><span class="rail-name">Advanced</span></a></li>
+    <li><a href="phase-4.html"><span class="rail-n">04</span><span class="rail-name">Expert</span></a></li>
+  </ol>
+
+  <div class="mt-10">
+    <p class="font-mono text-[11px] uppercase tracking-[0.16em] text-sig">Phase 1 · Beginner</p>
+    <h1 class="mt-4 max-w-[18ch] font-display text-[2.2rem] font-extrabold leading-[1.03] tracking-[-0.02em] sm:text-5xl">
+      The basics
+    </h1>
+    <p class="mt-5 max-w-readable text-lg leading-relaxed text-ink2 sm:text-xl">
+      Before any technique makes sense, you need an accurate picture of what this tool is and
+      what it is not. No tokens, no jargon, no code — just the shape of the thing.
+    </p>
+  </div>
+
+  <div class="article-grid mt-14">
+
+    <aside class="toc" aria-label="On this page">
+      <p class="toc-head">On this page</p>
+      <ol data-toc>
+        <li><a href="#what-is-ai">What AI does in software</a></li>
+        <li><a href="#vibe-coding">What "vibe coding" means</a></li>
+        <li><a href="#builders-vs-editors">Builders vs code editors</a></li>
+        <li><a href="#who-this-is-for">Who this is for</a></li>
+        <li><a href="#first-workflow">Your first workflow</a></li>
+        <li><a href="#golden-rule">The golden rule: what beats how</a></li>
+      </ol>
+    </aside>
+
+    <article class="prose">
+
+      <section id="what-is-ai">
+        <h2>What AI actually does in software development</h2>
+        <p>
+          A large language model is a program that predicts what text comes next. That is the whole
+          mechanism. It was trained on an enormous amount of writing — including most of the public
+          code ever published — and from that it learned which words, and which lines of code, tend
+          to follow which others.
+        </p>
+        <p>
+          This sounds too simple to be useful, and it is the single most important thing to
+          understand. The model is not looking anything up. It has no database of correct answers,
+          no compiler, no way to check whether the function it just wrote exists. It is producing
+          the most plausible continuation of your text, and plausible is not the same as correct.
+        </p>
+        <p>
+          That explains almost every strange behaviour you will meet. It invents a library function
+          that does not exist because a function with that name <em>would be</em> plausible. It
+          agrees with you when you push back because agreement is the plausible continuation of a
+          disagreement. It writes confident nonsense because it has no separate signal for
+          confidence — the tone was in the training data too.
+        </p>
+        <div class="keypoint">
+          <span class="keypoint-label">The one thing to remember</span>
+          <p>
+            The model is a very good writer with no ability to verify anything it writes. Your job
+            is to supply the verification — and the context that makes the plausible answer also the
+            correct one.
+          </p>
+        </div>
+        <p>
+          Which is genuinely useful, because an enormous amount of programming is writing text that
+          follows well-known patterns. Boilerplate, tests, data transforms, glue code, config,
+          documentation, refactors that touch forty files identically. A model that produces the
+          plausible continuation is very fast at exactly that work, and it does not get bored on
+          the thirty-ninth file.
+        </p>
+      </section>
+
+      <section id="vibe-coding">
+        <h2>What "vibe coding" means</h2>
+        <p>
+          The term was coined by Andrej Karpathy in early 2025, and it describes a shift in where
+          the programmer's attention goes. Instead of typing each line, you describe the intent,
+          the constraints, and the user flow, and let the model produce the implementation. You
+          steer; it types.
+        </p>
+        <p>
+          Karpathy's original framing was deliberately loose — he was describing a fast, informal
+          mode where you barely read the diffs and just keep nudging until the thing works. That is
+          genuinely fine for a weekend prototype, and genuinely dangerous for anything you or
+          anyone else has to maintain.
+        </p>
+        <p>
+          The useful version of vibe coding is not "stop reading the code". It is a change in the
+          unit of work. You stop thinking in lines and start thinking in <strong>intent</strong>,
+          <strong>constraints</strong>, and <strong>verification</strong>:
+        </p>
+        <ul>
+          <li><strong>Intent</strong> — what should be true when this is done, described in terms of behaviour rather than implementation.</li>
+          <li><strong>Constraints</strong> — the stack, the patterns, the things that must not change, the parts of the codebase that are off limits.</li>
+          <li><strong>Verification</strong> — how you will know it worked. A test, a command to run, a page to open.</li>
+        </ul>
+        <p>
+          Supply all three and the results are startlingly good. Supply only the first and you get
+          the horror stories: confident code that runs, looks reasonable, and quietly does the
+          wrong thing.
+        </p>
+      </section>
+
+      <section id="builders-vs-editors">
+        <h2>AI App Builders vs AI Code Editors</h2>
+        <p>
+          These are two different categories of tool aimed at two different people, and picking the
+          wrong one is the most common early mistake.
+        </p>
+
+        <h3>App builders</h3>
+        <p>
+          Tools like Lovable and Bolt.new generate a whole working application from a description.
+          They own the stack, the hosting, and the project structure. You describe a product; you
+          get something deployed you can click.
+        </p>
+        <p>
+          These are built for people who need a working thing to exist — founders validating an
+          idea, someone who needs an internal tool by Friday, anyone whose goal is the product
+          rather than the code. The trade is control: you are inside their conventions, and moving
+          the result somewhere else later is real work.
+        </p>
+
+        <h3>Code editors</h3>
+        <p>
+          Tools like Cursor, Windsurf, and Claude Code work inside a codebase that already exists.
+          They read your files, follow your patterns, and make changes you review like any other
+          diff. Nothing is hidden and nothing is owned by the tool.
+        </p>
+        <p>
+          These are built for engineers with an existing project, a team, a review process, and
+          opinions about architecture. They are worse at "make me an app from nothing" and far
+          better at "change this behaviour across a codebase without breaking the other forty
+          things that depend on it".
+        </p>
+
+        <div class="keypoint">
+          <span class="keypoint-label">Choosing</span>
+          <p>
+            If the code is the deliverable, use an editor. If the running product is the
+            deliverable and the code is a means to it, a builder will get you there faster. Most
+            people who get frustrated picked the tool that matched their ambition instead of the
+            one that matched their deliverable.
+          </p>
+        </div>
+      </section>
+
+      <section id="who-this-is-for">
+        <h2>Who this is for</h2>
+        <p>
+          Everything after this phase assumes you are working on something that lasts longer than
+          one conversation. That is the dividing line this book cares about — not how much code you
+          write, but whether the work continues tomorrow.
+        </p>
+        <p>
+          If you only ever ask one-off questions, you do not need memory files or caching or skill
+          definitions. Ask better questions and you are done. But the moment a project spans
+          sessions, everything changes: the model starts each conversation knowing nothing, and
+          every hour you spend re-explaining your project is an hour the tool cost you rather than
+          saved.
+        </p>
+        <p>
+          That is the problem Phase 2 solves, and it is the reason this book exists.
+        </p>
+      </section>
+
+      <section id="first-workflow">
+        <h2>Your first workflow</h2>
+        <p>
+          Before any of the advanced machinery, this loop alone will put you ahead of most people
+          using these tools. Try it on something real and small.
+        </p>
+        <ol class="numbered">
+          <li><strong>State the outcome, not the steps.</strong> "Users should stay logged in after refreshing" beats "add a useEffect that reads localStorage". This one is worth its own section — see <a href="#golden-rule">the golden rule</a> below.</li>
+          <li><strong>Name your constraints up front.</strong> The framework, the version, the file it belongs in, and anything it must not touch. Constraints you leave unsaid will be invented.</li>
+          <li><strong>Ask for the plan before the code.</strong> One paragraph describing the approach. Reading a wrong plan takes ten seconds; reading a wrong implementation takes ten minutes.</li>
+          <li><strong>Let it write, then read every line.</strong> Not to be thorough — to catch the confident invention. You are the compiler it does not have.</li>
+          <li><strong>Verify by running something.</strong> A test, the app, a command. "It looks right" is not verification.</li>
+        </ol>
+        <p>
+          Notice that steps 1 to 3 are all about supplying context before anything is generated,
+          and that steps 4 and 5 are about verifying afterwards. Every technique in the rest of
+          this book is a more powerful version of one of those two moves.
+        </p>
+      </section>
+
+      <section id="golden-rule">
+        <h2>The golden rule: what beats how</h2>
+        <p>
+          Of the five steps above, the first one carries most of the weight, and it is the one
+          people get wrong most reliably. Compare these two requests:
+        </p>
+        <div class="keypoint">
+          <span class="keypoint-label">Declarative — describe the outcome</span>
+          <p>"Users should stay logged in after refreshing."</p>
+        </div>
+        <div class="keypoint" style="border-left-color: var(--waste)">
+          <span class="keypoint-label" style="color: var(--waste)">Imperative — dictate the implementation</span>
+          <p>"Add a useEffect that reads localStorage."</p>
+        </div>
+        <p>
+          Both will produce code. Only one of them lets the model help you. Here is why the
+          difference is so much larger than it looks.
+        </p>
+
+        <h3>You let it pick the right tool for your stack</h3>
+        <p>
+          The second request forces one specific path. If you are working in a modern
+          server-rendered framework, that path is actively wrong — reading
+          <code>localStorage</code> in an effect introduces hydration problems, and putting a
+          session token there exposes it to any script running on the page, which is exactly the
+          thing HTTP-only cookies exist to prevent.
+        </p>
+        <p>
+          The model very likely knows this. It will not tell you, because you did not ask for a
+          solution — you asked for a <code>useEffect</code>, and it is obliging. State the outcome
+          instead and it is free to suggest the HTTP-only cookie, the server-side session check, or
+          the persistence layer your framework already ships.
+        </p>
+
+        <h3>You get the whole feature, not the fragment</h3>
+        <p>
+          "Users should stay logged in" is a user story, and the model has read an enormous number
+          of complete implementations of that story. Ask for the outcome and you tend to get the
+          parts you would have forgotten:
+        </p>
+        <ul>
+          <li>A loading state covering the moment while auth status is still unknown.</li>
+          <li>The expired-token case, which is the one that reaches production unhandled.</li>
+          <li>A redirect back to login when the check fails.</li>
+        </ul>
+        <p>
+          Ask for the hook and you get the hook. Every one of those surrounding concerns stays on
+          your desk, and you will discover the missing ones the same way everyone does.
+        </p>
+
+        <h3>You spend your attention where it is scarce</h3>
+        <p>
+          This is the real point of working this way. Your limited thinking should go to user
+          flows, business rules, and whether the feature is the right feature at all. Whether the
+          answer needs <code>useEffect</code>, <code>useLayoutEffect</code>, or a custom hook is a
+          question the model can answer faster than you can, and getting it wrong is cheap to fix.
+          Getting the product decision wrong is not.
+        </p>
+
+        <h3>The management analogy</h3>
+        <p>
+          Treat it as a fast, well-read junior developer with no context on your project. The
+          difference between the two requests is the difference between two managers:
+        </p>
+        <ul>
+          <li><strong>Micromanaging:</strong> "Go to line 45, write a for-loop, push the result to the DOM." You get exactly that, including the bug you did not notice in your own instruction.</li>
+          <li><strong>Delegating:</strong> "Users need to see their past orders, and it should load fast." You get judgement applied to a goal.</li>
+        </ul>
+        <p>
+          The catch — and it is why this is a rule rather than a trick — is that delegating only
+          works when the brief is complete. A junior developer given a goal and no constraints will
+          invent the constraints, and so will the model. That is the whole argument for the rest of
+          this book: describe the <em>what</em>, then make sure the <em>context</em> around it is
+          good enough that only one sensible <em>how</em> remains.
+        </p>
+      </section>
+
+    </article>
+  </div>
+
+  <nav class="pager mx-auto max-w-6xl" aria-label="Phase navigation">
+    <a href="index.html#curriculum">
+      <span class="dir">← Back</span>
+      <span class="to">All phases</span>
+    </a>
+    <a href="phase-2.html" class="next">
+      <span class="dir">Next →</span>
+      <span class="to">Phase 2 · Taming the chaos</span>
+    </a>
+  </nav>
+
+</main>
+
+<footer class="border-t border-rule bg-card">
+  <div class="mx-auto max-w-6xl px-5 py-12">
+    <div class="grid gap-8 sm:grid-cols-3">
+      <div>
+        <p class="font-display text-[15px] font-extrabold">Context<span class="text-sig">book</span></p>
+        <p class="mt-2 max-w-[32ch] text-[15px] leading-snug text-muted">A free, open textbook for practical AI engineering.</p>
+      </div>
+      <nav class="foot-nav" aria-label="Curriculum">
+        <p class="foot-head">Curriculum</p>
+        <a href="phase-1.html">1 · The basics</a>
+        <a href="phase-2.html">2 · Intermediate</a>
+        <a href="phase-3.html">3 · Advanced</a>
+        <a href="phase-4.html">4 · Expert</a>
+      </nav>
+      <nav class="foot-nav" aria-label="More">
+        <p class="foot-head">More</p>
+        <a href="resources.html">Resources</a>
+        <a href="index.html#start">How to use this site</a>
+        <a href="https://github.com/DipeshAdhi/Learning_AI_LLM" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </nav>
+    </div>
+    <p class="mt-10 border-t border-rule pt-6 font-mono text-[11px] uppercase tracking-[0.1em] text-muted">
+      Free forever · MIT licensed · Draft in progress
+    </p>
+  </div>
+</footer>
+
+<script src="assets/js/nav.js"></script>
+<script src="assets/js/toc.js"></script>
+</body>
+</html>
