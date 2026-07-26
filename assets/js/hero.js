@@ -1,17 +1,27 @@
 /* Landing page motion.
  *
- * Two things only, because one moving idea at a time is the whole trick:
- *   1. a token stream that flows toward the context window and mostly bounces off
- *   2. scroll reveals + counters
+ * The hero is the argument, not decoration: tokens stream toward the context
+ * window, and at the boundary they resolve into the site's semantic colours —
+ *   blue  = in flight, not yet judged
+ *   green = read and used
+ *   red   = sent, paid for, never read
  *
  * Everything checks prefers-reduced-motion first and degrades to a static,
- * complete page — no content is hidden behind an animation.
+ * complete page. No content is hidden behind an animation.
  */
 
 (function () {
   'use strict';
 
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var COLOR = {
+    inFlight: '#3C4470',   // base blue, muted
+    ok:       '#2E8F62',   // green: read
+    okBright: '#4FB183',
+    bad:      '#C0224E',   // red: never read
+    gate:     'rgba(169,179,242,0.75)'
+  };
 
   /* ── 1. the token stream ──────────────────────────────────────── */
 
@@ -21,7 +31,7 @@
     var ctx = canvas.getContext('2d');
     var tokens = [];
     var w = 0, h = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
-    var gate = { x: 0, y: 0, h: 0 };     // the "context window" the tokens aim for
+    var gate = { x: 0, y: 0, h: 0 };
     var running = true;
 
     function resize() {
@@ -35,24 +45,20 @@
       gate.y = h / 2 - gate.h / 2;
     }
 
-    function spawn() {
-      var accepted = Math.random() < 0.34;   // most of what you send is never read
+    function spawn(prefill) {
       return {
-        x: -20 - Math.random() * w * 0.5,
+        x: prefill ? Math.random() * w : -20 - Math.random() * w * 0.5,
         y: Math.random() * h,
         v: 0.7 + Math.random() * 1.7,
         s: 2 + Math.random() * 3.5,
-        accepted: accepted,
-        a: 0.25 + Math.random() * 0.5,
-        turned: false
+        read: Math.random() < 0.34,   // most of what you send is never read
+        a: 0.22 + Math.random() * 0.45,
+        turned: false,
+        vy: 0
       };
     }
 
-    for (var i = 0; i < 130; i++) {
-      var t = spawn();
-      t.x = Math.random() * w;             // pre-fill so it never starts empty
-      tokens.push(t);
-    }
+    for (var i = 0; i < 130; i++) tokens.push(spawn(true));
 
     function frame() {
       if (!running) return;
@@ -60,9 +66,9 @@
 
       // the window itself: a tall soft-edged slot
       var g = ctx.createLinearGradient(gate.x, gate.y, gate.x, gate.y + gate.h);
-      g.addColorStop(0, 'rgba(197,202,251,0)');
-      g.addColorStop(0.5, 'rgba(197,202,251,0.85)');
-      g.addColorStop(1, 'rgba(197,202,251,0)');
+      g.addColorStop(0, 'rgba(169,179,242,0)');
+      g.addColorStop(0.5, COLOR.gate);
+      g.addColorStop(1, 'rgba(169,179,242,0)');
       ctx.fillStyle = g;
       ctx.fillRect(gate.x, gate.y, 1.5, gate.h);
 
@@ -70,26 +76,24 @@
         var t = tokens[i];
         t.x += t.v;
 
-        // at the boundary, the ones that were never going to be read peel away
+        // at the boundary each token resolves: read, or peeled away unread
         if (!t.turned && t.x >= gate.x) {
           t.turned = true;
-          if (!t.accepted) {
-            t.vy = (t.y < h / 2 ? -1 : 1) * (0.5 + Math.random() * 1.2);
-          }
+          if (!t.read) t.vy = (t.y < h / 2 ? -1 : 1) * (0.5 + Math.random() * 1.2);
         }
-        if (t.turned && !t.accepted) {
+        if (t.turned && !t.read) {
           t.y += t.vy;
           t.a *= 0.982;
         }
 
         var inGate = t.y > gate.y && t.y < gate.y + gate.h;
         ctx.globalAlpha = t.a;
-        ctx.fillStyle = t.accepted
-          ? (t.turned && inGate ? '#C5CAFB' : '#6F79F5')
-          : (t.turned ? '#D31F5C' : '#4B5270');
+        ctx.fillStyle = !t.turned ? COLOR.inFlight
+                      : t.read    ? (inGate ? COLOR.okBright : COLOR.ok)
+                                  : COLOR.bad;
         ctx.fillRect(t.x, t.y, t.s * 2.4, t.s);
 
-        if (t.x > w + 40 || t.a < 0.03) tokens[i] = spawn();
+        if (t.x > w + 40 || t.a < 0.03) tokens[i] = spawn(false);
       }
       ctx.globalAlpha = 1;
       requestAnimationFrame(frame);
@@ -110,7 +114,7 @@
       }, { threshold: 0 }).observe(canvas);
     }
     document.addEventListener('visibilitychange', function () {
-      if (document.hidden) { running = false; }
+      if (document.hidden) running = false;
       else if (!running) { running = true; requestAnimationFrame(frame); }
     });
   }
@@ -120,7 +124,7 @@
   var revealables = document.querySelectorAll('.reveal');
 
   if (!('IntersectionObserver' in window) || reduce) {
-    revealables.forEach(function (el) { el.classList.add('is-in'); });
+    Array.prototype.forEach.call(revealables, function (el) { el.classList.add('is-in'); });
   } else {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
@@ -130,19 +134,37 @@
         if (e.target.hasAttribute('data-count')) count(e.target);
       });
     }, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
-    revealables.forEach(function (el) { io.observe(el); });
+    Array.prototype.forEach.call(revealables, function (el) { io.observe(el); });
+
+    /* Failsafe. IntersectionObserver callbacks are throttled in background
+       tabs and can be missed entirely. Content must never depend on an
+       animation firing, so anything still hidden gets shown regardless. */
+    setTimeout(function () {
+      Array.prototype.forEach.call(revealables, function (el) {
+        if (!el.classList.contains('is-in')) {
+          el.classList.add('is-in');
+          if (el.hasAttribute('data-count')) count(el);
+        }
+      });
+    }, 2600);
   }
 
   /* ── 3. counters ──────────────────────────────────────────────── */
 
+  function finish(el) {
+    var dp = parseInt(el.dataset.dp || '0', 10);
+    el.textContent = parseFloat(el.dataset.to).toFixed(dp) + (el.dataset.suffix || '');
+    el.dataset.done = '1';
+  }
+
   function count(host) {
     var el = host.querySelector('[data-to]');
-    if (!el) return;
+    if (!el || el.dataset.done) return;
     var to = parseFloat(el.dataset.to);
     var suffix = el.dataset.suffix || '';
     var dp = parseInt(el.dataset.dp || '0', 10);
 
-    if (reduce) { el.textContent = to.toFixed(dp) + suffix; return; }
+    if (reduce) { finish(el); return; }
 
     var start = performance.now(), dur = 1250;
     (function step(now) {
@@ -150,12 +172,25 @@
       var eased = 1 - Math.pow(1 - p, 3);
       el.textContent = (to * eased).toFixed(dp) + suffix;
       if (p < 1) requestAnimationFrame(step);
+      else finish(el);
     })(start);
+
+    /* rAF is paused in a hidden tab. Without this, a count interrupted
+       part-way would sit on screen showing a wrong number forever — which
+       on a page of statistics is a correctness bug, not a visual one. */
+    setTimeout(function () { if (!el.dataset.done) finish(el); }, dur + 250);
   }
 
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) return;
+    Array.prototype.forEach.call(document.querySelectorAll('[data-count] [data-to]'), function (el) {
+      if (!el.dataset.done && el.closest('.reveal').classList.contains('is-in')) finish(el);
+    });
+  });
+
   if (reduce) {
-    document.querySelectorAll('[data-count] [data-to]').forEach(function (el) {
-      el.textContent = parseFloat(el.dataset.to).toFixed(parseInt(el.dataset.dp || '0', 10)) + (el.dataset.suffix || '');
+    Array.prototype.forEach.call(document.querySelectorAll('[data-count] [data-to]'), function (el) {
+      finish(el);
     });
   }
 })();

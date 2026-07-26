@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Academic use — Contextbook</title>
+<title>Academic use &mdash; Contextbook</title>
 <meta name="description" content="AI in coursework, dissertations and research: where assistance ends and misconduct begins, how to declare it, and the citation trap.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,7 +17,8 @@ tailwind.config = { theme: { extend: {
             muted:'#5C6178', sig:'#2A34E8', sigpale:'#C5CAFB' },
   fontFamily: { display:['"Bricolage Grotesque"','system-ui','sans-serif'],
                 body:['"Source Serif 4"','Georgia','serif'],
-                mono:['"JetBrains Mono"','ui-monospace','monospace'] } } } }
+                mono:['"JetBrains Mono"','ui-monospace','monospace'] },
+  maxWidth: { readable: '68ch' } } } }
 </script>
 <link rel="stylesheet" href="assets/css/site.css">
 </head>
@@ -35,6 +36,7 @@ tailwind.config = { theme: { extend: {
       <a href="index.html">Home</a>
       <a href="index.html#curriculum">Curriculum</a>
       <a href="resources.html">Resources</a>
+      <a href="https://github.com/DipeshAdhi/Learning_AI_LLM" class="nav-cta" target="_blank" rel="noopener noreferrer">GitHub</a>
       <a href="ethics.html" class="nav-eth">Ethical use</a>
     </nav>
     <button type="button" class="nav-toggle ml-auto" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav">
@@ -45,18 +47,18 @@ tailwind.config = { theme: { extend: {
     <a href="index.html">Home</a>
     <a href="index.html#curriculum">Curriculum</a>
     <a href="resources.html">Resources</a>
+    <a href="https://github.com/DipeshAdhi/Learning_AI_LLM" target="_blank" rel="noopener noreferrer">GitHub</a>
     <a href="ethics.html" class="nav-eth">Ethical use</a>
   </nav>
 </header>
 
 <main id="main">
 
-  <!-- green band: this section announces itself as different -->
   <section class="eth-band px-5 py-16 md:py-20">
     <div class="eth-wrap">
       <p class="eth-kicker"><a href="ethics.html" style="color:#9FD9BC">Ethical use</a> / Academic use</p>
       <h1 class="eth-h1 mt-5">Academic work, where the stakes are your degree.</h1>
-      <p class="eth-lede">Institutions are converging on a clear position: AI is encouraged as a learning tool, provided you check it, cite it, and never pass it off as your own. What follows is that common ground — plus the one mistake that turns a good student into a misconduct case.</p>
+      <p class="eth-lede">Institutions are converging on a clear position: AI is encouraged as a learning tool, provided you check it, cite it, and never pass it off as your own. What follows is that common ground &mdash; plus the one mistake that turns a good student into a misconduct case.</p>
     </div>
   </section>
 
@@ -64,57 +66,57 @@ tailwind.config = { theme: { extend: {
     <div class="eth-wrap">
       <section id="p1" class="eth-principle">
         <span class="eth-n">01</span>
-        <h2>Your institution's policy is the real rule</h2>
-<p>Everything here is the common ground that colleges and universities are converging on. It does not override your own institution, department, or module — and those genuinely differ. Some permit AI for drafting with a declaration; some allow it for research but not writing; some prohibit it for particular assessments.</p>
-<div class="eth-rule-card"><span class="eth-rule-label">Do this first</span><p>Find the policy for your course and the specific assignment before you use AI on graded work. If it is unclear, ask your tutor in writing and keep the reply. An ambiguous policy plus a written "yes, that is fine" is a far better position than a guess.</p></div>
+        <h2>Your institution&rsquo;s policy is the real rule</h2>
+<p>Everything here is the common ground that colleges and universities are converging on. It does not override your own institution, department, or module &mdash; and those genuinely differ. Some permit AI for drafting with a declaration; some allow it for research but not writing; some prohibit it for particular assessments.</p>
+<div class="eth-rule-card"><span class="eth-rule-label">Do this first</span><p>Find the policy for your course and the specific assignment before you use AI on graded work. If it is unclear, ask your tutor in writing and keep the reply. An ambiguous policy plus a written &ldquo;yes, that is fine&rdquo; is a far better position than a guess.</p></div>
       </section>
       <section id="p2" class="eth-principle">
         <span class="eth-n">02</span>
         <h2>The spectrum: neither extreme is the right answer</h2>
 <p>Most guidance treats this as a single line you either cross or do not. It is more useful as a spectrum with two failure modes at the ends.</p>
-<ul><li class="dont"><strong>Zero integration.</strong> Refusing to touch AI at all is an increasingly outdated position. It slows your work and leaves you unprepared for workplaces where these tools are simply part of how things get done.</li><li class="dont"><strong>Over-reliance.</strong> Letting AI do the thinking. This produces skill atrophy, the loss of your own voice, and — at the far end — serious integrity violations.</li><li class="do"><strong>Strategic integration.</strong> The middle, and the target. AI augments your critical thinking while you keep complete control of the final output.</li></ul>
-<p>The question to ask about any use is therefore not "am I allowed to?" but "who is doing the thinking here?" If the answer is the model, you have drifted to the wrong end regardless of what the rules permit.</p>
+<ul><li class="dont"><strong>Zero integration.</strong> Refusing to touch AI at all is an increasingly outdated position. It slows your work and leaves you unprepared for workplaces where these tools are simply part of how things get done.</li><li class="dont"><strong>Over-reliance.</strong> Letting AI do the thinking. This produces skill atrophy, the loss of your own voice, and &mdash; at the far end &mdash; serious integrity violations.</li><li class="do"><strong>Strategic integration.</strong> The middle, and the target. AI augments your critical thinking while you keep complete control of the final output.</li></ul>
+<p>The question to ask about any use is therefore not &ldquo;am I allowed to?&rdquo; but &ldquo;who is doing the thinking here?&rdquo; If the answer is the model, you have drifted to the wrong end regardless of what the rules permit.</p>
       </section>
       <section id="p3" class="eth-principle">
         <span class="eth-n">03</span>
         <h2>The sweet spot: a partner, not an author</h2>
 <p>The most reliable framing is to treat AI as a very capable brainstorming partner who is sometimes confidently wrong. In practice that means it is well suited to:</p>
-<ul><li class="do">Breaking writer's block by generating several different angles on a topic.</li><li class="do">Structuring an outline, or summarising dense reading so you can decide what deserves a full read.</li><li class="do">Explaining a difficult concept in different words until it lands.</li><li class="do">Practising language skills, particularly if you are studying in a second language.</li><li class="do">Suggesting approaches for data analysis that you then carry out and verify.</li><li class="do">Giving feedback on writing that is already yours.</li></ul>
+<ul><li class="do">Breaking writer&rsquo;s block by generating several different angles on a topic.</li><li class="do">Structuring an outline, or summarising dense reading so you can decide what deserves a full read.</li><li class="do">Explaining a difficult concept in different words until it lands.</li><li class="do">Practising language skills, particularly if you are studying in a second language.</li><li class="do">Suggesting approaches for data analysis that you then carry out and verify.</li><li class="do">Giving feedback on writing that is already yours.</li></ul>
 <div class="eth-rule-card"><span class="eth-rule-label">The crucial rule</span><p>You keep final editorial control, and you understand the submitted work deeply enough to defend every part of it. If you could not explain a paragraph to your tutor without looking it up, it should not be in your submission.</p></div>
       </section>
       <section id="p4" class="eth-principle">
         <span class="eth-n">04</span>
         <h2>The three conditions attached to all of it</h2>
 <p>Permission to use AI almost always comes with the same three strings attached, and they are not optional extras.</p>
-<ul><li class="do"><strong>Check every output critically</strong> — for accuracy and for bias. Fluent and confident is not the same as correct.</li><li class="do"><strong>Cite the AI contribution clearly</strong> wherever it shaped the work.</li><li class="dont"><strong>Never present AI output as your own independent effort.</strong> This is the one that matters most, and the one people breach by accident.</li></ul>
+<ul><li class="do"><strong>Check every output critically</strong> &mdash; for accuracy and for bias. Fluent and confident is not the same as correct.</li><li class="do"><strong>Cite the AI contribution clearly</strong> wherever it shaped the work.</li><li class="dont"><strong>Never present AI output as your own independent effort.</strong> This is the one that matters most, and the one people breach by accident.</li></ul>
 <p>Meet all three and you are almost certainly fine. Drop any one and the same use of the same tool becomes misconduct.</p>
       </section>
       <section id="p5" class="eth-principle">
         <span class="eth-n">05</span>
-        <h2>Disclose it — and how</h2>
+        <h2>Disclose it &mdash; and how</h2>
 <p>Most institutions now require a declaration on the cover sheet or submission form of every assignment. The process is short:</p>
-<ul><li class="do"><strong>Did you use AI at any stage?</strong> Research, drafting, language practice, feedback — all of it counts.</li><li class="do"><strong>Indicate and reference it</strong> — show clearly where it was used and how.</li><li class="do"><strong>Declare it on submission</strong>, in whatever form your institution asks for.</li></ul>
-<p>A declaration should be specific enough to be checkable. Something like: <em>"This work is my own original effort. Where I used a generative AI tool — for preliminary research, and for suggestions on the structure of section 3 — I have indicated and referenced that use. All sources were located and read by me, and the analysis and conclusions are mine."</em></p>
-<div class="eth-rule-card"><span class="eth-rule-label">The rule of thumb</span><p>When in doubt, disclose. Transparency protects you. Nobody has been penalised for declaring assistance they did not strictly need to declare — the penalties all run the other way.</p></div>
+<ul><li class="do"><strong>Did you use AI at any stage?</strong> Research, drafting, language practice, feedback &mdash; all of it counts.</li><li class="do"><strong>Indicate and reference it</strong> &mdash; show clearly where it was used and how.</li><li class="do"><strong>Declare it on submission</strong>, in whatever form your institution asks for.</li></ul>
+<p>A declaration should be specific enough to be checkable. Something like: <em>&ldquo;This work is my own original effort. Where I used a generative AI tool &mdash; for preliminary research, and for suggestions on the structure of section 3 &mdash; I have indicated and referenced that use. All sources were located and read by me, and the analysis and conclusions are mine.&rdquo;</em></p>
+<div class="eth-rule-card"><span class="eth-rule-label">The rule of thumb</span><p>When in doubt, disclose. Transparency protects you. Nobody has been penalised for declaring assistance they did not strictly need to declare &mdash; the penalties all run the other way.</p></div>
       </section>
       <section id="p6" class="eth-principle">
         <span class="eth-n">06</span>
-        <h2>Where the red lines are — and who carries the liability</h2>
+        <h2>Where the red lines are &mdash; and who carries the liability</h2>
 <p>Institutions are unusually consistent about the prohibited list, and it is handled under the same misconduct procedures as any other form of cheating:</p>
 <ul><li class="dont">Copying and pasting AI-generated text into your assignment and passing it off as your own original work.</li><li class="dont">Generating essays, code, or solutions with AI and submitting them without proper attribution.</li><li class="dont"><strong>Any attempt to conceal</strong> AI-generated content.</li><li class="dont">Failing to disclose AI assistance where a declaration is required.</li></ul>
 <p>The concealment clause catches a specific habit worth naming: running AI output through a paraphrasing tool, or rewording a source through a model, to defeat a similarity check. That is treated as concealment and judged more harshly than the original use would have been.</p>
-<div class="eth-rule-card"><span class="eth-rule-label">Zero tolerance, total liability</span><p>You carry one hundred percent of the responsibility for every factual error, fabricated citation, and bias in your final submission. <strong>"The AI gave me bad information" is not a valid defence</strong> — not at any institution, and not at any level of study.</p></div>
+<div class="eth-rule-card"><span class="eth-rule-label">Zero tolerance, total liability</span><p>You carry one hundred percent of the responsibility for every factual error, fabricated citation, and bias in your final submission. <strong>&ldquo;The AI gave me bad information&rdquo; is not a valid defence</strong> &mdash; not at any institution, and not at any level of study.</p></div>
       </section>
       <section id="p7" class="eth-principle">
         <span class="eth-n">07</span>
         <h2>Verify every single citation</h2>
-<p>This is the trap that catches careful students, and the fastest route from good work to a misconduct case. Language models generate citations that look completely correct — plausible authors, a real journal, a believable year, a well-formed DOI — for papers that do not exist. It is not lying; it is producing the shape of a reference, which is what it was trained to do.</p>
+<p>This is the trap that catches careful students, and the fastest route from good work to a misconduct case. Language models generate citations that look completely correct &mdash; plausible authors, a real journal, a believable year, a well-formed DOI &mdash; for papers that do not exist. It is not lying; it is producing the shape of a reference, which is what it was trained to do.</p>
 <p>Never cite anything you have not personally opened. Search the title, follow the link, confirm the authors and the year, and confirm the source actually says what you are citing it for.</p>
 <div class="eth-rule-card"><span class="eth-rule-label">Why this one is so serious</span><p>A fabricated reference is treated as fabrication rather than as an error, and a single one is usually enough to trigger an investigation across your entire submission.</p></div>
       </section>
       <section id="p8" class="eth-principle">
         <span class="eth-n">08</span>
-        <h2>Other people's data is not yours to paste</h2>
+        <h2>Other people&rsquo;s data is not yours to paste</h2>
 <p>Research data carries commitments. Participants consented to a specific use of their information, and your ethics approval describes where that data may go. Pasting interview transcripts or participant records into a commercial AI service is very often outside both, and it cannot be undone.</p>
 <p>The same applies to any manuscript you are asked to review, and to unpublished work shared with you by others. Those are confidential documents entrusted to you.</p>
       </section>
@@ -134,11 +136,11 @@ tailwind.config = { theme: { extend: {
         <span class="eth-n">11</span>
         <h2>Whose job is what</h2>
 <p>Responsibility is split, and knowing which half is yours prevents most problems.</p>
-<ul><li><strong>Your tutors</strong> enforce the policy and adapt it to their modules. They should state exactly what level of AI assistance is permitted for each assignment, lab, or exam — so if that is not written down, ask for it.</li><li><strong>You</strong> learn the baseline rules, read the guidance for each individual course rather than assuming last term's applies, and use the tools ethically.</li></ul>
-<p>The part students most often miss: if you are unsure whether a particular use is allowed, it is <strong>your</strong> responsibility to ask before you proceed, not afterwards. Asking is free and is itself evidence of good faith. Most institutions also offer help you are not using — a digital literacy module covering AI bias and data privacy, a reading list on AI ethics, or written guidance per assessment type.</p>
+<ul><li><strong>Your tutors</strong> enforce the policy and adapt it to their modules. They should state exactly what level of AI assistance is permitted for each assignment, lab, or exam &mdash; so if that is not written down, ask for it.</li><li><strong>You</strong> learn the baseline rules, read the guidance for each individual course rather than assuming last term&rsquo;s applies, and use the tools ethically.</li></ul>
+<p>The part students most often miss: if you are unsure whether a particular use is allowed, it is <strong>your</strong> responsibility to ask before you proceed, not afterwards. Asking is free and is itself evidence of good faith. Most institutions also offer help you are not using &mdash; a digital literacy module covering AI bias and data privacy, a reading list on AI ethics, or written guidance per assessment type.</p>
       </section>
       <p class="mt-16 flex flex-wrap gap-3">
-        <a href="ethics.html" class="eth-back">← Back to ethical use</a>
+        <a href="ethics.html" class="eth-back">&larr; Back to ethical use</a>
         <a href="index.html" class="eth-back">Home</a>
       </p>
     </div>
@@ -148,9 +150,7 @@ tailwind.config = { theme: { extend: {
 
 <footer class="border-t" style="border-color:#CFDDD4; background:#FFFFFF">
   <div class="mx-auto max-w-6xl px-5 py-10 flex flex-wrap items-center justify-between gap-4">
-    <p class="font-mono text-[11px] uppercase tracking-[0.1em]" style="color:#5C6178">
-      Contextbook · Ethical use
-    </p>
+    <p class="font-mono text-[11px] uppercase tracking-[0.1em]" style="color:#5C6178">Contextbook &middot; Ethical use</p>
     <nav class="flex flex-wrap gap-5 font-mono text-[11px] uppercase tracking-[0.1em]">
       <a href="ethics-everyday.html" style="color:#1B6E48">Regular use</a>
       <a href="ethics-academic.html" style="color:#1B6E48">Academic use</a>

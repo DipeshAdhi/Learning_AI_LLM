@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ethical use of AI — Contextbook</title>
+<title>Ethical use of AI &mdash; Contextbook</title>
 <meta name="description" content="Using AI honestly: what to disclose, what to verify, and what not to hand over. Separate guidance for everyday use and academic work.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,7 +17,8 @@ tailwind.config = { theme: { extend: {
             muted:'#5C6178', sig:'#2A34E8', sigpale:'#C5CAFB' },
   fontFamily: { display:['"Bricolage Grotesque"','system-ui','sans-serif'],
                 body:['"Source Serif 4"','Georgia','serif'],
-                mono:['"JetBrains Mono"','ui-monospace','monospace'] } } } }
+                mono:['"JetBrains Mono"','ui-monospace','monospace'] },
+  maxWidth: { readable: '68ch' } } } }
 </script>
 <link rel="stylesheet" href="assets/css/site.css">
 </head>
@@ -35,6 +36,7 @@ tailwind.config = { theme: { extend: {
       <a href="index.html">Home</a>
       <a href="index.html#curriculum">Curriculum</a>
       <a href="resources.html">Resources</a>
+      <a href="https://github.com/DipeshAdhi/Learning_AI_LLM" class="nav-cta" target="_blank" rel="noopener noreferrer">GitHub</a>
       <a href="ethics.html" class="nav-eth" aria-current="page">Ethical use</a>
     </nav>
     <button type="button" class="nav-toggle ml-auto" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav">
@@ -45,21 +47,21 @@ tailwind.config = { theme: { extend: {
     <a href="index.html">Home</a>
     <a href="index.html#curriculum">Curriculum</a>
     <a href="resources.html">Resources</a>
+    <a href="https://github.com/DipeshAdhi/Learning_AI_LLM" target="_blank" rel="noopener noreferrer">GitHub</a>
     <a href="ethics.html" class="nav-eth" aria-current="page">Ethical use</a>
   </nav>
 </header>
 
 <main id="main">
 
-  <!-- green band: this section announces itself as different -->
   <section class="eth-band px-5 py-20 md:py-28">
     <div class="eth-wrap">
       <p class="eth-kicker">Ethical use of AI</p>
       <h1 class="eth-h1 mt-5">Getting it right matters more than getting it fast.</h1>
       <p class="eth-lede">
         Nothing here is a legal document and none of it is about fear. It is the short list of
-        habits that keep AI use honest — the things that protect the people whose data you paste
-        in, the readers who trust what you publish, and your own name on the work.
+        habits that keep AI use honest &mdash; the things that protect the people whose data you
+        paste in, the readers who trust what you publish, and your own name on the work.
       </p>
     </div>
   </section>
@@ -79,36 +81,23 @@ tailwind.config = { theme: { extend: {
         <a href="ethics-everyday.html" class="eth-door">
           <span class="eth-door-icon">Everyday</span>
           <span class="eth-door-title">Regular use</span>
-          <span class="eth-door-note">
-            Work, personal projects, writing, code. What to check before you trust it, what never
-            to paste in, and when to tell people AI was involved.
-          </span>
-          <span class="eth-door-go">Read this →</span>
+          <span class="eth-door-note">Work, personal projects, writing, code. What to check before you trust it, what never to paste in, and when to tell people AI was involved.</span>
+          <span class="eth-door-go">Read this &rarr;</span>
         </a>
-
         <a href="ethics-academic.html" class="eth-door">
           <span class="eth-door-icon">University</span>
           <span class="eth-door-title">Academic use</span>
-          <span class="eth-door-note">
-            Coursework, dissertations, research. Where the line between assistance and misconduct
-            actually sits, how to declare it, and the citation trap that catches people out.
-          </span>
-          <span class="eth-door-go">Read this →</span>
+          <span class="eth-door-note">Coursework, dissertations, research. Where the line between assistance and misconduct actually sits, how to declare it, and the citation trap that catches people out.</span>
+          <span class="eth-door-go">Read this &rarr;</span>
         </a>
       </div>
 
       <div class="eth-rule-card mt-12">
         <span class="eth-rule-label">If you remember one thing</span>
-        <p>
-          You are accountable for anything you send, submit, or ship. "The AI wrote it" has never
-          once worked as a defence — not for a bug in production, not for a false claim in an
-          essay, and not for a citation that turned out not to exist.
-        </p>
+        <p>You are accountable for anything you send, submit, or ship. &ldquo;The AI wrote it&rdquo; has never once worked as a defence &mdash; not for a bug in production, not for a false claim in an essay, and not for a citation that turned out not to exist.</p>
       </div>
 
-      <p class="mt-14">
-        <a href="index.html" class="eth-back">← Back to the book</a>
-      </p>
+      <p class="mt-14"><a href="index.html" class="eth-back">&larr; Back to the book</a></p>
     </div>
   </section>
 
@@ -116,9 +105,7 @@ tailwind.config = { theme: { extend: {
 
 <footer class="border-t" style="border-color:#CFDDD4; background:#FFFFFF">
   <div class="mx-auto max-w-6xl px-5 py-10 flex flex-wrap items-center justify-between gap-4">
-    <p class="font-mono text-[11px] uppercase tracking-[0.1em]" style="color:#5C6178">
-      Contextbook · Ethical use
-    </p>
+    <p class="font-mono text-[11px] uppercase tracking-[0.1em]" style="color:#5C6178">Contextbook &middot; Ethical use</p>
     <nav class="flex flex-wrap gap-5 font-mono text-[11px] uppercase tracking-[0.1em]">
       <a href="ethics-everyday.html" style="color:#1B6E48">Regular use</a>
       <a href="ethics-academic.html" style="color:#1B6E48">Academic use</a>
