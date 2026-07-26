@@ -992,7 +992,8 @@ body.eth .breadcrumb a:hover { color: var(--eth-green); }
 .lp-hero {
   position: relative; min-height: 92vh;
   display: flex; align-items: center; overflow: hidden;
-  background: #000000; color: #FFFFFF;
+  background: linear-gradient(180deg, #05070C 0%, #0A0E16 100%);
+  color: #FFFFFF;
 }
 .lp-aurora {
   position: absolute; inset: 0; pointer-events: none;
@@ -1103,9 +1104,9 @@ html.js .reveal[data-d="3"] { transition-delay: 270ms; }
 .lp-card {
   position: relative; display: flex; flex-direction: column;
   min-height: 21rem; padding: 1.7rem;
-  border: 1px solid rgba(255,255,255,0.16);
+  border: 1px solid rgba(148,166,214,0.18);
   border-radius: 4px;
-  background: #050508;
+  background: linear-gradient(165deg, #0E1420 0%, #0A0E16 100%);
   overflow: hidden; color: #FFFFFF; isolation: isolate;
   transition: border-color 300ms ease, transform 300ms cubic-bezier(.2,.7,.3,1);
 }
@@ -1123,7 +1124,7 @@ html.js .reveal[data-d="3"] { transition-delay: 270ms; }
   background-size: 42px 42px;
   opacity: 0; transition: opacity 300ms ease;
 }
-.lp-card:hover { transform: translateY(-5px); border-color: rgba(255,255,255,0.42); }
+.lp-card:hover { transform: translateY(-5px); border-color: rgba(142,155,255,0.55); box-shadow: 0 14px 40px -18px rgba(88,101,242,0.45); }
 .lp-card:hover::before { opacity: 1; }
 .lp-card:hover::after { opacity: 1; }
 
@@ -1142,7 +1143,7 @@ html.js .reveal[data-d="3"] { transition-delay: 270ms; }
 .lp-card-go span { display:inline-block; transition: transform 300ms cubic-bezier(.2,.7,.3,1); }
 .lp-card:hover .lp-card-go span { transform: translateX(7px); }
 
-.lp-dark { background:#000000; color:#FFFFFF; position:relative; overflow:hidden; }
+.lp-dark { background: linear-gradient(180deg,#0A0E16 0%,#05070C 55%,#0A0E16 100%); color:#FFFFFF; position:relative; overflow:hidden; }
 .lp-dark-glow {
   position: absolute; inset: 0; pointer-events: none;
   background-image:
@@ -1160,6 +1161,7 @@ html.js .reveal[data-d="3"] { transition-delay: 270ms; }
 
 @media (prefers-reduced-motion: reduce) {
   .lp-aurora, .lp-shimmer, .lp-scrollcue, .lp-dot { animation: none !important; }
+  body.dark::after { animation: none !important; }
   .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
   .lp-btn, .lp-card, .lp-card::before, .lp-card::after, .lp-card-go span { transition: none !important; }
   .lp-btn:hover, .lp-card:hover { transform: none !important; }
@@ -1208,10 +1210,21 @@ html.js .reveal[data-d="3"] { transition-delay: 270ms; }
    of the same site. Pure CSS — no extra script, nothing to stall. */
 .page-band {
   position: relative; overflow: hidden;
-  background: #000000; color: #FFFFFF;
-  border: 1px solid rgba(255,255,255,0.14);
+  background:
+    radial-gradient(70% 90% at 88% 100%, rgba(63,162,119,0.10) 0%, transparent 60%),
+    linear-gradient(160deg, #0C111C 0%, #070A10 100%);
+  color: #FFFFFF;
+  border: 1px solid rgba(148,166,214,0.18);
   border-radius: 4px;
   padding: 3rem 1.75rem 3.25rem;
+}
+.page-band::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #5865F2 0%, #3FA277 100%);
+  opacity: 0.85;
 }
 @media (min-width: 768px) { .page-band { padding: 4rem 3rem 4.25rem; } }
 
@@ -1264,9 +1277,9 @@ html.js .reveal[data-d="3"] { transition-delay: 270ms; }
 body.dark {
   --ink:       #ECEEF5;
   --ink2:      #B7BCCE;
-  --paper:     #000000;
-  --card:      #08080A;
-  --rule:      rgba(255,255,255,0.13);
+  --paper:     #0A0E16;
+  --card:      #10151F;
+  --rule:      rgba(148,166,214,0.16);
   --muted:     #878DA3;
   --sig:       #8E9BFF;
   --sig-pale:  #2B3270;
@@ -1278,7 +1291,7 @@ body.dark {
   --bad:       #E2456F;
   --bad-pale:  rgba(226,69,111,0.14);
 
-  background: #000000;
+  background: #0A0E16;
   color: var(--ink);
 }
 
@@ -1290,11 +1303,31 @@ body.dark::before {
   z-index: 0;
   pointer-events: none;
   background-image:
-    linear-gradient(to right,  rgba(255,255,255,0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255,255,255,0.035) 1px, transparent 1px);
+    linear-gradient(to right,  rgba(148,166,214,0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148,166,214,0.05) 1px, transparent 1px);
   background-size: 96px 96px;
   mask-image: radial-gradient(90% 70% at 50% 0%, #000 0%, transparent 85%);
   -webkit-mask-image: radial-gradient(90% 70% at 50% 0%, #000 0%, transparent 85%);
+}
+
+/* ambient depth: two slow glows, blue and green, drifting behind everything.
+   Low alpha so it reads as atmosphere, not decoration. */
+body.dark::after {
+  content: "";
+  position: fixed;
+  inset: -20%;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(42% 34% at 16% 10%, rgba(88,110,255,0.13) 0%, transparent 64%),
+    radial-gradient(38% 30% at 86% 24%, rgba(63,162,119,0.09) 0%, transparent 66%),
+    radial-gradient(52% 42% at 55% 96%, rgba(88,101,242,0.10) 0%, transparent 70%);
+  animation: ambient-drift 32s ease-in-out infinite alternate;
+}
+@keyframes ambient-drift {
+  0%   { transform: translate3d(0,0,0) scale(1); }
+  50%  { transform: translate3d(1.5%,1%,0) scale(1.045); }
+  100% { transform: translate3d(-1.5%,-1%,0) scale(1.02); }
 }
 body.dark > * { position: relative; z-index: 1; }
 
@@ -1311,7 +1344,7 @@ body.dark .border-rule { border-color: var(--rule) !important; }
 /* ── chrome ─────────────────────────────────────────────────────── */
 
 body.dark .site-header {
-  background: rgba(0,0,0,0.88);
+  background: rgba(10,14,22,0.90);
   border-bottom-color: var(--rule);
 }
 body.dark .nav-toggle { background: var(--card); color: var(--ink); border-color: var(--rule); }
@@ -1349,6 +1382,8 @@ body.dark .lp-stat-n { background: linear-gradient(180deg,#FFFFFF 40%,#8E9BFF 10
 
 /* ── resources ──────────────────────────────────────────────────── */
 
+body.dark .res-card:hover,
+body.dark .pager a:hover { border-color: rgba(142,155,255,0.5); box-shadow: 0 10px 34px -16px rgba(88,101,242,0.4); }
 body.dark .tier-official  { background: rgba(63,162,119,0.16);  color: #6FCFA1; }
 body.dark .tier-community { background: rgba(214,158,46,0.16);  color: #E0B65C; }
 body.dark .concept { border-bottom-color: var(--rule); }
@@ -1360,7 +1395,7 @@ body.dark .toc a:hover { color: var(--ink); border-left-color: var(--ink); }
 body.dark .phase-rail a:not(.is-here),
 body.dark .phase-rail span:not(.is-here) { border-top-color: var(--rule); }
 body.dark .phase-rail a:hover { border-top-color: var(--ink); color: var(--ink); }
-body.dark .modulebar { background: rgba(0,0,0,0.88); border-color: var(--rule); }
+body.dark .modulebar { background: rgba(10,14,22,0.90); border-color: var(--rule); }
 body.dark .btn-outline { border-color: var(--ink); color: var(--ink); }
 body.dark .btn-outline:hover { background: var(--ink); color: #000; }
 body.dark .btn-solid { background: var(--sig); color: #000; }
@@ -1375,19 +1410,21 @@ body.eth.dark {
   --eth-ink:   #ECEEF5;
   --eth-body:  #B7BCCE;
   --eth-paper: #000000;
-  --eth-card:  #08080A;
-  --eth-rule:  rgba(255,255,255,0.13);
+  --eth-card:  #0E1812;
+  --eth-rule:  rgba(126,180,152,0.18);
   --eth-green: #3FA277;
   --eth-pale:  rgba(63,162,119,0.14);
-  background: #000000;
+  background:
+    radial-gradient(60% 40% at 85% 0%, rgba(63,162,119,0.10) 0%, transparent 60%),
+    #0A120E;
   color: var(--eth-ink);
 }
-body.eth.dark .site-header { background: rgba(0,0,0,0.88); border-bottom-color: var(--eth-rule); }
-body.eth.dark .eth-band { background: #04120C; border-bottom: 1px solid rgba(63,162,119,0.35); }
+body.eth.dark .site-header { background: rgba(10,18,14,0.90); border-bottom-color: var(--eth-rule); }
+body.eth.dark .eth-band { background: linear-gradient(165deg, #0B1A12 0%, #04120C 100%); border-bottom: 1px solid rgba(63,162,119,0.35); }
 body.eth.dark .eth-h1 { color: #FFFFFF; }
 body.eth.dark .eth-lede { color: #9FBFAE; }
-body.eth.dark .eth-door { background: var(--eth-card); border-color: var(--eth-rule); }
-body.eth.dark .eth-door:hover { border-color: var(--eth-green); }
+body.eth.dark .eth-door { background: linear-gradient(165deg, #101B14 0%, #0A140E 100%); border-color: var(--eth-rule); }
+body.eth.dark .eth-door:hover { border-color: var(--eth-green); box-shadow: 0 14px 40px -18px rgba(63,162,119,0.4); }
 body.eth.dark .eth-principle { border-top-color: rgba(255,255,255,0.28); }
 body.eth.dark .eth-rule-card { background: var(--eth-pale); }
 body.eth.dark .eth-rule-card p { color: #CFE6DA; }
@@ -1396,7 +1433,7 @@ body.eth.dark li.do   { background: rgba(63,162,119,0.13); }
 body.eth.dark li.dont { background: rgba(226,69,111,0.13); }
 body.eth.dark li.do strong   { color: #7FD3AC; }
 body.eth.dark li.dont strong { color: #F58BA6; }
-body.eth.dark footer { background: #08080A !important; border-color: var(--eth-rule) !important; }
+body.eth.dark footer { background: #0C1610 !important; border-color: var(--eth-rule) !important; }
 
 /* Active-state rescue. The generic dark overrides above are more specific
    than the .is-here / .is-current rules, so without these the "you are here"
@@ -1429,7 +1466,7 @@ body.dark .skill-tab.is-active { background: var(--sig); border-color: var(--sig
 body.dark .bg-white     { background-color: var(--card) !important; }
 body.dark .bg-gray-50   { background-color: rgba(255,255,255,0.04) !important; }
 body.dark .bg-gray-200  { background-color: rgba(255,255,255,0.12) !important; }
-body.dark .bg-gray-900  { background-color: #050508 !important; }
+body.dark .bg-gray-900  { background-color: #0E1420 !important; }
 body.dark .bg-indigo-50 { background-color: rgba(142,155,255,0.08) !important; }
 
 body.dark .text-gray-900,
@@ -1458,3 +1495,108 @@ body.dark .border { border-color: var(--rule) !important; }
 body.dark .memory-file:hover { background-color: rgba(255,255,255,0.06) !important; }
 body.dark .shadow-sm,
 body.dark .shadow-xl { box-shadow: none !important; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   TOP-DARK — the homepage arrival, brought to the inner pages.
+   The header and title zone sit on a deep olive-green field (the
+   swatch tone) that dissolves into the paper below. One gradient on
+   the body does the merge; no extra wrappers needed.
+   ═══════════════════════════════════════════════════════════════════ */
+
+body.top-dark {
+  background-image: linear-gradient(
+    180deg,
+    #0A0C07 0px,
+    #10140C 380px,
+    #171C10 540px,
+    rgba(23,28,16,0) 780px
+  );
+  background-repeat: no-repeat;
+}
+
+body.top-dark .site-header {
+  background: rgba(10,12,7,0.92);
+  border-bottom-color: rgba(255,255,255,0.09);
+}
+body.top-dark .site-header .font-display { color: #F2F4EA; }
+body.top-dark .nav-desktop a { color: #A6AC96; }
+body.top-dark .nav-desktop a:hover { color: #FFFFFF; }
+body.top-dark .nav-desktop a[aria-current="page"] { color: #F2F4EA; }
+body.top-dark .nav-desktop .nav-cta { background: #F2F4EA; color: #0A0C07; }
+body.top-dark .nav-desktop .nav-cta:hover { background: var(--sig); color: #FFFFFF; }
+body.top-dark .nav-toggle { background: transparent; color: #F2F4EA; border-color: rgba(255,255,255,0.25); }
+
+body.top-dark .breadcrumb,
+body.top-dark .breadcrumb a { color: #8F957F; }
+body.top-dark .breadcrumb a:hover { color: #F2F4EA; }
+body.top-dark .breadcrumb [aria-current] { color: #F2F4EA; }
+
+body.top-dark .phase-rail a,
+body.top-dark .phase-rail span { color: #8F957F; border-top-color: rgba(255,255,255,0.16); }
+body.top-dark .phase-rail a:hover { color: #F2F4EA; border-top-color: #F2F4EA; }
+body.top-dark .phase-rail .is-here { color: var(--sig); border-top-color: var(--sig); }
+
+/* the band melts into the field: same olive family, softer edge */
+body.top-dark .page-band {
+  background:
+    radial-gradient(70% 90% at 88% 100%, rgba(63,162,119,0.13) 0%, transparent 60%),
+    linear-gradient(160deg, #141910 0%, #0A0C07 100%);
+  border-color: rgba(163,177,138,0.22);
+}
+
+/* AI Mastery: its hero heading is dark-on-light and sits in this zone */
+body.top-dark main > header h1 { color: #F2F4EA !important; }
+body.top-dark main > header p  { color: #A6AC96 !important; }
+body.top-dark main > header a  { color: #9DB7FF !important; }
+
+/* ── milestone rail ──────────────────────────────────────────────── */
+
+/* A hairline running the length of the article, blue fading to green,
+   with a numbered marker at every section — progress made visible. */
+.prose {
+  position: relative;
+  counter-reset: mile;
+  padding-left: 2.7rem;
+}
+.prose::before {
+  content: "";
+  position: absolute;
+  left: 1.05rem;
+  top: 1rem;
+  bottom: 0.75rem;
+  width: 1px;
+  background: linear-gradient(180deg, var(--sig) 0%, #3FA277 100%);
+  opacity: 0.45;
+}
+.prose > section { position: relative; counter-increment: mile; }
+.prose > section::before {
+  content: counter(mile, decimal-leading-zero);
+  position: absolute;
+  left: -1.65rem;
+  top: 2.45rem;
+  transform: translateX(-50%);
+  width: 2.1rem;
+  height: 2.1rem;
+  line-height: calc(2.1rem - 2px);
+  text-align: center;
+  border-radius: 999px;
+  background: var(--paper);
+  border: 1px solid var(--sig);
+  color: var(--sig);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  font-weight: 700;
+}
+/* the rail replaces the old ruled separators */
+.prose > section + section { border-top: none; margin-top: 1.75rem; }
+
+@media (max-width: 640px) {
+  .prose { padding-left: 2.2rem; }
+  .prose::before { left: 0.85rem; }
+  .prose > section::before {
+    left: -1.35rem;
+    width: 1.7rem; height: 1.7rem;
+    line-height: calc(1.7rem - 2px);
+    font-size: 10px;
+  }
+}
