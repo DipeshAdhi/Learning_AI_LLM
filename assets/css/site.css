@@ -992,23 +992,24 @@ body.eth .breadcrumb a:hover { color: var(--eth-green); }
 .lp-hero {
   position: relative; min-height: 92vh;
   display: flex; align-items: center; overflow: hidden;
-  background: #08080E; color: #FFFFFF;
+  background: #000000; color: #FFFFFF;
 }
 .lp-aurora {
-  position: absolute; inset: -30%; pointer-events: none;
-  background:
-    radial-gradient(38% 44% at 22% 32%, rgba(42,52,232,0.52) 0%, transparent 62%),
-    radial-gradient(34% 40% at 78% 30%, rgba(110,59,209,0.42) 0%, transparent 64%),
-    radial-gradient(42% 38% at 55% 82%, rgba(60,40,120,0.28) 0%, transparent 66%);
-  filter: blur(28px);
-  animation: lp-drift 26s ease-in-out infinite alternate;
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(to right,  rgba(255,255,255,0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.045) 1px, transparent 1px);
+  background-size: 96px 96px;
+  mask-image: radial-gradient(72% 62% at 62% 50%, #000 0%, transparent 78%);
+  -webkit-mask-image: radial-gradient(72% 62% at 62% 50%, #000 0%, transparent 78%);
+  animation: none;
 }
 @keyframes lp-drift {
   0%   { transform: translate3d(-2%,-1%,0) scale(1); }
   50%  { transform: translate3d(2%,2%,0) scale(1.06); }
   100% { transform: translate3d(-1%,1%,0) scale(1.02); }
 }
-#lp-canvas { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.85; }
+#lp-canvas { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 1; }
 .lp-hero-inner { position: relative; z-index: 2; }
 
 .lp-eyebrow {
@@ -1037,10 +1038,10 @@ body.eth .breadcrumb a:hover { color: var(--eth-green); }
   font-weight: 800; letter-spacing: -0.038em; line-height: 0.94;
 }
 .lp-shimmer {
-  background: linear-gradient(96deg,#FFFFFF 12%,#9AA4FF 34%,#E4B6F5 52%,#FFFFFF 76%);
-  background-size: 250% 100%;
-  -webkit-background-clip: text; background-clip: text; color: transparent;
-  animation: lp-sweep 7s ease-in-out infinite;
+  color: #8E9BFF;
+  background: none;
+  -webkit-text-fill-color: currentColor;
+  animation: none;
 }
 @keyframes lp-sweep { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
 
@@ -1102,21 +1103,28 @@ html.js .reveal[data-d="3"] { transition-delay: 270ms; }
 .lp-card {
   position: relative; display: flex; flex-direction: column;
   min-height: 21rem; padding: 1.7rem;
-  border-radius: 18px; overflow: hidden; color: #FFFFFF; isolation: isolate;
-  transition: transform 420ms cubic-bezier(.2,.7,.3,1), box-shadow 420ms ease;
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: 4px;
+  background: #050508;
+  overflow: hidden; color: #FFFFFF; isolation: isolate;
+  transition: border-color 300ms ease, transform 300ms cubic-bezier(.2,.7,.3,1);
 }
 .lp-card::before {
-  content: ""; position: absolute; inset: 0; z-index: -2;
+  content: ""; position: absolute; left: 0; top: 0; height: 2px; width: 100%;
   background: var(--card-grad);
-  transition: transform 620ms cubic-bezier(.2,.7,.3,1);
+  transition: opacity 300ms ease;
+  opacity: 0.85;
 }
 .lp-card::after {
   content: ""; position: absolute; inset: 0; z-index: -1;
-  background: radial-gradient(120% 90% at 50% 0%, rgba(255,255,255,0.14), transparent 58%);
-  opacity: 0; transition: opacity 420ms ease;
+  background-image:
+    linear-gradient(to right,  rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 42px 42px;
+  opacity: 0; transition: opacity 300ms ease;
 }
-.lp-card:hover { transform: translateY(-9px); box-shadow: 0 26px 60px -26px rgba(19,21,34,0.6); }
-.lp-card:hover::before { transform: scale(1.09) rotate(1.5deg); }
+.lp-card:hover { transform: translateY(-5px); border-color: rgba(255,255,255,0.42); }
+.lp-card:hover::before { opacity: 1; }
 .lp-card:hover::after { opacity: 1; }
 
 .lp-card-n { font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:0.2em; color:rgba(255,255,255,0.62); }
@@ -1134,11 +1142,15 @@ html.js .reveal[data-d="3"] { transition-delay: 270ms; }
 .lp-card-go span { display:inline-block; transition: transform 300ms cubic-bezier(.2,.7,.3,1); }
 .lp-card:hover .lp-card-go span { transform: translateX(7px); }
 
-.lp-dark { background:#08080E; color:#FFFFFF; position:relative; overflow:hidden; }
+.lp-dark { background:#000000; color:#FFFFFF; position:relative; overflow:hidden; }
 .lp-dark-glow {
-  position:absolute; inset:auto -20% -60% -20%; height:70%;
-  background: radial-gradient(50% 100% at 50% 100%, rgba(42,52,232,0.26), transparent 72%);
-  pointer-events:none;
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(to right,  rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 96px 96px;
+  mask-image: radial-gradient(70% 70% at 50% 50%, #000 0%, transparent 80%);
+  -webkit-mask-image: radial-gradient(70% 70% at 50% 50%, #000 0%, transparent 80%);
 }
 .lp-quiet {
   font-family: "Bricolage Grotesque", system-ui, sans-serif;
@@ -1189,3 +1201,260 @@ html.js .reveal[data-d="3"] { transition-delay: 270ms; }
 }
 .eth-principle ul li.do strong    { color: #14472F; }
 .eth-principle ul li.dont strong  { color: #7A1433; }
+
+/* ── animated page band (article pages) ──────────────────────────── */
+
+/* The homepage aurora, reused as a header band so the inner pages feel part
+   of the same site. Pure CSS — no extra script, nothing to stall. */
+.page-band {
+  position: relative; overflow: hidden;
+  background: #000000; color: #FFFFFF;
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 4px;
+  padding: 3rem 1.75rem 3.25rem;
+}
+@media (min-width: 768px) { .page-band { padding: 4rem 3rem 4.25rem; } }
+
+.page-band::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(to right,  rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(80% 80% at 30% 40%, #000 0%, transparent 82%);
+  -webkit-mask-image: radial-gradient(80% 80% at 30% 40%, #000 0%, transparent 82%);
+}
+.page-band > * { position: relative; z-index: 1; }
+
+.page-band .page-kicker {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #A9B3F2;
+}
+.page-band h1 {
+  margin-top: 1.1rem;
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: clamp(2.1rem, 6vw, 3.6rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+  color: #FFFFFF;
+}
+.page-band .page-lede {
+  margin-top: 1.4rem;
+  max-width: 62ch;
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  line-height: 1.6;
+  color: rgba(255,255,255,0.74);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-band::before { animation: none !important; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   DARK MODE — the hairline-on-black system, applied site-wide.
+   Most components already read from the variables below, so flipping
+   these carries most of the work; the rest overrides the Tailwind
+   colour utilities the markup uses directly.
+   ═══════════════════════════════════════════════════════════════════ */
+
+body.dark {
+  --ink:       #ECEEF5;
+  --ink2:      #B7BCCE;
+  --paper:     #000000;
+  --card:      #08080A;
+  --rule:      rgba(255,255,255,0.13);
+  --muted:     #878DA3;
+  --sig:       #8E9BFF;
+  --sig-pale:  #2B3270;
+  --mem:       #9E7BEA;
+  --convo:     #6C7290;
+  --empty:     rgba(255,255,255,0.07);
+  --ok:        #3FA277;
+  --ok-pale:   rgba(63,162,119,0.14);
+  --bad:       #E2456F;
+  --bad-pale:  rgba(226,69,111,0.14);
+
+  background: #000000;
+  color: var(--ink);
+}
+
+/* faint hairline grid, same as the hero */
+body.dark::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right,  rgba(255,255,255,0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.035) 1px, transparent 1px);
+  background-size: 96px 96px;
+  mask-image: radial-gradient(90% 70% at 50% 0%, #000 0%, transparent 85%);
+  -webkit-mask-image: radial-gradient(90% 70% at 50% 0%, #000 0%, transparent 85%);
+}
+body.dark > * { position: relative; z-index: 1; }
+
+/* ── tailwind colour utilities ──────────────────────────────────── */
+
+body.dark .bg-paper  { background-color: var(--paper) !important; }
+body.dark .bg-card   { background-color: var(--card)  !important; }
+body.dark .text-ink  { color: var(--ink)   !important; }
+body.dark .text-ink2 { color: var(--ink2)  !important; }
+body.dark .text-muted{ color: var(--muted) !important; }
+body.dark .text-sig  { color: var(--sig)   !important; }
+body.dark .border-rule { border-color: var(--rule) !important; }
+
+/* ── chrome ─────────────────────────────────────────────────────── */
+
+body.dark .site-header {
+  background: rgba(0,0,0,0.88);
+  border-bottom-color: var(--rule);
+}
+body.dark .nav-toggle { background: var(--card); color: var(--ink); border-color: var(--rule); }
+body.dark .nav-mobile { background: var(--card); }
+body.dark .nav-desktop .nav-cta { background: var(--ink); color: #000; }
+body.dark .nav-desktop .nav-cta:hover { background: var(--sig); color: #000; }
+
+/* ── surfaces ───────────────────────────────────────────────────── */
+
+body.dark .panel,
+body.dark .res-card,
+body.dark .pager a,
+body.dark .tags li { background: var(--card); border-color: var(--rule); }
+
+body.dark .helper { background: rgba(142,155,255,0.07); border-color: rgba(142,155,255,0.28); }
+body.dark .helper strong { color: var(--ink); }
+
+body.dark .callout { background: var(--card); border-left-color: var(--sig); }
+body.dark .step { border-top-color: var(--ink); }
+
+body.dark .keypoint { background: var(--card); border-left-color: var(--sig); }
+body.dark .prose code { background: rgba(255,255,255,0.09); color: var(--ink); }
+body.dark .prose pre  { background: var(--card); border-color: var(--rule); }
+body.dark .prose a    { color: var(--sig); }
+
+/* ── curriculum + demo ──────────────────────────────────────────── */
+
+body.dark .level { border-bottom-color: var(--rule); }
+body.dark .level-num { color: rgba(255,255,255,0.22); }
+body.dark .strip { background: var(--empty); border-color: var(--rule); }
+body.dark .legend-row { border-bottom-color: var(--rule); }
+body.dark .mode-btn.is-active { background: var(--ink); color: #000; }
+body.dark .lp-stat-n { background: linear-gradient(180deg,#FFFFFF 40%,#8E9BFF 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+/* ── resources ──────────────────────────────────────────────────── */
+
+body.dark .tier-official  { background: rgba(63,162,119,0.16);  color: #6FCFA1; }
+body.dark .tier-community { background: rgba(214,158,46,0.16);  color: #E0B65C; }
+body.dark .concept { border-bottom-color: var(--rule); }
+
+/* ── article furniture ──────────────────────────────────────────── */
+
+body.dark .toc a:not(.is-current) { border-left-color: var(--rule); color: var(--muted); }
+body.dark .toc a:hover { color: var(--ink); border-left-color: var(--ink); }
+body.dark .phase-rail a:not(.is-here),
+body.dark .phase-rail span:not(.is-here) { border-top-color: var(--rule); }
+body.dark .phase-rail a:hover { border-top-color: var(--ink); color: var(--ink); }
+body.dark .modulebar { background: rgba(0,0,0,0.88); border-color: var(--rule); }
+body.dark .btn-outline { border-color: var(--ink); color: var(--ink); }
+body.dark .btn-outline:hover { background: var(--ink); color: #000; }
+body.dark .btn-solid { background: var(--sig); color: #000; }
+body.dark .tree .d { color: var(--ink); }
+
+/* the page band already is black — drop the border so it merges */
+body.dark .page-band { border-color: var(--rule); }
+
+/* ── ethics: black, with green as the accent rather than the field ── */
+
+body.eth.dark {
+  --eth-ink:   #ECEEF5;
+  --eth-body:  #B7BCCE;
+  --eth-paper: #000000;
+  --eth-card:  #08080A;
+  --eth-rule:  rgba(255,255,255,0.13);
+  --eth-green: #3FA277;
+  --eth-pale:  rgba(63,162,119,0.14);
+  background: #000000;
+  color: var(--eth-ink);
+}
+body.eth.dark .site-header { background: rgba(0,0,0,0.88); border-bottom-color: var(--eth-rule); }
+body.eth.dark .eth-band { background: #04120C; border-bottom: 1px solid rgba(63,162,119,0.35); }
+body.eth.dark .eth-h1 { color: #FFFFFF; }
+body.eth.dark .eth-lede { color: #9FBFAE; }
+body.eth.dark .eth-door { background: var(--eth-card); border-color: var(--eth-rule); }
+body.eth.dark .eth-door:hover { border-color: var(--eth-green); }
+body.eth.dark .eth-principle { border-top-color: rgba(255,255,255,0.28); }
+body.eth.dark .eth-rule-card { background: var(--eth-pale); }
+body.eth.dark .eth-rule-card p { color: #CFE6DA; }
+body.eth.dark .nav-eth { background: var(--eth-green); color: #04120C !important; }
+body.eth.dark li.do   { background: rgba(63,162,119,0.13); }
+body.eth.dark li.dont { background: rgba(226,69,111,0.13); }
+body.eth.dark li.do strong   { color: #7FD3AC; }
+body.eth.dark li.dont strong { color: #F58BA6; }
+body.eth.dark footer { background: #08080A !important; border-color: var(--eth-rule) !important; }
+
+/* Active-state rescue. The generic dark overrides above are more specific
+   than the .is-here / .is-current rules, so without these the "you are here"
+   indicators silently flatten to the same grey as everything else — which
+   removes the only signal telling the reader where they are. */
+body.dark .phase-rail .is-here {
+  border-top-color: var(--sig);
+  color: var(--sig);
+}
+body.dark .toc a.is-current {
+  border-left-color: var(--sig);
+  color: var(--sig);
+  font-weight: 600;
+}
+body.dark .modulebar a.is-current {
+  background: var(--sig);
+  border-color: var(--sig);
+  color: #000;
+}
+body.dark .nav-desktop a[aria-current="page"],
+body.dark .nav-mobile a[aria-current="page"] { color: var(--ink); }
+body.dark .level.is-core .level-num,
+body.dark .level-state.is-core { color: var(--sig); }
+body.dark .skill-tab.is-active { background: var(--sig); border-color: var(--sig); color: #000; }
+
+/* ── AI Mastery page: it uses Tailwind's default gray/indigo palette
+      rather than the site variables, so those need mapping too.
+      Without this its h1 is near-black on black — invisible.         ── */
+
+body.dark .bg-white     { background-color: var(--card) !important; }
+body.dark .bg-gray-50   { background-color: rgba(255,255,255,0.04) !important; }
+body.dark .bg-gray-200  { background-color: rgba(255,255,255,0.12) !important; }
+body.dark .bg-gray-900  { background-color: #050508 !important; }
+body.dark .bg-indigo-50 { background-color: rgba(142,155,255,0.08) !important; }
+
+body.dark .text-gray-900,
+body.dark .text-gray-800 { color: var(--ink)  !important; }
+body.dark .text-gray-700,
+body.dark .text-gray-600 { color: var(--ink2) !important; }
+body.dark .text-gray-500,
+body.dark .text-gray-400,
+body.dark .text-gray-300 { color: var(--muted) !important; }
+
+body.dark .text-indigo-900,
+body.dark .text-indigo-800,
+body.dark .text-indigo-700,
+body.dark .text-indigo-600,
+body.dark .text-indigo-400,
+body.dark .text-indigo-200 { color: var(--sig) !important; }
+
+body.dark .border-gray-800   { border-color: var(--rule) !important; }
+body.dark .border-indigo-100,
+body.dark .border-indigo-200 { border-color: rgba(142,155,255,0.28) !important; }
+
+/* Tailwind preflight gives every element a light default border colour;
+   anything using a bare `border` utility on this page needs the dark one. */
+body.dark .border { border-color: var(--rule) !important; }
+
+body.dark .memory-file:hover { background-color: rgba(255,255,255,0.06) !important; }
+body.dark .shadow-sm,
+body.dark .shadow-xl { box-shadow: none !important; }

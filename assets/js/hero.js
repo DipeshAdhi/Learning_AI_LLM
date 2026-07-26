@@ -1,13 +1,14 @@
-/* Landing page motion.
+/* Landing page motion — hairline convergence field.
  *
- * The hero is the argument, not decoration: tokens stream toward the context
- * window, and at the boundary they resolve into the site's semantic colours —
- *   blue  = in flight, not yet judged
- *   green = read and used
- *   red   = sent, paid for, never read
+ * Everything a model is given converges on one point: the context window.
+ * Rays fan out to the left; tokens travel inward along them. At the boundary
+ * each one resolves into the site's semantic colours —
+ *   white/blue = in flight, not yet judged
+ *   green      = read and used
+ *   red        = sent, paid for, never read
  *
- * Everything checks prefers-reduced-motion first and degrades to a static,
- * complete page. No content is hidden behind an animation.
+ * Drawn as 1px strokes and small dots on pure black. No blur, no fills.
+ * Respects prefers-reduced-motion by painting a single static frame.
  */
 
 (function () {
@@ -15,111 +16,208 @@
 
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  var COLOR = {
-    inFlight: '#3C4470',   // base blue, muted
-    ok:       '#2E8F62',   // green: read
-    okBright: '#4FB183',
-    bad:      '#C0224E',   // red: never read
-    gate:     'rgba(169,179,242,0.75)'
+  var C = {
+    ray:    'rgba(255,255,255,0.10)',
+    rayLit: 'rgba(255,255,255,0.26)',
+    orbit:  'rgba(255,255,255,0.13)',
+    label:  'rgba(255,255,255,0.20)',
+    flight: 'rgba(190,198,255,0.75)',
+    ok:     '#3FA277',
+    bad:    '#C0224E',
+    core:   'rgba(120,132,255,0.95)'
   };
 
-  /* ── 1. the token stream ──────────────────────────────────────── */
+  var GLYPHS = ['0','1','d','o','s','a','1','0','t','k','n','e'];
 
   var canvas = document.getElementById('lp-canvas');
 
-  if (canvas && !reduce) {
+  if (canvas) {
     var ctx = canvas.getContext('2d');
-    var tokens = [];
     var w = 0, h = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
-    var gate = { x: 0, y: 0, h: 0 };
-    var running = true;
+    var focal = { x: 0, y: 0 };
+    var rays = [], dots = [], labels = [];
+    var rafId = null, visible = true, t0 = performance.now();
 
-    function resize() {
+    function start() {
+      if (rafId !== null) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(frame);
+    }
+    function stop() {
+      if (rafId !== null) { cancelAnimationFrame(rafId); rafId = null; }
+    }
+
+    function build() {
       w = canvas.clientWidth;
       h = canvas.clientHeight;
       canvas.width = w * dpr;
       canvas.height = h * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      gate.x = w * 0.72;
-      gate.h = Math.min(h * 0.42, 300);
-      gate.y = h / 2 - gate.h / 2;
+
+      focal.x = w * 0.80;
+      focal.y = h * 0.5;
+
+      // rays fan leftward from the focal point, off the left edge
+      rays = [];
+      var n = Math.max(26, Math.round(w / 26));
+      for (var i = 0; i < n; i++) {
+        var spread = 0.78;                       // radians, total fan
+        var a = Math.PI + (i / (n - 1) - 0.5) * spread;
+        rays.push({ a: a, lit: Math.random() < 0.16 });
+      }
+
+      // tokens travelling inward along a ray
+      dots = [];
+      for (var j = 0; j < 150; j++) dots.push(spawn(true));
+
+      // sparse mono glyphs, the way a technical plot is annotated
+      labels = [];
+      for (var k = 0; k < 10; k++) {
+        labels.push({
+          x: w * 0.42 + Math.random() * w * 0.58,
+          y: Math.random() * h,
+          g: GLYPHS[Math.floor(Math.random() * GLYPHS.length)]
+        });
+      }
     }
 
     function spawn(prefill) {
+      var ray = rays[Math.floor(Math.random() * rays.length)];
       return {
-        x: prefill ? Math.random() * w : -20 - Math.random() * w * 0.5,
-        y: Math.random() * h,
-        v: 0.7 + Math.random() * 1.7,
-        s: 2 + Math.random() * 3.5,
-        read: Math.random() < 0.34,   // most of what you send is never read
-        a: 0.22 + Math.random() * 0.45,
-        turned: false,
-        vy: 0
+        ray: ray,
+        d: prefill ? Math.random() : 1,          // 1 = far out, 0 = at focal
+        v: 0.0011 + Math.random() * 0.0026,
+        r: 0.6 + Math.random() * 1.5,
+        read: Math.random() < 0.34,              // most is never read
+        past: 0                                   // travel after the boundary
       };
     }
 
-    for (var i = 0; i < 130; i++) tokens.push(spawn(true));
-
-    function frame() {
-      if (!running) return;
+    function draw(now) {
+      var spin = (now - t0) * 0.00004;
       ctx.clearRect(0, 0, w, h);
 
-      // the window itself: a tall soft-edged slot
-      var g = ctx.createLinearGradient(gate.x, gate.y, gate.x, gate.y + gate.h);
-      g.addColorStop(0, 'rgba(169,179,242,0)');
-      g.addColorStop(0.5, COLOR.gate);
-      g.addColorStop(1, 'rgba(169,179,242,0)');
-      ctx.fillStyle = g;
-      ctx.fillRect(gate.x, gate.y, 1.5, gate.h);
+      var reach = Math.max(w, h) * 1.15;
 
-      for (var i = 0; i < tokens.length; i++) {
-        var t = tokens[i];
-        t.x += t.v;
+      // ── rays ───────────────────────────────────────────────
+      ctx.lineWidth = 1;
+      for (var i = 0; i < rays.length; i++) {
+        var ry = rays[i];
+        var ex = focal.x + Math.cos(ry.a) * reach;
+        var ey = focal.y + Math.sin(ry.a) * reach;
+        /* Bright at the window, fading to nothing outward — keeps the
+           headline readable and reads as convergence rather than noise. */
+        var grad = ctx.createLinearGradient(focal.x, focal.y, ex, ey);
+        grad.addColorStop(0, ry.lit ? 'rgba(255,255,255,0.34)' : 'rgba(255,255,255,0.16)');
+        grad.addColorStop(0.45, ry.lit ? 'rgba(255,255,255,0.10)' : 'rgba(255,255,255,0.05)');
+        grad.addColorStop(1, 'rgba(255,255,255,0)');
+        ctx.strokeStyle = grad;
+        ctx.beginPath();
+        ctx.moveTo(focal.x, focal.y);
+        ctx.lineTo(ex, ey);
+        ctx.stroke();
+      }
 
-        // at the boundary each token resolves: read, or peeled away unread
-        if (!t.turned && t.x >= gate.x) {
-          t.turned = true;
-          if (!t.read) t.vy = (t.y < h / 2 ? -1 : 1) * (0.5 + Math.random() * 1.2);
+      // ── orbit ellipses around the window ───────────────────
+      ctx.strokeStyle = C.orbit;
+      for (var o = 0; o < 3; o++) {
+        ctx.save();
+        ctx.translate(focal.x, focal.y);
+        ctx.rotate(spin + o * Math.PI / 3);
+        ctx.beginPath();
+        ctx.ellipse(0, 0, Math.min(w, h) * 0.30, Math.min(w, h) * 0.115, 0, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      // ── the window itself: a small bright core ─────────────
+      ctx.fillStyle = C.core;
+      ctx.beginPath();
+      ctx.arc(focal.x, focal.y, 2.4, 0, Math.PI * 2);
+      ctx.fill();
+
+      // ── tokens ─────────────────────────────────────────────
+      for (var j = 0; j < dots.length; j++) {
+        var p = dots[j];
+        var x, y, col, alpha;
+
+        if (p.d > 0) {
+          p.d -= p.v;
+          var dist = p.d * reach;
+          x = focal.x + Math.cos(p.ray.a) * dist;
+          y = focal.y + Math.sin(p.ray.a) * dist;
+          col = C.flight;
+          alpha = 0.25 + (1 - p.d) * 0.6;
+        } else {
+          // resolved: read tokens pass through, unread ones scatter back out
+          p.past += p.read ? 0.9 : 1.5;
+          if (p.read) {
+            x = focal.x + p.past * 0.5;
+            y = focal.y + Math.sin(p.past * 0.05) * 2;
+            col = C.ok;
+          } else {
+            var away = p.ray.a + Math.PI + (p.ray.a > Math.PI ? 0.5 : -0.5);
+            x = focal.x + Math.cos(away) * p.past;
+            y = focal.y + Math.sin(away) * p.past;
+            col = C.bad;
+          }
+          alpha = Math.max(0, 1 - p.past / 110);
         }
-        if (t.turned && !t.read) {
-          t.y += t.vy;
-          t.a *= 0.982;
+
+        if (alpha <= 0.02 || x > w + 30 || x < -30 || y < -30 || y > h + 30) {
+          dots[j] = spawn(false);
+          continue;
         }
 
-        var inGate = t.y > gate.y && t.y < gate.y + gate.h;
-        ctx.globalAlpha = t.a;
-        ctx.fillStyle = !t.turned ? COLOR.inFlight
-                      : t.read    ? (inGate ? COLOR.okBright : COLOR.ok)
-                                  : COLOR.bad;
-        ctx.fillRect(t.x, t.y, t.s * 2.4, t.s);
-
-        if (t.x > w + 40 || t.a < 0.03) tokens[i] = spawn(false);
+        ctx.globalAlpha = alpha;
+        ctx.fillStyle = col;
+        ctx.beginPath();
+        ctx.arc(x, y, p.r, 0, Math.PI * 2);
+        ctx.fill();
       }
       ctx.globalAlpha = 1;
-      requestAnimationFrame(frame);
+
+      // ── annotations ────────────────────────────────────────
+      ctx.fillStyle = C.label;
+      ctx.font = '11px "JetBrains Mono", monospace';
+      for (var k = 0; k < labels.length; k++) {
+        ctx.fillText(labels[k].g, labels[k].x, labels[k].y);
+      }
     }
 
-    resize();
-    window.addEventListener('resize', resize);
-    requestAnimationFrame(frame);
-
-    /* Stop painting when the hero is off-screen — no point burning battery
-       animating something nobody is looking at. */
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (e.isIntersecting && !running) { running = true; requestAnimationFrame(frame); }
-          else if (!e.isIntersecting) { running = false; }
-        });
-      }, { threshold: 0 }).observe(canvas);
+    function frame(now) {
+      rafId = null;
+      if (!visible) return;
+      draw(now);
+      rafId = requestAnimationFrame(frame);
     }
-    document.addEventListener('visibilitychange', function () {
-      if (document.hidden) running = false;
-      else if (!running) { running = true; requestAnimationFrame(frame); }
-    });
+
+    build();
+    if (reduce) {
+      draw(performance.now());                   // one static frame, no loop
+    } else {
+      window.addEventListener('resize', function () { build(); start(); });
+      start();
+
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            visible = e.isIntersecting;
+            if (visible) start(); else stop();
+          });
+        }, { threshold: 0 }).observe(canvas);
+      }
+
+      /* rAF handles issued while hidden are never delivered, so resuming has
+         to cancel the stale one and schedule fresh — otherwise the loop dies
+         permanently the first time the tab is backgrounded. */
+      document.addEventListener('visibilitychange', function () {
+        if (document.hidden) stop();
+        else if (visible) start();
+      });
+    }
   }
 
-  /* ── 2. scroll reveals ────────────────────────────────────────── */
+  /* ── scroll reveals ───────────────────────────────────────────── */
 
   var revealables = document.querySelectorAll('.reveal');
 
@@ -136,9 +234,7 @@
     }, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
     Array.prototype.forEach.call(revealables, function (el) { io.observe(el); });
 
-    /* Failsafe. IntersectionObserver callbacks are throttled in background
-       tabs and can be missed entirely. Content must never depend on an
-       animation firing, so anything still hidden gets shown regardless. */
+    /* Content must never depend on an animation firing. */
     setTimeout(function () {
       Array.prototype.forEach.call(revealables, function (el) {
         if (!el.classList.contains('is-in')) {
@@ -149,7 +245,7 @@
     }, 2600);
   }
 
-  /* ── 3. counters ──────────────────────────────────────────────── */
+  /* ── counters ─────────────────────────────────────────────────── */
 
   function finish(el) {
     var dp = parseInt(el.dataset.dp || '0', 10);
@@ -166,18 +262,15 @@
 
     if (reduce) { finish(el); return; }
 
-    var start = performance.now(), dur = 1250;
+    var began = performance.now(), dur = 1250;
     (function step(now) {
-      var p = Math.min((now - start) / dur, 1);
-      var eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = (to * eased).toFixed(dp) + suffix;
+      var p = Math.min((now - began) / dur, 1);
+      el.textContent = (to * (1 - Math.pow(1 - p, 3))).toFixed(dp) + suffix;
       if (p < 1) requestAnimationFrame(step);
       else finish(el);
-    })(start);
+    })(began);
 
-    /* rAF is paused in a hidden tab. Without this, a count interrupted
-       part-way would sit on screen showing a wrong number forever — which
-       on a page of statistics is a correctness bug, not a visual one. */
+    /* A count frozen part-way would display a wrong statistic forever. */
     setTimeout(function () { if (!el.dataset.done) finish(el); }, dur + 250);
   }
 
