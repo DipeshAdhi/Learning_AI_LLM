@@ -38,14 +38,17 @@ No build step, no dependencies, no npm. The site is plain HTML, Tailwind via CDN
 hand-written JavaScript — open a file and edit it.
 
 Because the pages load CSS and JS from `assets/`, opening them directly with `file://` will
-not work. Serve the folder over HTTP instead:
+not work. Serve the folder over HTTP instead — from the repository root:
 
 ```bash
-python3 .claude/serve.py
+python3 -m http.server 4321
 ```
 
-Then visit http://localhost:4321. The server sends `Cache-Control: no-store`, so a plain
-reload always shows your latest edit.
+Then visit http://localhost:4321. Nothing else to install; Python 3 ships with macOS and
+most Linux distributions.
+
+If an edit does not appear, it is the browser cache rather than the server — hard reload
+with <kbd>Shift</kbd>+<kbd>Cmd</kbd>+<kbd>R</kbd> (or <kbd>Ctrl</kbd>+<kbd>F5</kbd>).
 
 ## Structure
 

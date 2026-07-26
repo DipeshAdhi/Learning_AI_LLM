@@ -1,2 +1,7 @@
+# Local editor / agent config — not part of the published site
+.claude/
+
+# macOS
 .DS_Store
+
 *.log
