@@ -844,3 +844,188 @@ body { text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; 
   color: #FFFFFF;
 }
 .skill-tab.is-active:hover { border-color: #4F46E5; }
+
+/* ── ethics section ──────────────────────────────────────────────── */
+
+/* Deliberately a different world from the rest of the book: green rather
+   than ultramarine, warmer paper, a narrower measure and more air. It reads
+   as a charter, not a chapter. Scoped to body.eth so none of it leaks. */
+
+.nav-eth {
+  padding: 0.45rem 0.85rem;
+  border-radius: 2px;
+  background: #1B6E48;
+  color: #FFFFFF !important;
+  transition: background-color 160ms ease;
+}
+.nav-eth:hover { background: #14563a; color: #FFFFFF !important; }
+.nav-mobile .nav-eth { border-radius: 0; }
+
+body.eth {
+  --eth-ink:    #10231A;
+  --eth-body:   #33473D;
+  --eth-paper:  #F1F5F2;
+  --eth-card:   #FFFFFF;
+  --eth-rule:   #CFDDD4;
+  --eth-green:  #1B6E48;
+  --eth-pale:   #DCEBE2;
+  background: #F1F5F2;
+  color: var(--eth-ink);
+}
+
+body.eth .site-header {
+  background: rgba(241, 245, 242, 0.93);
+  border-bottom-color: var(--eth-rule);
+}
+body.eth .breadcrumb a:hover { color: var(--eth-green); }
+
+.eth-band {
+  background: var(--eth-green);
+  color: #EAF3EE;
+}
+.eth-band .eth-kicker { color: #9FD9BC; }
+
+.eth-wrap { max-width: 46rem; margin: 0 auto; }
+
+.eth-h1 {
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: clamp(2.1rem, 6vw, 3.4rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.02;
+  color: #FFFFFF;
+}
+.eth-lede {
+  margin-top: 1.4rem;
+  font-size: 1.2rem;
+  line-height: 1.65;
+  color: #CFE6DA;
+}
+.eth-kicker {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+/* the two routes */
+.eth-doors { display: grid; gap: 1rem; }
+@media (min-width: 720px) { .eth-doors { grid-template-columns: 1fr 1fr; gap: 1.25rem; } }
+
+.eth-door {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 2rem 1.9rem;
+  border: 1px solid var(--eth-rule);
+  border-radius: 6px;
+  background: var(--eth-card);
+  transition: border-color 180ms ease, transform 180ms ease;
+}
+.eth-door:hover { border-color: var(--eth-green); transform: translateY(-3px); }
+.eth-door-icon {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--eth-green);
+}
+.eth-door-title {
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--eth-ink);
+}
+.eth-door-note { font-size: 1.05rem; line-height: 1.55; color: var(--eth-body); }
+.eth-door-go {
+  margin-top: 0.6rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--eth-green);
+}
+
+/* principles read as a charter: big number, rule above, generous spacing */
+.eth-principle {
+  padding-top: 1.6rem;
+  margin-top: 2.6rem;
+  border-top: 2px solid var(--eth-ink);
+  scroll-margin-top: 5.5rem;
+}
+.eth-n {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--eth-green);
+}
+.eth-principle h2 {
+  margin-top: 0.6rem;
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: clamp(1.5rem, 3.6vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+  color: var(--eth-ink);
+}
+.eth-principle p {
+  margin-top: 1rem;
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: var(--eth-body);
+}
+.eth-principle strong { color: var(--eth-ink); font-weight: 600; }
+.eth-principle ul { margin-top: 1rem; display: grid; gap: 0.55rem; }
+.eth-principle ul li {
+  position: relative;
+  padding-left: 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--eth-body);
+}
+.eth-principle ul li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--eth-green);
+}
+
+.eth-rule-card {
+  margin-top: 1.4rem;
+  padding: 1.2rem 1.4rem;
+  border-left: 3px solid var(--eth-green);
+  border-radius: 0 5px 5px 0;
+  background: var(--eth-pale);
+}
+.eth-rule-card p { margin-top: 0; font-size: 1.05rem; color: #1D3A2B; }
+.eth-rule-label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--eth-green);
+}
+
+.eth-back {
+  display: inline-block;
+  padding: 0.8rem 1.25rem;
+  border: 1px solid var(--eth-green);
+  border-radius: 3px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--eth-green);
+  transition: background-color 160ms ease, color 160ms ease;
+}
+.eth-back:hover { background: var(--eth-green); color: #FFFFFF; }
+
+@media (prefers-reduced-motion: reduce) {
+  .eth-door:hover { transform: none; }
+  .eth-door, .eth-back, .nav-eth { transition: none !important; }
+}
