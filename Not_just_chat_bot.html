@@ -6,6 +6,7 @@
     <title>AI Mastery: The Efficient Developer's Curriculum</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="assets/css/site.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap');
         
@@ -91,27 +92,38 @@
         - CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. 
     -->
 
-    <nav class="fixed top-0 w-full z-50 glass-panel border-b">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 items-center">
-                <div class="flex items-center gap-2">
-                    <div class="w-8 h-8 bg-indigo-600 rounded flex items-center justify-center text-white font-bold">A</div>
-                    <span class="font-bold text-lg tracking-tight">AI Mastery</span>
-                </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#skills" class="nav-link text-sm font-medium py-1">Capabilities</a>
-                    <a href="#memory" class="nav-link text-sm font-medium py-1">State</a>
-                    <a href="#economics" class="nav-link text-sm font-medium py-1">Economics</a>
-                    <a href="#compression" class="nav-link text-sm font-medium py-1">Efficiency</a>
-                </div>
-                <button class="md:hidden p-2 rounded-md hover:bg-gray-100" id="mobile-menu-btn">
-                    &#9776;
-                </button>
-            </div>
-        </div>
-    </nav>
+    <header class="site-header">
+        <div class="mx-auto flex max-w-6xl items-center gap-4 px-5 py-3.5">
+            <a href="index.html" class="font-display text-[17px] font-extrabold tracking-tight">
+                Context<span class="text-sig">book</span>
+            </a>
 
-    <main class="pt-24 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <nav class="nav-desktop ml-auto" aria-label="Main">
+                <a href="index.html">Home</a>
+                <a href="index.html#curriculum">Curriculum</a>
+                <a href="index.html#start">How to use this</a>
+                <a href="resources.html">Resources</a>
+                <a href="Not_just_chat_bot.html" aria-current="page">AI Mastery</a>
+                <a href="#" class="nav-cta">GitHub</a>
+            </nav>
+
+            <button type="button" class="nav-toggle ml-auto" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav">
+                <span class="sr-only">Menu</span>
+                <span aria-hidden="true">Menu</span>
+            </button>
+        </div>
+
+        <nav id="mobile-nav" class="nav-mobile" hidden aria-label="Main, mobile">
+            <a href="index.html">Home</a>
+            <a href="index.html#curriculum">Curriculum</a>
+            <a href="index.html#start">How to use this</a>
+            <a href="resources.html">Resources</a>
+            <a href="Not_just_chat_bot.html" aria-current="page">AI Mastery</a>
+            <a href="#">GitHub</a>
+        </nav>
+    </header>
+
+    <main id="main" class="pt-24 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         
         <!-- Hero Section -->
         <header class="mb-16 text-center">
@@ -511,5 +523,6 @@
             document.querySelectorAll('section[id]').forEach(section => observer.observe(section));
         };
     </script>
+    <script src="assets/js/nav.js"></script>
 </body>
 </html>

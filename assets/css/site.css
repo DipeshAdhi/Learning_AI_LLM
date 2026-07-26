@@ -115,6 +115,16 @@ body { text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; 
 .nav-mobile a:last-child { border-bottom: 0; }
 .nav-mobile[hidden] { display: none; }
 
+.nav-desktop a[aria-current="page"],
+.nav-mobile a[aria-current="page"] {
+  color: var(--ink);
+  font-weight: 700;
+}
+.nav-desktop .nav-cta[aria-current="page"] {
+  color: var(--card);
+  background: var(--sig);
+}
+
 @media (min-width: 768px) {
   .nav-desktop { display: flex; }
   .nav-toggle,
