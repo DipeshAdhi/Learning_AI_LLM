@@ -73,17 +73,6 @@ Live site: https://dipeshadhi.github.io/Learning_AI_LLM/
 ## [Ethical use · Regular use](ethics-everyday.html)
 
 - [You are accountable for whatever you send](ethics-everyday.html#p1)
-<<<<<<< HEAD
-- [Do not paste other people's information into it](ethics-everyday.html#p2)
-- [Say so when it would change how someone reads it](ethics-everyday.html#p3)
-- [Never use it to imitate a real person](ethics-everyday.html#p4)
-- [Know what it is not qualified to be](ethics-everyday.html#p5)
-- [Assume it inherited the internet's biases](ethics-everyday.html#p6)
-
-## [Ethical use · Academic use](ethics-academic.html)
-
-- [Your institution's policy is the real rule](ethics-academic.html#p1)
-=======
 - [Do not paste other people’s information into it](ethics-everyday.html#p2)
 - [Say so when it would change how someone reads it](ethics-everyday.html#p3)
 - [Never use it to imitate a real person](ethics-everyday.html#p4)
@@ -93,18 +82,13 @@ Live site: https://dipeshadhi.github.io/Learning_AI_LLM/
 ## [Ethical use · Academic use](ethics-academic.html)
 
 - [Your institution’s policy is the real rule](ethics-academic.html#p1)
->>>>>>> 7b5597c (update on UI of the page)
 - [The spectrum: neither extreme is the right answer](ethics-academic.html#p2)
 - [The sweet spot: a partner, not an author](ethics-academic.html#p3)
 - [The three conditions attached to all of it](ethics-academic.html#p4)
 - [Disclose it — and how](ethics-academic.html#p5)
 - [Where the red lines are — and who carries the liability](ethics-academic.html#p6)
 - [Verify every single citation](ethics-academic.html#p7)
-<<<<<<< HEAD
-- [Other people's data is not yours to paste](ethics-academic.html#p8)
-=======
 - [Other people’s data is not yours to paste](ethics-academic.html#p8)
->>>>>>> 7b5597c (update on UI of the page)
 - [AI cannot be an author, and cannot take the blame](ethics-academic.html#p9)
 - [Keep the evidence that the work is yours](ethics-academic.html#p10)
 - [Whose job is what](ethics-academic.html#p11)
