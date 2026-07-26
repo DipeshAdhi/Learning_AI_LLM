@@ -102,15 +102,22 @@ tailwind.config = { theme: { extend: {
           you are not using.
         </p>
         <p>
-          <strong>Frontier models</strong> are the large, expensive, slow ones. They are worth their
-          price on genuinely hard reasoning: unfamiliar architecture decisions, subtle debugging,
-          anything where being wrong is costly and the path is not obvious.
+          <strong>Frontier models</strong> are the large, expensive, slow ones — the top tiers of
+          <strong>Claude</strong>, <strong>ChatGPT</strong>, and <strong>Gemini</strong>. They are
+          worth their price on genuinely hard reasoning: unfamiliar architecture decisions, subtle
+          debugging, anything where being wrong is costly and the path is not obvious.
+        </p>
+        <p>
+          Each of those families also ships cheaper, faster tiers — a mid-sized and a small variant
+          alongside the flagship. Moving down one tier within the same family is usually the easiest
+          saving available, and most people never try it because they picked the best model on day
+          one and never revisited the choice.
         </p>
         <p>
           <strong>Small language models</strong> — the Llama, Mistral, Gemma, and Phi families, run
           locally through something like Ollama or served with vLLM — are dramatically cheaper and
-          faster. On narrow, well-specified, high-volume work they are frequently indistinguishable
-          from the expensive option.
+          faster still, and your data never leaves your machine. On narrow, well-specified,
+          high-volume work they are frequently indistinguishable from the expensive option.
         </p>
         <div class="keypoint">
           <span class="keypoint-label">A note on names</span>

@@ -104,7 +104,7 @@
                 <a href="index.html#start">How to use this</a>
                 <a href="resources.html">Resources</a>
                 <a href="Not_just_chat_bot.html" aria-current="page">AI Mastery</a>
-                <a href="#" class="nav-cta">GitHub</a>
+                <a href="https://github.com/DipeshAdhi/Learning_AI_LLM" class="nav-cta" target="_blank" rel="noopener noreferrer">GitHub</a>
             </nav>
 
             <button type="button" class="nav-toggle ml-auto" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav">
@@ -119,21 +119,43 @@
             <a href="index.html#start">How to use this</a>
             <a href="resources.html">Resources</a>
             <a href="Not_just_chat_bot.html" aria-current="page">AI Mastery</a>
-            <a href="#">GitHub</a>
+            <a href="https://github.com/DipeshAdhi/Learning_AI_LLM" target="_blank" rel="noopener noreferrer">GitHub</a>
         </nav>
     </header>
 
     <main id="main" class="pt-24 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="index.html">Home</a>
+            <span aria-hidden="true">/</span>
+            <span aria-current="page">AI Mastery</span>
+        </nav>
+
         <!-- Hero Section -->
-        <header class="mb-16 text-center">
+        <header class="mb-10 mt-8 text-center">
             <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight">
                 Beyond the Chatbox
             </h1>
             <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
                 A technical curriculum for building persistent, stateful, and autonomous AI systems. Transition from stateless queries to high-efficiency agentic workflows.
             </p>
+            <p class="mt-5 text-[15px] text-gray-500 max-w-2xl mx-auto leading-relaxed">
+                Five modules, each a working technique rather than a definition. If you are new to
+                any of this, <a href="phase-1.html" class="text-indigo-600 underline underline-offset-4">start with Phase&nbsp;1</a>
+                and come back — this page assumes you already know what a token is.
+            </p>
         </header>
+
+        <!-- Module navigation: sticky, and it tracks where you are -->
+        <nav class="modulebar" aria-label="Modules">
+            <ol data-toc>
+                <li><a href="#skills"><span class="mod-n">01</span> Agent Skills</a></li>
+                <li><a href="#memory"><span class="mod-n">02</span> Memory Bank</a></li>
+                <li><a href="#economics"><span class="mod-n">03</span> Economics</a></li>
+                <li><a href="#compression"><span class="mod-n">04</span> Compression</a></li>
+                <li><a href="#lifecycle"><span class="mod-n">05</span> The Loop</a></li>
+            </ol>
+        </nav>
 
         <!-- Section 1: Agent Skills -->
         <section id="skills" class="mb-20 scroll-mt-24">
@@ -153,10 +175,16 @@
                                     The agent doesn't load everything at once. It indexes metadata first, then loads the body only when a semantic match occurs.
                                 </p>
                             </div>
+                            <p class="text-xs text-gray-500 font-medium">Step through the three stages and watch the file on the right change:</p>
                             <div class="grid grid-cols-3 gap-2">
-                                <button onclick="updateSkillView('index')" class="px-3 py-2 text-xs font-bold rounded border bg-white hover:border-indigo-500 transition-colors">Phase 1: Index</button>
-                                <button onclick="updateSkillView('load')" class="px-3 py-2 text-xs font-bold rounded border bg-white hover:border-indigo-500 transition-colors">Phase 2: Load</button>
-                                <button onclick="updateSkillView('exec')" class="px-3 py-2 text-xs font-bold rounded border bg-white hover:border-indigo-500 transition-colors">Phase 3: Execute</button>
+                                <button type="button" data-skill-phase="index" onclick="updateSkillView('index')" class="skill-tab px-3 py-2 text-xs font-bold rounded border bg-white hover:border-indigo-500 transition-colors">Phase 1: Index</button>
+                                <button type="button" data-skill-phase="load" onclick="updateSkillView('load')" class="skill-tab px-3 py-2 text-xs font-bold rounded border bg-white hover:border-indigo-500 transition-colors">Phase 2: Load</button>
+                                <button type="button" data-skill-phase="exec" onclick="updateSkillView('exec')" class="skill-tab px-3 py-2 text-xs font-bold rounded border bg-white hover:border-indigo-500 transition-colors">Phase 3: Execute</button>
+                            </div>
+                            <div id="skill-explainer" class="p-4 rounded-xl border bg-gray-50" aria-live="polite">
+                                <h4 id="skill-explainer-title" class="font-bold text-sm mb-1"></h4>
+                                <p id="skill-explainer-body" class="text-sm text-gray-600 leading-relaxed"></p>
+                                <p id="skill-explainer-cost" class="mt-2 text-xs font-bold text-indigo-700"></p>
                             </div>
                         </div>
                     </div>
@@ -191,7 +219,8 @@
         <section id="memory" class="mb-20 scroll-mt-24">
             <div class="grid lg:grid-cols-3 gap-8">
                 <div class="lg:col-span-1">
-                    <h2 class="text-3xl font-bold mb-4">The Memory Bank</h2>
+                    <span class="text-indigo-600 font-bold uppercase tracking-wider text-xs">Module 02</span>
+                    <h2 class="text-3xl font-bold mt-2 mb-4">The Memory Bank</h2>
                     <p class="text-gray-600 mb-6">
                         LLMs are stateless. The Memory Bank pattern creates a persistent "external brain" using hierarchical Markdown files, reducing redundant explanations by 23%.
                     </p>
@@ -231,37 +260,43 @@
 
         <!-- Section 3: Economics -->
         <section id="economics" class="mb-20 scroll-mt-24">
-            <div class="bg-indigo-900 rounded-3xl p-8 md:p-12 text-white overflow-hidden relative">
+            <div class="bg-white rounded-2xl shadow-sm border p-6 md:p-10 overflow-hidden relative">
                 <div class="relative z-10">
-                    <h2 class="text-3xl font-bold mb-8">Computational Economics</h2>
+                    <span class="text-indigo-600 font-bold uppercase tracking-wider text-xs">Module 03</span>
+                    <h2 class="text-3xl font-bold mt-2 mb-3">Computational Economics</h2>
+                    <p class="text-gray-600 max-w-2xl mb-8 leading-relaxed">
+                        Agents resend their whole context on every step, so a long loop pays for the same
+                        tokens dozens of times. Caching the stable prefix is the single largest lever on
+                        that bill — and the one most teams never pull.
+                    </p>
                     <div class="grid lg:grid-cols-2 gap-12 items-center">
                         <div>
-                            <h3 class="text-xl font-semibold mb-4 text-indigo-200">The Power of Prefix Caching</h3>
-                            <p class="text-indigo-100/80 mb-6">
+                            <h3 class="text-xl font-semibold mb-4 text-gray-900">The Power of Prefix Caching</h3>
+                            <p class="text-gray-600 mb-6">
                                 Prompt caching reduces latency by 85% and slashes input costs by 90% by storing Key-Value (KV) tensors. Success depends on placing static data at the absolute beginning of the prompt.
                             </p>
                             
                             <div class="space-y-4">
                                 <div class="flex justify-between items-end">
                                     <span class="text-sm font-medium">Standard Request Cost</span>
-                                    <span class="text-sm font-bold text-red-300">100%</span>
+                                    <span class="text-sm font-bold text-red-600">100%</span>
                                 </div>
-                                <div class="w-full h-3 bg-indigo-800 rounded-full overflow-hidden">
-                                    <div class="h-full bg-red-400 w-full"></div>
+                                <div class="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="h-full bg-red-500 w-full"></div>
                                 </div>
                                 
                                 <div class="flex justify-between items-end mt-4">
                                     <span class="text-sm font-medium">Cached Read Cost (Anthropic)</span>
-                                    <span class="text-sm font-bold text-green-300">10%</span>
+                                    <span class="text-sm font-bold text-green-700">10%</span>
                                 </div>
-                                <div class="w-full h-3 bg-indigo-800 rounded-full overflow-hidden">
-                                    <div class="h-full bg-green-400" style="width: 10%"></div>
+                                <div class="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="h-full bg-green-600" style="width: 10%"></div>
                                 </div>
                             </div>
                         </div>
                         
-                        <div class="bg-white/5 p-6 rounded-2xl backdrop-blur-sm border border-white/10">
-                            <h4 class="text-center text-sm font-bold mb-6 text-indigo-200 uppercase tracking-widest">Cache Architecture Comparison</h4>
+                        <div class="bg-gray-50 p-6 rounded-2xl border">
+                            <h4 class="text-center text-sm font-bold mb-6 text-gray-500 uppercase tracking-widest">Cache Architecture Comparison</h4>
                             <div class="chart-container">
                                 <canvas id="economicsChart"></canvas>
                             </div>
@@ -275,7 +310,8 @@
         <section id="compression" class="mb-20 scroll-mt-24">
             <div class="flex flex-col md:flex-row gap-4 mb-8 items-end">
                 <div class="flex-grow">
-                    <h2 class="text-3xl font-bold mb-2">Compression & Model Strategy</h2>
+                    <span class="text-indigo-600 font-bold uppercase tracking-wider text-xs">Module 04</span>
+                    <h2 class="text-3xl font-bold mt-2 mb-2">Compression & Model Strategy</h2>
                     <p class="text-gray-600">Managing token exhaustion and choosing the right compute tier.</p>
                 </div>
             </div>
@@ -323,8 +359,13 @@
         </section>
 
         <!-- Final synthesis -->
-        <section class="text-center max-w-3xl mx-auto py-12 border-t">
-            <h2 class="text-2xl font-bold mb-4">The Perfect Agent Lifecycle</h2>
+        <section id="lifecycle" class="text-center max-w-3xl mx-auto py-12 border-t scroll-mt-24">
+            <span class="text-indigo-600 font-bold uppercase tracking-wider text-xs">Module 05</span>
+            <h2 class="text-2xl font-bold mt-2 mb-3">The Perfect Agent Lifecycle</h2>
+            <p class="text-gray-600 max-w-xl mx-auto mb-8 leading-relaxed">
+                Every module above, assembled into one loop. Read it as the order things happen in,
+                not a list of features.
+            </p>
             <div class="flex flex-col items-center">
                 <canvas id="cycleCanvas" width="600" height="150" class="w-full max-w-lg mb-6"></canvas>
                 <p class="text-sm text-gray-500 px-8">
@@ -332,6 +373,17 @@
                 </p>
             </div>
         </section>
+        <nav class="pager" aria-label="Continue">
+            <a href="index.html#curriculum">
+                <span class="dir">← Back</span>
+                <span class="to">All four phases</span>
+            </a>
+            <a href="resources.html" class="next">
+                <span class="dir">Next →</span>
+                <span class="to">Resources · Where to read next</span>
+            </a>
+        </nav>
+
     </main>
 
     <footer class="bg-gray-50 border-t py-12">
@@ -352,24 +404,43 @@
         const skillViews = {
             index: {
                 tokens: '~100 per skill',
+                title: 'Phase 1 — Index: the agent only reads the label',
+                body: 'At the start of a session the agent loads nothing but the frontmatter of every skill it has: the name and the one-line description. That is enough to know what each skill is for, without paying for any of the instructions inside. Forty skills cost about four thousand tokens here, not a hundred and fifty thousand.',
+                cost: 'Cost: ~100 tokens per skill, every session',
                 code: `<span class="text-pink-400">---</span>\n<span class="text-indigo-400">name:</span> pdf-handler\n<span class="text-indigo-400">description:</span> Extracts text and tables from PDFs...\n<span class="text-pink-400">---</span>\n\n<span class="text-gray-500 italic">// Body truncated for indexing phase...</span>`
             },
             load: {
                 tokens: '~2.5k Tokens',
+                title: 'Phase 2 — Load: one description matches, one file opens',
+                body: 'You ask for something involving a PDF. The agent compares your request against the index, decides that this description matches, and only now reads the full body of that one file. Every other skill stays closed. This is why the description field matters more than anything else in a skill: it is the trigger.',
+                cost: 'Cost: ~2,500 tokens, and only for the skill you actually needed',
                 code: `<span class="text-pink-400">---</span>\n<span class="text-indigo-400">name:</span> pdf-handler\n<span class="text-indigo-400">description:</span> Extracts text and tables from PDFs...\n<span class="text-pink-400">---</span>\n\n<span class="text-green-400"># Procedure</span>\n1. Analyze structure.\n2. Execute python extraction...\n<span class="text-indigo-400">scripts/</span>\n - extract.py\n - merge.py`
             },
             exec: {
                 tokens: 'Variable (On-Demand)',
+                title: 'Phase 3 — Execute: resources open at the moment of use',
+                body: 'The instructions point at scripts, templates, and reference files. Those load one at a time, at the exact point the procedure needs them — never in advance. A skill can therefore ship with megabytes of supporting material and still cost almost nothing until the moment it is used.',
+                cost: 'Cost: on demand, only what the task touches',
                 code: `<span class="text-pink-400">---</span>\n<span class="text-indigo-400">EXECUTION LOG:</span>\n> RUN scripts/extract.py\n> LOADING asset/template-A.json\n> SUCCESS: 22 pages processed.\n<span class="text-pink-400">---</span>`
             }
         };
 
         // UI Controllers
         function updateSkillView(phase) {
-            const block = document.getElementById('skill-code-block');
-            const counter = document.getElementById('skill-token-counter');
-            block.innerHTML = skillViews[phase].code;
-            counter.innerText = skillViews[phase].tokens;
+            const view = skillViews[phase];
+            document.getElementById('skill-code-block').innerHTML = view.code;
+            document.getElementById('skill-token-counter').innerText = view.tokens;
+
+            // The buttons used to change the code with no word of explanation.
+            document.getElementById('skill-explainer-title').innerText = view.title;
+            document.getElementById('skill-explainer-body').innerText = view.body;
+            document.getElementById('skill-explainer-cost').innerText = view.cost;
+
+            document.querySelectorAll('.skill-tab').forEach(function (btn) {
+                const on = btn.dataset.skillPhase === phase;
+                btn.classList.toggle('is-active', on);
+                btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+            });
         }
 
         function initFileTree() {
@@ -427,14 +498,14 @@
                             label: 'Anthropic (Explicit)',
                             data: [100, 90, 25, 1024],
                             backgroundColor: 'rgba(99, 102, 241, 0.8)',
-                            borderColor: 'white',
+                            borderColor: 'rgba(79, 70, 229, 1)',
                             borderWidth: 1
                         },
                         {
                             label: 'OpenAI (Implicit)',
                             data: [50, 50, 0, 1024],
                             backgroundColor: 'rgba(16, 185, 129, 0.8)',
-                            borderColor: 'white',
+                            borderColor: 'rgba(5, 150, 105, 1)',
                             borderWidth: 1
                         }
                     ]
@@ -443,18 +514,18 @@
                     responsive: true,
                     maintainAspectRatio: false,
                     plugins: {
-                        legend: { labels: { color: '#E0E7FF', font: { size: 10 } } },
+                        legend: { labels: { color: '#374151', font: { size: 10 } } },
                         tooltip: { mode: 'index', intersect: false }
                     },
                     scales: {
                         y: { 
                             beginAtZero: true, 
-                            grid: { color: 'rgba(255,255,255,0.1)' },
-                            ticks: { color: '#E0E7FF', font: { size: 9 } }
+                            grid: { color: 'rgba(17,24,39,0.08)' },
+                            ticks: { color: '#6B7280', font: { size: 9 } }
                         },
                         x: { 
                             grid: { display: false },
-                            ticks: { color: '#E0E7FF', font: { size: 9 } }
+                            ticks: { color: '#6B7280', font: { size: 9 } }
                         }
                     }
                 }
@@ -505,6 +576,7 @@
 
         // Init
         window.onload = () => {
+            updateSkillView('index');
             initFileTree();
             initCharts();
             drawCycle();
@@ -524,5 +596,6 @@
         };
     </script>
     <script src="assets/js/nav.js"></script>
+    <script src="assets/js/toc.js"></script>
 </body>
 </html>

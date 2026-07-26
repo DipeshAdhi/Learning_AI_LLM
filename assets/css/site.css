@@ -782,3 +782,65 @@ body { text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; 
 @media (prefers-reduced-motion: reduce) {
   .toc a, .pager a, .phase-rail a, .breadcrumb a { transition: none !important; }
 }
+
+/* ── module bar (AI Mastery page) ────────────────────────────────── */
+
+/* A horizontal companion to .toc, for pages whose layout has no room for a
+   sidebar. Same job: always answer "which part am I in". */
+.modulebar {
+  position: sticky;
+  top: 3.4rem;
+  z-index: 40;
+  margin: 0 -1rem 3rem;
+  padding: 0.5rem 1rem;
+  background: rgba(249, 247, 242, 0.94);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.modulebar ol {
+  display: flex;
+  gap: 0.4rem;
+  overflow-x: auto;
+  list-style: none;
+  scrollbar-width: none;
+}
+.modulebar ol::-webkit-scrollbar { display: none; }
+.modulebar li { flex: none; }
+.modulebar a {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  padding: 0.45rem 0.8rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--muted);
+  transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease;
+}
+.modulebar a:hover { color: var(--ink); border-color: var(--rule); }
+.modulebar .mod-n {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.7rem;
+  opacity: 0.7;
+}
+.modulebar a.is-current {
+  background: #4F46E5;
+  border-color: #4F46E5;
+  color: #FFFFFF;
+  font-weight: 600;
+}
+.modulebar a.is-current .mod-n { opacity: 0.85; }
+
+@media (prefers-reduced-motion: reduce) { .modulebar a { transition: none !important; } }
+
+/* ── skill phase tabs (AI Mastery, Module 01) ────────────────────── */
+
+.skill-tab.is-active {
+  background: #4F46E5;
+  border-color: #4F46E5;
+  color: #FFFFFF;
+}
+.skill-tab.is-active:hover { border-color: #4F46E5; }
