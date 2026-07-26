@@ -50,7 +50,7 @@ tailwind.config = {
       <a href="#start">How to use this</a>
       <a href="resources.html">Resources</a>
       <a href="Not_just_chat_bot.html">AI Mastery</a>
-      <a href="#" class="nav-cta">GitHub</a>
+      <a href="https://github.com/DipeshAdhi/Learning_AI_LLM" class="nav-cta" target="_blank" rel="noopener noreferrer">GitHub</a>
     </nav>
 
     <button type="button" class="nav-toggle ml-auto" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav">
@@ -65,7 +65,7 @@ tailwind.config = {
     <a href="#start">How to use this</a>
     <a href="resources.html">Resources</a>
     <a href="Not_just_chat_bot.html">AI Mastery</a>
-    <a href="#">GitHub</a>
+    <a href="https://github.com/DipeshAdhi/Learning_AI_LLM" target="_blank" rel="noopener noreferrer">GitHub</a>
   </nav>
 </header>
 
@@ -94,17 +94,17 @@ tailwind.config = {
 
   <!-- two honest doors, so nobody has to guess where to begin -->
   <div class="mt-9 grid gap-3 sm:grid-cols-2 sm:gap-4 md:max-w-3xl">
-    <a href="#level-1" class="door">
+    <a href="phase-1.html" class="door">
       <span class="door-kicker">New to this</span>
       <span class="door-title">Start at the beginning</span>
       <span class="door-note">What a token is, why AI forgets, and how to tell a good answer from a confident one.</span>
-      <span class="door-go">Level 1 →</span>
+      <span class="door-go">Phase 1 →</span>
     </a>
-    <a href="#level-3" class="door door-accent">
+    <a href="phase-2.html" class="door door-accent">
       <span class="door-kicker">Already comfortable</span>
-      <span class="door-title">Skip to context engineering</span>
+      <span class="door-title">Skip to memory and context</span>
       <span class="door-note">Skills, memory files, caching, and compression — the part most guides never reach.</span>
-      <span class="door-go">Level 3 →</span>
+      <span class="door-go">Phase 2 →</span>
     </a>
   </div>
 </section>
@@ -162,14 +162,14 @@ tailwind.config = {
         word each. Everything the model can see at once has to fit in a fixed space called the
         <strong>context window</strong>, and you pay for every token you put in it, every single
         time you send a message. The red stripes are text that was sent and paid for on every
-        turn without ever being useful. Level&nbsp;1 explains all of this slowly; Level&nbsp;3
+        turn without ever being useful. Phase&nbsp;1 explains all of this slowly; Phase&nbsp;2
         shows you how to fix it.
       </p>
     </details>
 
     <p class="mt-4 font-mono text-[10px] leading-relaxed text-muted">
       Illustrative figures, priced at $3 per million input tokens. Token counts are modelled,
-      not measured — Level&nbsp;3 shows you how to measure your own.
+      not measured — Phase&nbsp;2 shows you how to measure your own.
     </p>
   </div>
 </section>
@@ -187,8 +187,8 @@ tailwind.config = {
         <span class="step-num">1</span>
         <h3 class="step-title">Read in order the first time</h3>
         <p class="step-text">
-          The levels build on each other. Budgeting a context window is hard if you are still
-          fuzzy on what a token is, so start at Level&nbsp;1 even if it looks basic.
+          The phases build on each other. Budgeting a context window is hard if you are still
+          fuzzy on what a token is, so start at Phase&nbsp;1 even if it looks basic.
         </p>
       </li>
       <li class="step">
@@ -254,113 +254,65 @@ tailwind.config = {
 <!-- ─────────────────────────── curriculum ─────────────────────────── -->
 <section id="curriculum" class="mx-auto max-w-6xl px-5 py-20">
   <div class="flex flex-wrap items-end justify-between gap-4">
-    <h2 class="font-display text-4xl font-extrabold tracking-tight">Six levels</h2>
+    <h2 class="font-display text-4xl font-extrabold tracking-tight">Four phases</h2>
     <p class="max-w-[46ch] text-[15px] leading-snug text-muted">
-      Written one level at a time, in the open. Times are rough estimates for a first read —
-      take longer, nobody is counting.
+      From the paradigm shift to production systems. Each phase builds on the last,
+      written in the open as we go.
     </p>
   </div>
 
   <ol class="mt-12 border-t border-rule">
 
-    <li id="level-1" class="level">
+    <li id="phase-1" class="level">
       <span class="level-num">01</span>
       <div class="level-body">
-        <h3 class="level-title">AI foundations</h3>
-        <p class="level-desc">What the thing actually is, in the plainest terms that still hold up later: how it reads, what it costs, and where it goes wrong.</p>
+        <h3 class="level-title"><a href="phase-1.html">The basics</a></h3>
+        <p class="level-desc">Welcome to the new paradigm. What has shifted in how we build software, and why "vibe coding" is not hype — it is how the industry is actually changing.</p>
         <ul class="tags">
-          <li>What is an LLM</li><li>Tokens</li><li>Context windows</li><li>Temperature</li><li>Reasoning models</li><li>Embeddings</li><li>Hallucinations</li>
+          <li><a href="phase-1.html#what-is-ai">What is AI in development</a></li><li><a href="phase-1.html#vibe-coding">Vibe coding explained</a></li><li><a href="phase-1.html#builders-vs-editors">AI App Builders vs Code Editors</a></li><li><a href="phase-1.html#who-this-is-for">Who this is for</a></li><li><a href="phase-1.html#first-workflow">Your first workflow</a></li><li><a href="phase-1.html#golden-rule">The golden rule</a></li>
         </ul>
+        <p class="mt-5"><a href="phase-1.html" class="door-go">Read phase 1 →</a></p>
       </div>
-      <span class="level-meta">
-        <span class="badge badge-1">Beginner</span>
-        <span class="level-time">~45 min</span>
-        <span class="level-state">Drafting</span>
-      </span>
     </li>
 
-    <li id="level-2" class="level">
+    <li id="phase-2" class="level is-core">
       <span class="level-num">02</span>
       <div class="level-body">
-        <h3 class="level-title">Prompt engineering</h3>
-        <p class="level-desc">The techniques worth knowing — and, more usefully, the moment each one stops being worth its tokens.</p>
-        <ul class="tags">
-          <li>Zero-shot</li><li>Few-shot</li><li>Chain of thought</li><li>Role prompting</li><li>Structured outputs</li><li>Templates</li><li>Debugging prompts</li>
-        </ul>
-      </div>
-      <span class="level-meta">
-        <span class="badge badge-1">Beginner</span>
-        <span class="level-time">~1 hr</span>
-        <span class="level-state">Planned</span>
-      </span>
-    </li>
-
-    <li id="level-3" class="level is-core">
-      <span class="level-num">03</span>
-      <div class="level-body">
-        <p class="font-mono text-[10px] uppercase tracking-[0.16em] text-sig">Start here if you already prompt well</p>
-        <h3 class="level-title">Context engineering</h3>
+        <p class="font-mono text-[10px] uppercase tracking-[0.16em] text-sig">Where things get real</p>
+        <h3 class="level-title"><a href="phase-2.html">Intermediate: taming the chaos</a></h3>
         <p class="level-desc">
-          Everything the window holds, and everything it drops. Built on real skill files and real
-          measurements rather than a tour of other people's blog posts.
+          Why AI forgets things, how to give it memory that actually works, and how to compress
+          a long conversation so it survives past the first chat window.
         </p>
         <ul class="tags">
-          <li>Agent skills</li><li>Progressive disclosure</li><li>Memory banks</li><li>Prompt caching</li><li>Compression</li><li>Eviction</li><li>Long-context management</li>
+          <li><a href="phase-2.html#context-problem">The context problem</a></li><li><a href="phase-2.html#memory-bank">Memory bank pattern</a></li><li><a href="phase-2.html#memory-files">MEMORY.md and friends</a></li><li><a href="phase-2.html#compression">Context compression</a></li><li><a href="phase-2.html#summarize-save">Summarize & save</a></li><li><a href="phase-2.html#caching-basics">Prompt caching basics</a></li>
         </ul>
+        <p class="mt-5"><a href="phase-2.html" class="door-go">Read phase 2 →</a></p>
       </div>
-      <span class="level-meta">
-        <span class="badge badge-2">Intermediate</span>
-        <span class="level-time">~3 hrs</span>
-        <span class="level-state is-core">In progress</span>
-      </span>
     </li>
 
-    <li id="level-4" class="level">
+    <li id="phase-3" class="level">
+      <span class="level-num">03</span>
+      <div class="level-body">
+        <h3 class="level-title"><a href="phase-3.html">Advanced: efficiency and economics</a></h3>
+        <p class="level-desc">When to use expensive reasoning models, when to deploy fast SLMs instead, and how to structure your system so the API provider caches your static data — dropping costs by 90%.</p>
+        <ul class="tags">
+          <li><a href="phase-3.html#llms-vs-slms">LLMs vs SLMs</a></li><li><a href="phase-3.html#model-selection">Model selection</a></li><li><a href="phase-3.html#economics">Computational economics</a></li><li><a href="phase-3.html#caching-deep">Prompt caching deep dive</a></li><li><a href="phase-3.html#hybrid-rag">Hybrid RAG</a></li><li><a href="phase-3.html#cost-at-scale">Cost per token at scale</a></li>
+        </ul>
+        <p class="mt-5"><a href="phase-3.html" class="door-go">Read phase 3 →</a></p>
+      </div>
+    </li>
+
+    <li id="phase-4" class="level">
       <span class="level-num">04</span>
       <div class="level-body">
-        <h3 class="level-title">AI workflows</h3>
-        <p class="level-desc">Whole builds, each taken apart the same way: architecture, prompt, tools, memory, evaluation.</p>
+        <h3 class="level-title"><a href="phase-4.html">Expert: agentic systems</a></h3>
+        <p class="level-desc">Agents that run in a loop, execute their own commands, fix their own errors, and follow your exact standards. The `.skill` file format and the perfect vibe-coding loop.</p>
         <ul class="tags">
-          <li>Research assistant</li><li>Coding assistant</li><li>Study assistant</li><li>Meeting summariser</li><li>Email assistant</li>
+          <li><a href="phase-4.html#what-is-agent">What is an agent</a></li><li><a href="phase-4.html#progressive-disclosure">Progressive disclosure</a></li><li><a href="phase-4.html#skill-files">.skill files</a></li><li><a href="phase-4.html#tool-calling">Tool calling</a></li><li><a href="phase-4.html#mcp">MCP servers</a></li><li><a href="phase-4.html#multi-agent">Multi-agent workflows</a></li><li><a href="phase-4.html#the-loop">The complete loop</a></li>
         </ul>
+        <p class="mt-5"><a href="phase-4.html" class="door-go">Read phase 4 →</a></p>
       </div>
-      <span class="level-meta">
-        <span class="badge badge-2">Intermediate</span>
-        <span class="level-time">~2 hrs</span>
-        <span class="level-state">Planned</span>
-      </span>
-    </li>
-
-    <li id="level-5" class="level">
-      <span class="level-num">05</span>
-      <div class="level-body">
-        <h3 class="level-title">AI agents</h3>
-        <p class="level-desc">Where the model starts choosing its own next step — and every context decision you made begins to compound.</p>
-        <ul class="tags">
-          <li>Tool calling</li><li>MCP</li><li>Planning</li><li>Multi-agent systems</li><li>Reflection</li><li>Self-correction</li><li>Task decomposition</li>
-        </ul>
-      </div>
-      <span class="level-meta">
-        <span class="badge badge-3">Advanced</span>
-        <span class="level-time">~3 hrs</span>
-        <span class="level-state">Planned</span>
-      </span>
-    </li>
-
-    <li id="level-6" class="level">
-      <span class="level-num">06</span>
-      <div class="level-body">
-        <h3 class="level-title">Build projects</h3>
-        <p class="level-desc">Real briefs with real constraints — a dissertation, a business plan, a working codebase — instead of toy demos.</p>
-        <ul class="tags">
-          <li>Personal tutor</li><li>PDF chatbot</li><li>AI CRM</li><li>Ticket routing</li><li>Coding assistant</li>
-        </ul>
-      </div>
-      <span class="level-meta">
-        <span class="badge badge-3">Advanced</span>
-        <span class="level-time">Project-based</span>
-        <span class="level-state">Planned</span>
-      </span>
     </li>
 
   </ol>
@@ -383,7 +335,7 @@ tailwind.config = {
         </p>
       </div>
       <div class="mt-8 flex flex-wrap gap-3">
-        <a href="#" class="btn-solid">Browse the repository</a>
+        <a href="https://github.com/DipeshAdhi/Learning_AI_LLM" class="btn-solid" target="_blank" rel="noopener noreferrer">Browse the repository</a>
         <a href="resources.html" class="btn-outline">See recommended reading</a>
       </div>
     </div>
@@ -416,8 +368,8 @@ tailwind.config = {
     they were the same. Find a wrong number here and it gets fixed in public.
   </p>
   <div class="mt-8 flex flex-wrap gap-3">
-    <a href="#" class="btn-solid">Report a mistake</a>
-    <a href="#" class="btn-outline">How to contribute</a>
+    <a href="https://github.com/DipeshAdhi/Learning_AI_LLM/issues/new" class="btn-solid" target="_blank" rel="noopener noreferrer">Report a mistake</a>
+    <a href="https://github.com/DipeshAdhi/Learning_AI_LLM" class="btn-outline" target="_blank" rel="noopener noreferrer">How to contribute</a>
   </div>
 </section>
 
@@ -434,19 +386,17 @@ tailwind.config = {
       </div>
       <nav class="foot-nav" aria-label="Curriculum">
         <p class="foot-head">Curriculum</p>
-        <a href="#level-1">1 · Foundations</a>
-        <a href="#level-2">2 · Prompting</a>
-        <a href="#level-3">3 · Context engineering</a>
-        <a href="#level-4">4 · Workflows</a>
-        <a href="#level-5">5 · Agents</a>
-        <a href="#level-6">6 · Projects</a>
+        <a href="phase-1.html">1 · The basics</a>
+        <a href="phase-2.html">2 · Intermediate</a>
+        <a href="phase-3.html">3 · Advanced</a>
+        <a href="phase-4.html">4 · Expert</a>
       </nav>
       <nav class="foot-nav" aria-label="More">
         <p class="foot-head">More</p>
         <a href="resources.html">Resources</a>
         <a href="#start">How to use this site</a>
         <a href="#contribute">Contribute</a>
-        <a href="#">GitHub</a>
+        <a href="https://github.com/DipeshAdhi/Learning_AI_LLM" target="_blank" rel="noopener noreferrer">GitHub</a>
       </nav>
     </div>
     <p class="mt-10 border-t border-rule pt-6 font-mono text-[11px] uppercase tracking-[0.1em] text-muted">

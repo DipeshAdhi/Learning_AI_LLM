@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phase 4: Expert: agentic systems — Contextbook</title>
+<meta name="description" content="What an agent is, progressive disclosure, skill files, tool calling, MCP, and the complete vibe-coding loop.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = { theme: { extend: {
+  colors: { ink:'#131522', ink2:'#2A2E44', paper:'#ECEDF1', card:'#FFFFFF', rule:'#D3D6E0',
+            muted:'#5C6178', sig:'#2A34E8', sigpale:'#C5CAFB', mem:'#6E3BD1', convo:'#8A90A8',
+            waste:'#D31F5C', wastepale:'#F3A9C2' },
+  fontFamily: { display:['"Bricolage Grotesque"','system-ui','sans-serif'],
+                body:['"Source Serif 4"','Georgia','serif'],
+                mono:['"JetBrains Mono"','ui-monospace','monospace'] },
+  maxWidth: { readable: '68ch' } } } }
+</script>
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+
+<body class="bg-paper text-ink font-body antialiased">
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="site-header">
+  <div class="mx-auto flex max-w-6xl items-center gap-4 px-5 py-3.5">
+    <a href="index.html" class="font-display text-[17px] font-extrabold tracking-tight">
+      Context<span class="text-sig">book</span>
+    </a>
+    <nav class="nav-desktop ml-auto" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="index.html#curriculum" aria-current="page">Curriculum</a>
+      <a href="resources.html">Resources</a>
+      <a href="https://github.com/DipeshAdhi/Learning_AI_LLM" class="nav-cta" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </nav>
+    <button type="button" class="nav-toggle ml-auto" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav">
+      <span class="sr-only">Menu</span><span aria-hidden="true">Menu</span>
+    </button>
+  </div>
+  <nav id="mobile-nav" class="nav-mobile" hidden aria-label="Main, mobile">
+    <a href="index.html">Home</a>
+    <a href="index.html#curriculum" aria-current="page">Curriculum</a>
+    <a href="resources.html">Resources</a>
+    <a href="https://github.com/DipeshAdhi/Learning_AI_LLM" target="_blank" rel="noopener noreferrer">GitHub</a>
+  </nav>
+</header>
+
+<main id="main" class="mx-auto max-w-6xl px-5 pb-24 pt-8">
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="index.html">Home</a>
+    <span aria-hidden="true">/</span>
+    <a href="index.html#curriculum">Curriculum</a>
+    <span aria-hidden="true">/</span>
+    <span aria-current="page">Phase 4</span>
+  </nav>
+
+  <ol class="phase-rail" aria-label="Course progress">
+    <li><a href="phase-1.html"><span class="rail-n">01</span><span class="rail-name">The basics</span></a></li>
+    <li><a href="phase-2.html"><span class="rail-n">02</span><span class="rail-name">Intermediate</span></a></li>
+    <li><a href="phase-3.html"><span class="rail-n">03</span><span class="rail-name">Advanced</span></a></li>
+    <li><span class="is-here"><span class="rail-n">04</span><span class="rail-name">Expert</span></span></li>
+  </ol>
+
+  <div class="mt-10">
+    <p class="font-mono text-[11px] uppercase tracking-[0.16em] text-sig">Phase 4 · Expert</p>
+    <h1 class="mt-4 max-w-[18ch] font-display text-[2.2rem] font-extrabold leading-[1.03] tracking-[-0.02em] sm:text-5xl">
+      Expert: agentic systems
+    </h1>
+    <p class="mt-5 max-w-readable text-lg leading-relaxed text-ink2 sm:text-xl">
+      Agents that run commands, read the results, and fix their own mistakes — and the skill files that make them follow your standards instead of inventing their own.
+    </p>
+  </div>
+
+  <div class="article-grid mt-14">
+
+    <aside class="toc" aria-label="On this page">
+      <p class="toc-head">On this page</p>
+      <ol data-toc>
+        <li><a href="#what-is-agent">What an agent is</a></li>
+        <li><a href="#progressive-disclosure">Progressive disclosure</a></li>
+        <li><a href="#skill-files">Skill files</a></li>
+        <li><a href="#tool-calling">Tool calling</a></li>
+        <li><a href="#mcp">MCP servers</a></li>
+        <li><a href="#multi-agent">Multi-agent workflows</a></li>
+        <li><a href="#the-loop">The complete loop</a></li>
+      </ol>
+    </aside>
+
+    <article class="prose">
+
+      <section id="what-is-agent">
+        <h2>What an agent is</h2>
+        <p>
+          An assistant answers. An agent acts, looks at what happened, and decides what to do next.
+          The mechanical difference is small — a loop — and the consequences are large.
+        </p>
+        <pre><code>while not done:
+    decide the next action
+    execute it
+    read the result
+    update understanding</code></pre>
+        <p>
+          Because it runs commands and reads their output, an agent can find its own mistakes: run
+          the tests, see the failure, fix it, run them again. That is genuinely new, and it is also
+          why context discipline stops being an optimisation and becomes a requirement. Every step
+          adds output to the window, so a loose context that was merely wasteful in a chat becomes
+          a session that dies halfway through a task.
+        </p>
+      </section>
+
+      <section id="progressive-disclosure">
+        <h2>Progressive disclosure</h2>
+        <p>
+          If you have forty instruction sets covering your conventions, deployment, testing, and
+          security, you cannot load them all — that is the red band from the homepage demo.
+        </p>
+        <p>
+          Progressive disclosure loads them in stages:
+        </p>
+        <ol class="numbered">
+          <li><strong>Index.</strong> The agent sees only each skill's name and one-line description — around a hundred tokens each.</li>
+          <li><strong>Activate.</strong> When a description matches the task, it opens that one file in full.</li>
+          <li><strong>Resources.</strong> If that file points at scripts, references, or templates, they load only at the moment they are needed.</li>
+        </ol>
+        <p>
+          Forty skills cost you roughly four thousand tokens of index instead of a hundred and fifty
+          thousand of bodies — and the one that matters arrives in full, near the end of the prompt
+          where attention is strongest.
+        </p>
+        <div class="keypoint">
+          <span class="keypoint-label">Why descriptions decide everything</span>
+          <p>
+            The description is the trigger. If two skills describe overlapping territory, both fire
+            and compete; if one is vague, it never fires at all. Write descriptions that say
+            precisely when to use the skill and, where there is any risk of overlap, when not to.
+          </p>
+        </div>
+      </section>
+
+      <section id="skill-files">
+        <h2>Skill files</h2>
+        <p>
+          A skill is a folder with a Markdown file in it. The frontmatter is the index entry; the
+          body is the procedure.
+        </p>
+        <pre><code>---
+name: django-deployment
+description: Deploy a Django service to staging or production.
+  Use when the user asks to deploy, release, or ship a Django
+  app, or mentions migrations against a live database.
+---
+
+# Django deployment
+
+1. Confirm the target environment explicitly. Never infer it.
+2. Run the test suite. Do not proceed on failure.
+3. Apply migrations with --plan first and show the output.
+4. Deploy, then verify /health before reporting success.
+
+## Never
+- Run migrations directly against production without a plan.
+- Skip step 4 because the deploy command exited zero.</code></pre>
+        <p>
+          Note what this is doing. It is not teaching Django — the model knows Django. It is
+          encoding <em>your</em> sequence, <em>your</em> guardrails, and the specific mistakes you
+          have seen made before. That is knowledge no amount of training data contains.
+        </p>
+        <p>
+          Keep the body short, a few hundred lines at most, and push detail into separate reference
+          files that load on demand. And treat skills from strangers as executable code, because
+          effectively they are: a skill file can instruct an agent to read your environment
+          variables and send them somewhere. Read before installing.
+        </p>
+      </section>
+
+      <section id="tool-calling">
+        <h2>Tool calling</h2>
+        <p>
+          Tool calling is the mechanism underneath all of it. You describe the functions available
+          — name, purpose, parameters — and the model responds with a request to call one. Your code
+          executes it and returns the result. The model never runs anything itself.
+        </p>
+        <p>
+          Two practical points. Tool definitions are sent on every request, so they belong in the
+          cached prefix. And descriptions matter as much as they do for skills: an ambiguous tool
+          description produces an agent that calls the wrong thing confidently.
+        </p>
+      </section>
+
+      <section id="mcp">
+        <h2>MCP servers</h2>
+        <p>
+          The Model Context Protocol is an open standard for exposing tools and data to any
+          assistant that speaks it. Instead of writing a separate integration for each product, you
+          write one MCP server and every compatible client can use it.
+        </p>
+        <p>
+          For a team this is the difference between maintaining four integrations and maintaining
+          one. It is also a clean boundary for permissions: the server decides what is exposed, and
+          nothing outside that surface is reachable.
+        </p>
+      </section>
+
+      <section id="multi-agent">
+        <h2>Multi-agent workflows</h2>
+        <p>
+          Once one agent works, the temptation is to build a team of them. Sometimes that is right,
+          usually for one specific reason: <strong>context isolation</strong>.
+        </p>
+        <p>
+          If a task requires reading forty files to extract one answer, doing it in the main
+          conversation dumps forty files of noise into a context you still need. Handing it to a
+          sub-agent means the noise lives and dies in that sub-agent, and only the answer comes
+          back.
+        </p>
+        <p>
+          That is the strong case. The weak case is splitting by job title — a "planner", a
+          "coder", a "reviewer" — which mostly adds handoffs where context gets lost. Split when
+          you want to quarantine context, not to imitate an org chart.
+        </p>
+      </section>
+
+      <section id="the-loop">
+        <h2>The complete loop</h2>
+        <p>
+          Everything in this book assembled into one working cycle:
+        </p>
+        <ol class="numbered">
+          <li><strong>Wake.</strong> The agent reads the stable system prompt and the static memory files, placed at the front so they stay cached.</li>
+          <li><strong>Index.</strong> It reads the skill index — names and descriptions only.</li>
+          <li><strong>Understand.</strong> Your request arrives at the end of the payload, where attention is strongest.</li>
+          <li><strong>Activate.</strong> It opens the one or two skills that actually match.</li>
+          <li><strong>Act.</strong> It works the loop — call a tool, read the result, correct itself.</li>
+          <li><strong>Compress.</strong> As the window fills, history collapses into a structured handoff rather than being truncated.</li>
+          <li><strong>Write back.</strong> Before finishing, it updates the memory files so the next session starts oriented.</li>
+        </ol>
+        <p>
+          Steps 1, 2, and 4 are Phase 2 and progressive disclosure. Step 6 is compression. Step 7 is
+          the memory bank. The economics from Phase 3 run underneath all of it. None of the pieces
+          are complicated on their own — the discipline is in doing all seven, every time, so that
+          the next session inherits a working state instead of an empty window.
+        </p>
+      </section>
+
+    </article>
+  </div>
+
+  <nav class="pager mx-auto max-w-6xl" aria-label="Phase navigation">
+    <a href="phase-3.html">
+      <span class="dir">← Back</span>
+      <span class="to">Phase 3 · Efficiency and economics</span>
+    </a>
+    <a href="resources.html" class="next">
+      <span class="dir">Next →</span>
+      <span class="to">Resources · Where to read next</span>
+    </a>
+  </nav>
+
+</main>
+
+<footer class="border-t border-rule bg-card">
+  <div class="mx-auto max-w-6xl px-5 py-12">
+    <div class="grid gap-8 sm:grid-cols-3">
+      <div>
+        <p class="font-display text-[15px] font-extrabold">Context<span class="text-sig">book</span></p>
+        <p class="mt-2 max-w-[32ch] text-[15px] leading-snug text-muted">A free, open textbook for practical AI engineering.</p>
+      </div>
+      <nav class="foot-nav" aria-label="Curriculum">
+        <p class="foot-head">Curriculum</p>
+        <a href="phase-1.html">1 · The basics</a>
+        <a href="phase-2.html">2 · Intermediate</a>
+        <a href="phase-3.html">3 · Advanced</a>
+        <a href="phase-4.html">4 · Expert</a>
+      </nav>
+      <nav class="foot-nav" aria-label="More">
+        <p class="foot-head">More</p>
+        <a href="resources.html">Resources</a>
+        <a href="index.html#start">How to use this site</a>
+        <a href="https://github.com/DipeshAdhi/Learning_AI_LLM" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </nav>
+    </div>
+    <p class="mt-10 border-t border-rule pt-6 font-mono text-[11px] uppercase tracking-[0.1em] text-muted">
+      Free forever · MIT licensed · Draft in progress
+    </p>
+  </div>
+</footer>
+
+<script src="assets/js/nav.js"></script>
+<script src="assets/js/toc.js"></script>
+</body>
+</html>
