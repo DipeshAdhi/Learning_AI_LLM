@@ -1175,7 +1175,17 @@ html.js .reveal[data-d="3"] { transition-delay: 270ms; }
 .eth-principle ul li.do   { background: var(--ok-pale);  border-left-color: var(--ok); }
 .eth-principle ul li.dont { background: var(--bad-pale); border-left-color: var(--bad); }
 
-.eth-principle ul li.do::before   { content: "\2713"; left: 0.9rem; color: var(--ok);  font-weight: 700; }
-.eth-principle ul li.dont::before { content: "\2715"; left: 0.9rem; color: var(--bad); font-weight: 700; }
+.eth-principle ul li.do::before {
+  content: "\2713"; /* tick */
+  left: 0.9rem;
+  color: var(--ok);
+  font-weight: 700;
+}
+.eth-principle ul li.dont::before {
+  content: "\2715"; /* cross */
+  left: 0.9rem;
+  color: var(--bad);
+  font-weight: 700;
+}
 .eth-principle ul li.do strong    { color: #14472F; }
 .eth-principle ul li.dont strong  { color: #7A1433; }
