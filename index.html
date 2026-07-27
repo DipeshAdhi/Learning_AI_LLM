@@ -72,8 +72,13 @@ tailwind.config = { theme: { extend: {
     </h1>
 
     <p class="lp-sub">
-      Everything that makes AI useful comes down to one thing — what you put inside the context
-      window, and what you leave out. Watch the stream: most of what people send is never read.
+        Everything that makes AI useful comes down to one thing — what you put inside the context window, and what you leave out.
+
+        More context does not always mean better answers.<br/>
+
+        The model may process everything you send, but not everything receives equal attention.<br/>
+
+        The skill is not giving AI more information.
     </p>
 
     <div class="lp-cta-row">
@@ -114,7 +119,7 @@ tailwind.config = { theme: { extend: {
 
 <!-- ═══════════════════ the demo ═══════════════════ -->
 <section id="demo" class="mx-auto max-w-6xl px-5 py-24">
-  <div class="reveal">
+  <div class="reveal scroll-slide">
     <p class="font-mono text-[11px] uppercase tracking-[0.16em] text-sig">See it once and it sticks</p>
     <h2 class="mt-4 max-w-[16ch] font-display text-4xl font-extrabold leading-[1.02] tracking-[-0.03em] sm:text-6xl">
       One task. Two architectures.
@@ -201,7 +206,7 @@ tailwind.config = { theme: { extend: {
 
 <!-- ═══════════════════ curriculum ═══════════════════ -->
 <section id="curriculum" class="mx-auto max-w-6xl px-5 py-24">
-  <div class="reveal flex flex-wrap items-end justify-between gap-5">
+  <div class="reveal scroll-slide flex flex-wrap items-end justify-between gap-5">
     <h2 class="max-w-[14ch] font-display text-4xl font-extrabold leading-[1.02] tracking-[-0.03em] sm:text-6xl">
       Four phases.<br>Zero to agents.
     </h2>
@@ -212,28 +217,28 @@ tailwind.config = { theme: { extend: {
   </div>
 
   <div class="lp-cards mt-14">
-    <a href="HTML/Phase/phase-1.html" class="lp-card reveal" style="--card-grad: linear-gradient(90deg,#6C78F2,rgba(108,120,242,0))">
+    <a href="HTML/Phase/phase-1.html" class="lp-card reveal scroll-scale" style="--card-grad: linear-gradient(90deg,#6C78F2,rgba(108,120,242,0))">
       <span class="lp-card-n">01 · BEGINNER</span>
       <span class="lp-card-t">The basics</span>
       <span class="lp-card-d">What an LLM really does, what vibe coding means, and which tool you should actually be using.</span>
       <span class="lp-card-go">Read phase 1 <span aria-hidden="true">→</span></span>
     </a>
 
-    <a href="HTML/Phase/phase-2.html" class="lp-card reveal" data-d="1" style="--card-grad: linear-gradient(90deg,#4551DE,rgba(69,81,222,0))">
+    <a href="HTML/Phase/phase-2.html" class="lp-card reveal scroll-scale" data-d="1" style="--card-grad: linear-gradient(90deg,#4551DE,rgba(69,81,222,0))">
       <span class="lp-card-n">02 · INTERMEDIATE</span>
       <span class="lp-card-t">Taming the chaos</span>
       <span class="lp-card-d">Why it forgets, the memory bank pattern, and compressing a session without losing what mattered.</span>
       <span class="lp-card-go">Read phase 2 <span aria-hidden="true">→</span></span>
     </a>
 
-    <a href="HTML/Phase/phase-3.html" class="lp-card reveal" data-d="2" style="--card-grad: linear-gradient(90deg,#2A34E8,rgba(42,52,232,0))">
+    <a href="HTML/Phase/phase-3.html" class="lp-card reveal scroll-scale" data-d="2" style="--card-grad: linear-gradient(90deg,#2A34E8,rgba(42,52,232,0))">
       <span class="lp-card-n">03 · ADVANCED</span>
       <span class="lp-card-t">Efficiency and economics</span>
       <span class="lp-card-d">Big models versus small ones, prompt caching, hybrid RAG, and where the money actually goes.</span>
       <span class="lp-card-go">Read phase 3 <span aria-hidden="true">→</span></span>
     </a>
 
-    <a href="HTML/Phase/phase-4.html" class="lp-card reveal" data-d="3" style="--card-grad: linear-gradient(90deg,#1D2694,rgba(29,38,148,0))">
+    <a href="HTML/Phase/phase-4.html" class="lp-card reveal scroll-scale" data-d="3" style="--card-grad: linear-gradient(90deg,#1D2694,rgba(29,38,148,0))">
       <span class="lp-card-n">04 · EXPERT</span>
       <span class="lp-card-t">Agentic systems</span>
       <span class="lp-card-d">Agents that run commands and fix their own errors, skill files, MCP, and the complete loop.</span>
@@ -244,7 +249,7 @@ tailwind.config = { theme: { extend: {
 
 <!-- ═══════════════════ ethics ═══════════════════ -->
 <section class="px-5 py-8">
-  <div class="reveal mx-auto max-w-6xl overflow-hidden rounded-[22px] px-7 py-16 sm:px-14"
+  <div class="reveal scroll-slide mx-auto max-w-6xl overflow-hidden rounded-[22px] px-7 py-16 sm:px-14"
        style="background:linear-gradient(140deg,#124B33 0%,#1B6E48 55%,#2E8F62 100%)">
     <p class="font-mono text-[11px] uppercase tracking-[0.18em]" style="color:#9FD9BC">Ethical use of AI</p>
     <h2 class="mt-5 max-w-[20ch] font-display text-3xl font-extrabold leading-[1.05] tracking-[-0.025em] text-white sm:text-5xl">
@@ -264,7 +269,7 @@ tailwind.config = { theme: { extend: {
 <!-- ═══════════════════ library ═══════════════════ -->
 <section id="library" class="mx-auto max-w-6xl px-5 py-24">
   <div class="grid gap-12 md:grid-cols-2 md:gap-16">
-    <div class="reveal">
+    <div class="reveal scroll-slide">
       <h2 class="max-w-[14ch] font-display text-4xl font-extrabold leading-[1.02] tracking-[-0.03em] sm:text-5xl">
         Everything is a file.
       </h2>
@@ -303,7 +308,7 @@ tailwind.config = { theme: { extend: {
 
 <!-- ═══════════════════ contribute ═══════════════════ -->
 <section id="contribute" class="border-t border-rule bg-card px-5 py-24">
-  <div class="reveal mx-auto max-w-4xl text-center">
+  <div class="reveal scroll-slide mx-auto max-w-4xl text-center">
     <h2 class="mx-auto max-w-[20ch] font-display text-4xl font-extrabold leading-[1.03] tracking-[-0.03em] sm:text-5xl">
       Written in the open, corrected in the open.
     </h2>

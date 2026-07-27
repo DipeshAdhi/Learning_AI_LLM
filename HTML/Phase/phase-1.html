@@ -96,7 +96,7 @@ tailwind.config = { theme: { extend: {
     <article class="prose">
 
       <section id="what-is-ai">
-        <h2>What AI actually does in software development</h2>
+        <h2 class="scroll-slide">What AI actually does in software development</h2>
         <p>
           A large language model is a program that predicts what text comes next. That is the whole
           mechanism. It was trained on an enormous amount of writing — including most of the public
@@ -123,7 +123,7 @@ tailwind.config = { theme: { extend: {
           disagreement. It writes confident nonsense because it has no separate signal for
           confidence — the tone was in the training data too.
         </p>
-        <div class="keypoint">
+        <div class="keypoint scroll-glow">
           <span class="keypoint-label">The one thing to remember</span>
           <p>
             The model is a very good writer with no ability to verify anything it writes. Your job
@@ -141,7 +141,7 @@ tailwind.config = { theme: { extend: {
       </section>
 
       <section id="vibe-coding">
-        <h2>What "vibe coding" means</h2>
+        <h2 class="scroll-slide">What "vibe coding" means</h2>
         <p>
           The term was coined by Andrej Karpathy in early 2025, and it describes a shift in where
           the programmer's attention goes. Instead of typing each line, you describe the intent,
@@ -172,7 +172,7 @@ tailwind.config = { theme: { extend: {
       </section>
 
       <section id="builders-vs-editors">
-        <h2>AI App Builders vs AI Code Editors</h2>
+        <h2 class="scroll-slide">AI App Builders vs AI Code Editors</h2>
         <p>
           These are two different categories of tool aimed at two different people, and picking the
           wrong one is the most common early mistake.
@@ -204,7 +204,7 @@ tailwind.config = { theme: { extend: {
           things that depend on it".
         </p>
 
-        <div class="keypoint">
+        <div class="keypoint scroll-glow">
           <span class="keypoint-label">Choosing</span>
           <p>
             If the code is the deliverable, use an editor. If the running product is the
@@ -216,7 +216,7 @@ tailwind.config = { theme: { extend: {
       </section>
 
       <section id="who-this-is-for">
-        <h2>Who this is for</h2>
+        <h2 class="scroll-slide">Who this is for</h2>
         <p>
           Everything after this phase assumes you are working on something that lasts longer than
           one conversation. That is the dividing line this book cares about — not how much code you
@@ -235,7 +235,7 @@ tailwind.config = { theme: { extend: {
       </section>
 
       <section id="first-workflow">
-        <h2>Your first workflow</h2>
+        <h2 class="scroll-slide">Your first workflow</h2>
         <p>
           Before any of the advanced machinery, this loop alone will put you ahead of most people
           using these tools. Try it on something real and small.
@@ -255,16 +255,16 @@ tailwind.config = { theme: { extend: {
       </section>
 
       <section id="golden-rule">
-        <h2>The golden rule: what beats how</h2>
+        <h2 class="scroll-slide">The golden rule: what beats how</h2>
         <p>
           Of the five steps above, the first one carries most of the weight, and it is the one
           people get wrong most reliably. Compare these two requests:
         </p>
-        <div class="keypoint">
+        <div class="keypoint scroll-glow">
           <span class="keypoint-label">Declarative — describe the outcome</span>
           <p>"Users should stay logged in after refreshing."</p>
         </div>
-        <div class="keypoint" style="border-left-color: var(--waste)">
+        <div class="keypoint scroll-glow" style="border-left-color: var(--waste)">
           <span class="keypoint-label" style="color: var(--waste)">Imperative — dictate the implementation</span>
           <p>"Add a useEffect that reads localStorage."</p>
         </div>

@@ -95,7 +95,7 @@ tailwind.config = { theme: { extend: {
     <article class="prose">
 
       <section id="llms-vs-slms">
-        <h2>Large models versus small ones</h2>
+        <h2 class="scroll-slide">Large models versus small ones</h2>
         <p>
           Most people pick one model and use it for everything. That is like hiring a senior
           architect to reformat CSV files — it works, and you are paying enormously for capability
@@ -119,7 +119,7 @@ tailwind.config = { theme: { extend: {
           faster still, and your data never leaves your machine. On narrow, well-specified,
           high-volume work they are frequently indistinguishable from the expensive option.
         </p>
-        <div class="keypoint">
+        <div class="keypoint scroll-glow">
           <span class="keypoint-label">A note on names</span>
           <p>
             Specific model names and prices date faster than anything else in this book, so this
@@ -130,7 +130,7 @@ tailwind.config = { theme: { extend: {
       </section>
 
       <section id="model-selection">
-        <h2>Choosing per task</h2>
+        <h2 class="scroll-slide">Choosing per task</h2>
         <p>
           The useful question is not "which model is best" but "what is the cost of being wrong
           here". Three rough tiers:
@@ -147,7 +147,7 @@ tailwind.config = { theme: { extend: {
       </section>
 
       <section id="economics">
-        <h2>What you are actually paying for</h2>
+        <h2 class="scroll-slide">What you are actually paying for</h2>
         <p>
           You are billed per token, separately for input and output, and input is where agentic
           workloads spend nearly everything. A long autonomous session sends its whole accumulated
@@ -160,7 +160,7 @@ tailwind.config = { theme: { extend: {
       </section>
 
       <section id="caching-deep">
-        <h2>Prompt caching in practice</h2>
+        <h2 class="scroll-slide">Prompt caching in practice</h2>
         <p>
           Caching stores the processed form of your prompt's prefix, so an identical prefix on the
           next request skips the computation. Reads are heavily discounted and noticeably faster.
@@ -177,7 +177,7 @@ tailwind.config = { theme: { extend: {
           expire. Treat the specific figures as things to verify in the docs rather than memorise —
           they change.
         </p>
-        <div class="keypoint">
+        <div class="keypoint scroll-glow">
           <span class="keypoint-label">The practical rule</span>
           <p>
             Static content first, volatile content last, and never edit the front of the prompt
@@ -187,7 +187,7 @@ tailwind.config = { theme: { extend: {
       </section>
 
       <section id="hybrid-rag">
-        <h2>Hybrid RAG</h2>
+        <h2 class="scroll-slide">Hybrid RAG</h2>
         <p>
           Retrieval-augmented generation means finding the few relevant pieces of your own
           documents and putting only those in front of the model, rather than hoping it already
@@ -213,7 +213,7 @@ tailwind.config = { theme: { extend: {
       </section>
 
       <section id="cost-at-scale">
-        <h2>Cost at scale</h2>
+        <h2 class="scroll-slide">Cost at scale</h2>
         <p>
           Three habits, in order of how much they save:
         </p>

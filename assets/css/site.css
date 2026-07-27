@@ -25,6 +25,9 @@
   --base:      #2A34E8;
   --ok:        #1B6E48;
   --ok-pale:   #DCEBE2;
+  --ok-light:  #2A9C66;
+  --ok-med:    #1F7F52;
+  --ok-dark:   #0F3D28;
   --bad:       #C0224E;
   --bad-pale:  #F6D5DF;
 }
@@ -1168,12 +1171,48 @@ html.js .reveal[data-d="3"] { transition-delay: 270ms; }
   letter-spacing: -0.03em; line-height: 1.06;
 }
 
+/* ═══════════════════════════════════════════════════════════════════
+   Scroll-Driven Animations — tied to viewport progress
+   ═══════════════════════════════════════════════════════════════════ */
+
+@keyframes scroll-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scroll-slide-up {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scroll-scale-in {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes scroll-border-expand {
+  from { border-left-width: 0; }
+  to { border-left-width: 3px; }
+}
+
+@keyframes scroll-accent-glow {
+  from { border-color: rgba(63, 162, 119, 0.2); box-shadow: inset 0 0 0 1px rgba(63, 162, 119, 0.1); }
+  to { border-color: rgba(63, 162, 119, 0.6); box-shadow: inset 0 0 12px rgba(63, 162, 119, 0.15); }
+}
+
+.scroll-fade { animation: scroll-fade-in linear; animation-timeline: view(); }
+.scroll-slide { animation: scroll-slide-up linear; animation-timeline: view(); }
+.scroll-scale { animation: scroll-scale-in linear; animation-timeline: view(); }
+.scroll-border { animation: scroll-border-expand linear; animation-timeline: view(); }
+.scroll-glow { animation: scroll-accent-glow linear; animation-timeline: view(); }
+
 @media (prefers-reduced-motion: reduce) {
   .lp-aurora, .lp-shimmer, .lp-scrollcue, .lp-dot { animation: none !important; }
   body.dark::after { animation: none !important; }
   .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
   .lp-btn, .lp-card, .lp-card::before, .lp-card::after, .lp-card-go span { transition: none !important; }
   .lp-btn:hover, .lp-card:hover { transform: none !important; }
+  .scroll-fade, .scroll-slide, .scroll-scale, .scroll-border, .scroll-glow { animation: none !important; }
 }
 
 /* semantic stat variants — red for the number that is a problem,
@@ -1297,6 +1336,9 @@ body.dark {
   --empty:     rgba(255,255,255,0.07);
   --ok:        #3FA277;
   --ok-pale:   rgba(63,162,119,0.14);
+  --ok-light:  #4DB878;
+  --ok-med:    #2E8F65;
+  --ok-dark:   #1F5F48;
   --bad:       #E2456F;
   --bad-pale:  rgba(226,69,111,0.14);
 
