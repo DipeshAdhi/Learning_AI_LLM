@@ -23,13 +23,13 @@
      blue = base / neutral, green = correct, red = wrong.
      Nothing is coloured for decoration. */
   --base:      #2A34E8;
-  --ok:        #1B6E48;
-  --ok-pale:   #DCEBE2;
-  --ok-light:  #2A9C66;
-  --ok-med:    #1F7F52;
-  --ok-dark:   #0F3D28;
-  --bad:       #C0224E;
-  --bad-pale:  #F6D5DF;
+  --ok:        #1A6E47;
+  --ok-pale:   #DFE9E2;
+  --ok-light:  #2FA870;
+  --ok-med:    #21805A;
+  --ok-dark:   #0D3A25;
+  --bad:       #BF1F4A;
+  --bad-pale:  #F8D7E1;
 }
 
 html { scroll-behavior: smooth; }
@@ -870,29 +870,29 @@ body { text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; 
 .nav-eth {
   padding: 0.45rem 0.85rem;
   border-radius: 2px;
-  background: #1B6E48;
+  background: #1A6E47;
   color: #FFFFFF !important;
   transition: background-color 160ms ease;
 }
-.nav-eth:hover { background: #14563a; color: #FFFFFF !important; }
+.nav-eth:hover { background: #0D4A32; color: #FFFFFF !important; }
 .nav-mobile .nav-eth { border-radius: 0; }
 
 body.eth {
-  --eth-ink:   #10231A;
-  --eth-body:  #33473D;
-  --eth-paper: #F1F5F2;
+  --eth-ink:   #0F2E1F;
+  --eth-body:  #35495F;
+  --eth-paper: #F2F7F4;
   --eth-card:  #FFFFFF;
-  --eth-rule:  #CFDDD4;
-  --eth-green: #1B6E48;
-  --eth-pale:  #DCEBE2;
-  background: #F1F5F2;
+  --eth-rule:  #D1DFD8;
+  --eth-green: #1A6E47;
+  --eth-pale:  #DFE9E2;
+  background: #F2F7F4;
   color: var(--eth-ink);
 }
 body.eth .site-header { background: rgba(241,245,242,0.93); border-bottom-color: var(--eth-rule); }
 body.eth .breadcrumb a:hover { color: var(--eth-green); }
 
 .eth-band {
-  background: linear-gradient(135deg, #14563a 0%, #1b6e48 45%, #2a855f 100%);
+  background: linear-gradient(135deg, #0D4A32 0%, #1A6E47 45%, #2E9B6E 100%);
   color: #EAF3EE;
   border-bottom: 1px solid rgba(255,255,255,0.16);
   box-shadow: inset 0 -1px 0 rgba(255,255,255,0.12);
@@ -1334,11 +1334,11 @@ body.dark {
   --mem:       #9E7BEA;
   --convo:     #6C7290;
   --empty:     rgba(255,255,255,0.07);
-  --ok:        #3FA277;
-  --ok-pale:   rgba(63,162,119,0.14);
-  --ok-light:  #4DB878;
-  --ok-med:    #2E8F65;
-  --ok-dark:   #1F5F48;
+  --ok:        #42B883;
+  --ok-pale:   rgba(66,184,131,0.15);
+  --ok-light:  #56D48F;
+  --ok-med:    #35A373;
+  --ok-dark:   #246B52;
   --bad:       #E2456F;
   --bad-pale:  rgba(226,69,111,0.14);
 
