@@ -95,7 +95,7 @@ tailwind.config = { theme: { extend: {
     <article class="prose">
 
       <section id="context-problem">
-        <h2>Why AI forgets</h2>
+        <h2 class="scroll-slide">Why AI forgets</h2>
         <p>
           A model has no memory between messages. Every request you send is processed on its own,
           from nothing. When a chat appears to remember what you said ten minutes ago, what is
@@ -113,7 +113,7 @@ tailwind.config = { theme: { extend: {
           decisions you made at the start. It is not degrading. The instruction simply is not in
           front of it any more.
         </p>
-        <div class="keypoint">
+        <div class="keypoint scroll-glow">
           <span class="keypoint-label">The reframe</span>
           <p>
             You are not talking to something with a memory. You are assembling a document and
@@ -130,7 +130,7 @@ tailwind.config = { theme: { extend: {
       </section>
 
       <section id="memory-bank">
-        <h2>The memory bank pattern</h2>
+        <h2 class="scroll-slide">The memory bank pattern</h2>
         <p>
           The fix is to stop keeping project knowledge in the conversation and start keeping it in
           files. A memory bank is a small set of Markdown files in your repository that the
@@ -159,7 +159,7 @@ and progress.md to match the new state.</code></pre>
       </section>
 
       <section id="memory-files">
-        <h2>What goes in each file</h2>
+        <h2 class="scroll-slide">What goes in each file</h2>
         <p>
           The point of splitting memory across several files is that they change at very different
           rates. Mixing a stable project description with a volatile task list means rewriting both
@@ -185,7 +185,7 @@ and progress.md to match the new state.</code></pre>
           <li><strong>progress.md</strong> — what works, what is left, known issues.</li>
         </ul>
 
-        <div class="keypoint">
+        <div class="keypoint scroll-glow">
           <span class="keypoint-label">A caution</span>
           <p>
             These filenames are a widely copied convention, not a standard. Some tools expect
@@ -196,7 +196,7 @@ and progress.md to match the new state.</code></pre>
       </section>
 
       <section id="compression">
-        <h2>Context compression</h2>
+        <h2 class="scroll-slide">Context compression</h2>
         <p>
           Memory files solve knowledge across sessions. Compression solves length within one. As a
           long working session accumulates file contents, command output, and reasoning, the window
@@ -217,7 +217,7 @@ and progress.md to match the new state.</code></pre>
       </section>
 
       <section id="summarize-save">
-        <h2>The summarize & save routine</h2>
+        <h2 class="scroll-slide">The summarize & save routine</h2>
         <p>
           This is the single highest-value habit in this phase. When a session gets long — or before
           you close your laptop — ask for a structured handoff and save it to a file. Then start a
@@ -247,7 +247,7 @@ Do not include conversational filler or restate the code.</code></pre>
       </section>
 
       <section id="caching-basics">
-        <h2>Why the order of your files matters</h2>
+        <h2 class="scroll-slide">Why the order of your files matters</h2>
         <p>
           One last thing, because it costs nothing and saves a great deal. Providers can cache the
           beginning of your request — the exact sequence of tokens at the front — so that resending
@@ -262,7 +262,7 @@ Do not include conversational filler or restate the code.</code></pre>
           instructions first, then tool definitions, then the memory files that rarely change, then
           the volatile ones, and finally the current conversation and the user's actual question.
         </p>
-        <div class="keypoint">
+        <div class="keypoint scroll-glow">
           <span class="keypoint-label">The mistake to avoid</span>
           <p>
             Injecting anything dynamic — a timestamp, the current file, today's task — into the
