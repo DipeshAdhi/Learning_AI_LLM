@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phase 2: Intermediate: taming the chaos — Contextbook</title>
+<meta name="description" content="Why AI forgets, the memory bank pattern, context compression, and the summarize-and-save routine.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = { theme: { extend: {
+  colors: { ink:'#131522', ink2:'#2A2E44', paper:'#ECEDF1', card:'#FFFFFF', rule:'#D3D6E0',
+            muted:'#5C6178', sig:'#2A34E8', sigpale:'#C5CAFB', mem:'#6E3BD1', convo:'#8A90A8',
+            waste:'#D31F5C', wastepale:'#F3A9C2' },
+  fontFamily: { display:['"Bricolage Grotesque"','system-ui','sans-serif'],
+                body:['"Source Serif 4"','Georgia','serif'],
+                mono:['"JetBrains Mono"','ui-monospace','monospace'] },
+  maxWidth: { readable: '68ch' } } } }
+</script>
+<link rel="stylesheet" href="../../assets/css/site.css">
+</head>
+
+<body class="top-dark bg-paper text-ink font-body antialiased">
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="site-header">
+  <div class="mx-auto flex max-w-6xl items-center gap-4 px-5 py-3.5">
+    <a href="../../index.html" class="font-display text-[17px] font-extrabold tracking-tight">
+      Context<span class="text-sig">book</span>
+    </a>
+    <nav class="nav-desktop ml-auto" aria-label="Main">
+      <a href="../../index.html">Home</a>
+      <a href="../../index.html#curriculum">Curriculum</a>
+      <a href="../Resources/resources.html">Resources</a>
+      <a href="https://github.com/DipeshAdhi/Learning_AI_LLM" class="nav-cta" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="../AI-Ethics/ethics.html" class="nav-eth">Ethical use</a>
+    </nav>
+    <button type="button" class="nav-toggle ml-auto" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav">
+      <span class="sr-only">Menu</span><span aria-hidden="true">Menu</span>
+    </button>
+  </div>
+  <nav id="mobile-nav" class="nav-mobile" hidden aria-label="Main, mobile">
+    <a href="../../index.html">Home</a>
+    <a href="../../index.html#curriculum" aria-current="page">Curriculum</a>
+    <a href="../Resources/resources.html">Resources</a>
+    <a href="https://github.com/DipeshAdhi/Learning_AI_LLM" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="../AI-Ethics/ethics.html" class="nav-eth">Ethical use</a>
+  </nav>
+</header>
+
+<main id="main" class="mx-auto max-w-6xl px-5 pb-24 pt-8">
+
+  <div class="top-zone">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="../../index.html">Home</a>
+    <span aria-hidden="true">/</span>
+    <a href="../../index.html#curriculum">Curriculum</a>
+    <span aria-hidden="true">/</span>
+    <span aria-current="page">Phase 2</span>
+  </nav>
+
+  <ol class="phase-rail" aria-label="Course progress">
+    <li><a href="./phase-1.html"><span class="rail-n">01</span><span class="rail-name">The basics</span></a></li>
+    <li><span class="is-here"><span class="rail-n">02</span><span class="rail-name">Intermediate</span></span></li>
+    <li><a href="./phase-3.html"><span class="rail-n">03</span><span class="rail-name">Advanced</span></a></li>
+    <li><a href="./phase-4.html"><span class="rail-n">04</span><span class="rail-name">Expert</span></a></li>
+  </ol>
+
+  <div class="page-band mt-10">
+    <p class="page-kicker">Phase 2 · Intermediate</p>
+    <h1>Intermediate: taming the chaos</h1>
+    <p class="page-lede">Why the assistant forgets, how to give it a memory that survives a closed laptop, and how to compress a long session without losing what mattered.</p>
+  </div>
+  </div>
+
+  <div class="article-grid mt-14">
+
+    <aside class="toc" aria-label="On this page">
+      <p class="toc-head">On this page</p>
+      <ol data-toc>
+        <li><a href="#context-problem">Why AI forgets</a></li>
+        <li><a href="#memory-bank">The memory bank pattern</a></li>
+        <li><a href="#memory-files">What goes in each file</a></li>
+        <li><a href="#compression">Context compression</a></li>
+        <li><a href="#summarize-save">The summarize & save routine</a></li>
+        <li><a href="#caching-basics">Why file order matters</a></li>
+      </ol>
+    </aside>
+
+    <article class="prose">
+
+      <section id="context-problem">
+        <h2>Why AI forgets</h2>
+        <p>
+          A model has no memory between messages. Every request you send is processed on its own,
+          from nothing. When a chat appears to remember what you said ten minutes ago, what is
+          actually happening is that the entire conversation so far is being resent with your new
+          message, every single time.
+        </p>
+        <p>
+          That resent bundle has a size limit, called the <strong>context window</strong>, measured
+          in <strong>tokens</strong> — chunks of text roughly three quarters of a word each. When
+          the conversation grows past that limit, something has to go. Older messages get dropped
+          or summarised away, and the model genuinely no longer knows what was in them.
+        </p>
+        <p>
+          This is why an assistant that was perfect for an hour suddenly starts contradicting
+          decisions you made at the start. It is not degrading. The instruction simply is not in
+          front of it any more.
+        </p>
+        <div class="keypoint">
+          <span class="keypoint-label">The reframe</span>
+          <p>
+            You are not talking to something with a memory. You are assembling a document and
+            sending the whole thing, every turn. Once you see it that way, every technique in this
+            phase becomes obvious: they are all about what goes in the document.
+          </p>
+        </div>
+        <p>
+          There is a second, subtler failure. Even when everything fits, instructions buried in the
+          middle of a very long context get less reliable attention than material at the start or
+          the end. A rule you stated in paragraph forty of a huge system prompt is technically
+          present and practically invisible.
+        </p>
+      </section>
+
+      <section id="memory-bank">
+        <h2>The memory bank pattern</h2>
+        <p>
+          The fix is to stop keeping project knowledge in the conversation and start keeping it in
+          files. A memory bank is a small set of Markdown files in your repository that the
+          assistant reads at the start of a session and updates at the end of one.
+        </p>
+        <p>
+          The conversation becomes disposable. The files are what persists. Close the chat, open a
+          new one tomorrow, tell it to read the memory bank, and it is oriented in seconds instead
+          of you re-explaining the project for the fifth time.
+        </p>
+        <p>
+          Where the files live depends on your tool — <code>.cursor/memory/</code>,
+          <code>memory-bank/</code>, or just the repository root. What matters far more than the
+          location is that the assistant is <em>instructed</em> to read them. A memory bank nobody
+          reads is just documentation.
+        </p>
+        <p>
+          That instruction goes in whatever file your tool loads automatically at the start of
+          every session: <code>.cursorrules</code>, <code>CLAUDE.md</code>, <code>AGENTS.md</code>,
+          or the equivalent. Something as short as this is enough:
+        </p>
+        <pre><code>At the start of every task, read the files in memory-bank/.
+They are your only record of previous sessions.
+After any significant change, update activeContext.md
+and progress.md to match the new state.</code></pre>
+      </section>
+
+      <section id="memory-files">
+        <h2>What goes in each file</h2>
+        <p>
+          The point of splitting memory across several files is that they change at very different
+          rates. Mixing a stable project description with a volatile task list means rewriting both
+          every time either one moves — and, as the next section shows, it also wrecks your
+          caching.
+        </p>
+
+        <h3>Files that rarely change</h3>
+        <ul>
+          <li><strong>projectbrief.md</strong> — what this project is, who it is for, what counts as done. Written once, edited rarely.</li>
+          <li><strong>productContext.md</strong> — why it exists, the problem it solves, the decisions behind the shape of it.</li>
+        </ul>
+
+        <h3>Files that change occasionally</h3>
+        <ul>
+          <li><strong>systemPatterns.md</strong> — the architecture, the conventions, the patterns to follow and the ones to avoid. This is the file that stops an assistant reinventing your structure every session.</li>
+          <li><strong>techContext.md</strong> — stack, versions, environment, boundaries. Cheap to write and it prevents a whole category of wrong-version answers.</li>
+        </ul>
+
+        <h3>Files that change constantly</h3>
+        <ul>
+          <li><strong>activeContext.md</strong> — what is being worked on right now, what just got finished, what is blocked.</li>
+          <li><strong>progress.md</strong> — what works, what is left, known issues.</li>
+        </ul>
+
+        <div class="keypoint">
+          <span class="keypoint-label">A caution</span>
+          <p>
+            These filenames are a widely copied convention, not a standard. Some tools expect
+            entirely different names. Pick one scheme, use it consistently in a project, and do not
+            waste an afternoon looking for the official version — there isn't one.
+          </p>
+        </div>
+      </section>
+
+      <section id="compression">
+        <h2>Context compression</h2>
+        <p>
+          Memory files solve knowledge across sessions. Compression solves length within one. As a
+          long working session accumulates file contents, command output, and reasoning, the window
+          fills whether or not any of it still matters.
+        </p>
+        <p>
+          There are three common strategies, and they are not equally good.
+        </p>
+        <ol class="numbered">
+          <li><strong>Truncation</strong> — drop the oldest messages. Costs nothing, and destroys exactly the wrong things: the constraints you set at the very beginning are always the first to go.</li>
+          <li><strong>Rolling summarisation</strong> — replace old messages with a prose summary. Much better, but lossy in a compounding way. Each pass smooths the detail a little more, and exact code, precise wording, and the reasons behind decisions evaporate first.</li>
+          <li><strong>Structured handoff</strong> — summarise into a fixed schema instead of free prose: files changed, decisions made, constraints still active, what is next. Because the shape is fixed, the important categories cannot be smoothed away.</li>
+        </ol>
+        <p>
+          The third is what you want, and the good news is that you do not need a library to do it.
+          You need a prompt.
+        </p>
+      </section>
+
+      <section id="summarize-save">
+        <h2>The summarize & save routine</h2>
+        <p>
+          This is the single highest-value habit in this phase. When a session gets long — or before
+          you close your laptop — ask for a structured handoff and save it to a file. Then start a
+          fresh conversation from that file instead of dragging the old one along.
+        </p>
+        <pre><code>Write a handoff to SUMMARY.md with these sections only:
+
+## Goal
+## Decisions made (and why)
+## Files changed
+## Constraints still active
+## Next step
+
+Be specific. Include exact file paths and function names.
+Do not include conversational filler or restate the code.</code></pre>
+        <p>
+          Two details make the difference between this working and not. <strong>Fixed sections</strong>,
+          so nothing important can be quietly dropped in favour of a nice narrative. And
+          <strong>"and why"</strong> on the decisions, because a decision without its reason will be
+          politely reversed by the next session that finds it inconvenient.
+        </p>
+        <p>
+          Starting the next session is then one line: read <code>SUMMARY.md</code> and continue from
+          the next step. You have replaced forty thousand tokens of history with about six hundred,
+          and kept the parts that were load-bearing.
+        </p>
+      </section>
+
+      <section id="caching-basics">
+        <h2>Why the order of your files matters</h2>
+        <p>
+          One last thing, because it costs nothing and saves a great deal. Providers can cache the
+          beginning of your request — the exact sequence of tokens at the front — so that resending
+          it is much cheaper and much faster than the first time.
+        </p>
+        <p>
+          The catch is that it has to match exactly, from the very first character. Change one word
+          near the start and everything after it has to be recomputed and recharged.
+        </p>
+        <p>
+          So order your payload from <strong>most stable to most volatile</strong>: system
+          instructions first, then tool definitions, then the memory files that rarely change, then
+          the volatile ones, and finally the current conversation and the user's actual question.
+        </p>
+        <div class="keypoint">
+          <span class="keypoint-label">The mistake to avoid</span>
+          <p>
+            Injecting anything dynamic — a timestamp, the current file, today's task — into the
+            <em>front</em> of a long stable prompt. It invalidates the whole cache behind it and you
+            pay full price on every turn without ever seeing why.
+          </p>
+        </div>
+        <p>
+          Phase 3 goes into what that is actually worth, and how the two major providers differ.
+        </p>
+      </section>
+
+    </article>
+  </div>
+
+  <nav class="pager mx-auto max-w-6xl" aria-label="Phase navigation">
+    <a href="./phase-1.html">
+      <span class="dir">← Back</span>
+      <span class="to">Phase 1 · The basics</span>
+    </a>
+    <a href="./phase-3.html" class="next">
+      <span class="dir">Next →</span>
+      <span class="to">Phase 3 · Efficiency and economics</span>
+    </a>
+  </nav>
+
+</main>
+
+<footer class="border-t border-rule bg-card">
+  <div class="mx-auto max-w-6xl px-5 py-12">
+    <div class="grid gap-8 sm:grid-cols-3">
+      <div>
+        <p class="font-display text-[15px] font-extrabold">Context<span class="text-sig">book</span></p>
+        <p class="mt-2 max-w-[32ch] text-[15px] leading-snug text-muted">A free, open textbook for practical AI engineering.</p>
+      </div>
+      <nav class="foot-nav" aria-label="Curriculum">
+        <p class="foot-head">Curriculum</p>
+        <a href="./phase-1.html">1 · The basics</a>
+        <a href="./phase-2.html">2 · Intermediate</a>
+        <a href="./phase-3.html">3 · Advanced</a>
+        <a href="./phase-4.html">4 · Expert</a>
+      </nav>
+      <nav class="foot-nav" aria-label="More">
+        <p class="foot-head">More</p>
+        <a href="../Resources/resources.html">Resources</a>
+        <a href="./phase-1.html">Start here</a>
+        <a href="https://github.com/DipeshAdhi/Learning_AI_LLM" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </nav>
+    </div>
+    <p class="mt-10 border-t border-rule pt-6 font-mono text-[11px] uppercase tracking-[0.1em] text-muted">
+      Free forever · MIT licensed · Draft in progress
+    </p>
+  </div>
+</footer>
+
+<script src="../../assets/js/nav.js"></script>
+<script src="../../assets/js/toc.js"></script>
+</body>
+</html>
