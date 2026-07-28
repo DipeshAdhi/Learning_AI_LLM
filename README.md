@@ -94,6 +94,15 @@ Two deliberate rules:
 Found a wrong number? [Open an issue](https://github.com/DipeshAdhi/Learning_AI_LLM/issues/new).
 Corrections are the most useful contribution here.
 
+## Contributing
+
+Contributions are welcome — corrections, new examples, better explanations, or fixing a
+broken link. Open an issue first for larger changes; small fixes can go straight to a pull
+request.
+
+When citing model capabilities, prefer official documentation over blog posts. If a number
+is modelled rather than measured, say so.
+
 ## Status
 
 Draft, written in the open. Phase 1 and Phase 2 have full content; Phases 3 and 4 are written
