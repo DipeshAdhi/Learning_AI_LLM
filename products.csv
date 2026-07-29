@@ -1,0 +1,21 @@
+product_id,product_name,category,price,quantity_sold,rating,region
+1,Wireless Headphones,Electronics,79.99,1250,4.5,North
+2,Coffee Maker,Appliances,49.99,820,4.2,South
+3,Running Shoes,Sports,99.99,650,4.7,East
+4,Office Chair,Furniture,299.99,420,4.3,West
+5,Desk Lamp,Furniture,39.99,1840,4.6,North
+6,Bluetooth Speaker,Electronics,59.99,1650,4.4,South
+7,Yoga Mat,Sports,29.99,2100,4.8,East
+8,Microwave Oven,Appliances,89.99,540,4.1,West
+9,Monitor Stand,Furniture,44.99,980,4.5,North
+10,USB-C Cable,Electronics,14.99,3200,4.2,South
+11,Yoga Block Set,Sports,24.99,1540,4.6,East
+12,Electric Kettle,Appliances,34.99,1320,4.3,West
+13,Standing Desk,Furniture,449.99,280,4.7,North
+14,Wireless Mouse,Electronics,39.99,2450,4.4,South
+15,Resistance Bands,Sports,19.99,2890,4.5,East
+16,Blender,Appliances,79.99,650,4.2,West
+17,Ergonomic Keyboard,Electronics,99.99,1100,4.6,North
+18,Dumbbells Set,Sports,129.99,520,4.8,South
+19,Bookshelf,Furniture,129.99,380,4.3,East
+20,Power Bank,Electronics,29.99,2950,4.5,West
