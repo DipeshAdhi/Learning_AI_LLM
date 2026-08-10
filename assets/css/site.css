@@ -559,6 +559,63 @@ body { text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; 
   color: var(--sig);
 }
 
+/* ── skill collection page ───────────────────────────────────────── */
+
+.asset-page { background: #1E1D1C; color: #F4F1EA; }
+.asset-page .site-header { border-bottom-color: var(--rule); background: rgba(236, 237, 241, 0.92); }
+.asset-page .site-header a, .asset-page .nav-toggle { color: var(--ink); }
+.asset-page .nav-desktop a { color: var(--muted); }
+.asset-page .nav-desktop a:hover, .asset-page .nav-desktop a[aria-current="page"] { color: var(--ink); }
+.asset-page .nav-toggle { border-color: var(--rule); background: var(--card); }
+.asset-page .nav-mobile { background: var(--card); border-top-color: var(--rule); }
+.asset-page .nav-mobile a { color: var(--ink); border-bottom-color: var(--rule); }
+.asset-page .text-sig { color: var(--sig); }
+.asset-hero { position: relative; min-height: 37rem; overflow: hidden; display: flex; align-items: center; padding: 5rem max(1.25rem, calc((100vw - 72rem) / 2)); background: #1E1D1C; }
+.asset-hero::after { content: ""; position: absolute; right: 8%; bottom: -11rem; width: 34rem; height: 34rem; border-radius: 50%; background: #9BAF7F; opacity: 0.12; filter: blur(1px); }
+.asset-hero-inner { position: relative; z-index: 1; max-width: 45rem; }
+.asset-kicker { font: 500 0.68rem/1.3 "JetBrains Mono", monospace; letter-spacing: 0.16em; text-transform: uppercase; color: #B5B0A6; }
+.asset-kicker-dot { display: inline-block; width: 0.45rem; height: 0.45rem; margin-right: 0.55rem; border-radius: 50%; background: #D6A0B7; }
+.asset-hero h1 { margin-top: 1.5rem; font: 800 clamp(3.4rem, 8vw, 7rem)/0.9 "Bricolage Grotesque", sans-serif; letter-spacing: -0.055em; }
+.asset-hero h1 em { color: #B8CFC8; font-style: normal; }
+.asset-lede { max-width: 32rem; margin-top: 2rem; color: #C3BFB7; font: 1.15rem/1.6 "Source Serif 4", Georgia, serif; }
+.asset-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2.2rem; }
+.asset-button { display: inline-flex; align-items: center; gap: 0.75rem; padding: 0.8rem 1rem; font: 500 0.68rem/1 "JetBrains Mono", monospace; letter-spacing: 0.08em; text-transform: uppercase; }
+.asset-button-primary { color: #232522; background: #D6A0B7; }
+.asset-button-quiet { color: #F4F1EA; border: 1px solid rgba(244,241,234,0.28); }
+.asset-button:hover { transform: translateY(-2px); }
+.asset-hero-note { position: absolute; right: max(1.25rem, calc((100vw - 72rem) / 2)); bottom: 3rem; z-index: 1; color: #817D76; font: 0.68rem/1.5 "JetBrains Mono", monospace; text-align: right; text-transform: uppercase; letter-spacing: 0.12em; }
+.asset-collection { padding: 7rem max(1.25rem, calc((100vw - 72rem) / 2)); background: #F1EEE8; color: #242320; }
+.asset-section-heading { display: flex; justify-content: space-between; gap: 3rem; align-items: end; margin-bottom: 3rem; }
+.asset-section-heading .asset-kicker { color: #77736B; }
+.asset-section-heading h2, .asset-next h2 { margin-top: 1rem; font: 800 clamp(2.3rem, 5vw, 4.5rem)/0.93 "Bricolage Grotesque", sans-serif; letter-spacing: -0.05em; }
+.asset-section-heading h2 span { color: #9B6C80; }
+.asset-section-heading > p { max-width: 24rem; color: #77736B; font: 1.05rem/1.55 "Source Serif 4", Georgia, serif; }
+.asset-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; }
+.skill-card { display: block; color: inherit; }
+.skill-window { min-height: 25rem; padding: 2.5rem; border-radius: 1.6rem; transition: transform 220ms ease; }
+.skill-card:hover .skill-window { transform: translateY(-0.4rem) rotate(-0.5deg); }
+.skill-card-green { --card-bg: #849B68; }
+.skill-card-mint { --card-bg: #B8CFC8; }
+.skill-card-sand { --card-bg: #D8B88F; }
+.skill-card-blue { --card-bg: #8EA8BB; }
+.skill-window { background: var(--card-bg); }
+.skill-window-chat { display: flex; flex-direction: column; justify-content: center; gap: 1.5rem; color: #2A2927; }
+.chat-pill { padding: 0.8rem 1rem; border-radius: 0.75rem; background: #F4F1EA; font: 0.9rem "Bricolage Grotesque", sans-serif; box-shadow: 0 0.4rem 1.4rem rgba(38,38,32,0.08); }
+.chat-mark { display: inline-grid; place-items: center; width: 1.5rem; height: 1.5rem; margin-right: 0.45rem; border-radius: 50%; color: #F4F1EA; background: #C86D8E; }
+.chat-copy { max-width: 26rem; font: 1.08rem/1.3 "Source Serif 4", Georgia, serif; }
+.chat-status { padding: 0.85rem; border: 1px solid rgba(42,41,39,0.15); border-radius: 0.55rem; color: #59564F; font: 0.73rem/2 "JetBrains Mono", monospace; }
+.chat-status span { margin-right: 0.5rem; color: #435D44; }
+.skill-file { display: flex; align-items: center; gap: 0.7rem; padding: 0.75rem; border: 1px solid rgba(42,41,39,0.13); border-radius: 0.55rem; background: rgba(244,241,234,0.7); font: 0.78rem "JetBrains Mono", monospace; }
+.file-icon { font-size: 1.35rem; }.skill-file small { display: block; margin-top: 0.2rem; color: #77736B; font-size: 0.62rem; }.file-arrow { margin-left: auto; font-size: 1.2rem; }
+.skill-window-code { padding: 0; overflow: hidden; color: #C9C3B8; background: #1B1C1A; }
+.code-top { display: flex; gap: 0.55rem; padding: 0.9rem 1.1rem; background: #30322F; }.code-top span { width: 0.7rem; height: 0.7rem; border-radius: 50%; background: #8D938B; }
+.skill-window-code pre { padding: 2.2rem 1.6rem; white-space: pre-wrap; font: 0.84rem/1.7 "JetBrains Mono", monospace; }
+.skill-window-writing { display: flex; flex-direction: column; justify-content: center; gap: 1.2rem; color: #5D4632; background: #D7B88E; }.writing-number { font: 0.75rem "JetBrains Mono", monospace; }.writing-line { display: block; width: 78%; height: 0.45rem; border-radius: 1rem; background: rgba(93,70,50,0.25); }.writing-line.wide { width: 92%; }.writing-line.short { width: 54%; }.writing-highlight { align-self: start; padding: 0.5rem 0.7rem; background: #F4E5C9; font: 800 1.7rem "Bricolage Grotesque", sans-serif; }
+.skill-window-layout { display: grid; grid-template-columns: 1.35fr 1fr; grid-template-rows: 1.2fr 0.7fr 0.55fr; gap: 0.8rem; background: #A9C1D0; }.layout-block { border-radius: 0.8rem; background: #E5EDF0; }.layout-large { grid-row: span 2; background: #3D5662; }.layout-wide { grid-column: span 2; background: #D6A0B7; }
+.skill-card-caption { display: grid; grid-template-columns: 2.5rem 1fr; padding: 1.2rem 0 0; color: #242320; }.skill-card-caption span { color: #99938A; font: 0.68rem "JetBrains Mono", monospace; }.skill-card-caption strong { font: 800 1.25rem/1.1 "Bricolage Grotesque", sans-serif; }.skill-card-caption small { grid-column: 2; margin-top: 0.35rem; color: #77736B; font: 0.7rem "JetBrains Mono", monospace; text-transform: uppercase; letter-spacing: 0.08em; }
+.asset-next { display: flex; justify-content: space-between; gap: 3rem; padding: 7rem max(1.25rem, calc((100vw - 72rem) / 2)); background: #B8CFC8; color: #242320; }.asset-next .asset-kicker { color: #596E6A; }.asset-next-links { display: grid; min-width: min(100%, 24rem); }.asset-next-links a { display: flex; justify-content: space-between; gap: 1rem; padding: 1.2rem 0; border-bottom: 1px solid rgba(36,35,32,0.22); }.asset-next-links span { color: #596E6A; font: 0.65rem "JetBrains Mono", monospace; text-transform: uppercase; }.asset-next-links strong { font: 800 1.05rem "Bricolage Grotesque", sans-serif; }.asset-footer { display: flex; justify-content: space-between; gap: 2rem; padding: 3rem max(1.25rem, calc((100vw - 72rem) / 2)); color: #B9B5AC; background: #1E1D1C; }.asset-footer p { margin-top: 0.6rem; color: #817D76; font: 0.8rem "JetBrains Mono", monospace; }.asset-footer nav { display: flex; flex-wrap: wrap; align-content: start; gap: 1rem 1.5rem; font: 0.7rem "JetBrains Mono", monospace; text-transform: uppercase; }.asset-footer a:hover { color: #F4F1EA; }
+@media (max-width: 700px) { .asset-hero { min-height: 34rem; padding-top: 4rem; }.asset-hero-note { display: none; }.asset-section-heading, .asset-next, .asset-footer { display: block; }.asset-section-heading > p { margin-top: 1.5rem; }.asset-grid { grid-template-columns: 1fr; }.skill-window { min-height: 21rem; }.asset-next-links { margin-top: 2rem; }.asset-footer nav { margin-top: 2rem; } }
+
 /* ── motion preference ───────────────────────────────────────────── */
 
 @media (prefers-reduced-motion: reduce) {

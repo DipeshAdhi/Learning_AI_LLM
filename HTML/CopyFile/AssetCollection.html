@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skill collection — Contextbook</title>
+<meta name="description" content="A small collection of reusable skills for writing, reasoning, and designing with AI.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = { theme: { extend: {
+    colors: { ink:'#131522', ink2:'#2A2E44', paper:'#ECEDF1', card:'#FFFFFF', rule:'#D3D6E0', muted:'#5C6178', sig:'#2A34E8' },
+    fontFamily: { display:['"Bricolage Grotesque"','system-ui','sans-serif'], body:['"Source Serif 4"','Georgia','serif'], mono:['"JetBrains Mono"','ui-monospace','monospace'] }
+} } };
+</script>
+<link rel="stylesheet" href="../../assets/css/site.css">
+</head>
+
+<body class="asset-page">
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="site-header">
+    <div class="mx-auto flex max-w-6xl items-center gap-4 px-5 py-3.5">
+        <a href="../../index.html" class="font-display text-[17px] font-extrabold tracking-tight">Context<span class="text-sig">book</span></a>
+        <nav class="nav-desktop ml-auto" aria-label="Main">
+            <a href="../../index.html">Home</a>
+            <a href="../../index.html#curriculum">Curriculum</a>
+            <a href="../Resources/resources.html">Resources</a>
+            <a href="../Not_just_chat_bot.html">AI Mastery</a>
+            <a href="AssetCollection.html" aria-current="page">Skills</a>
+            <a href="https://github.com/DipeshAdhi/Learning_AI_LLM" class="nav-cta" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="../AI-Ethics/ethics.html" class="nav-eth">Ethical use</a>
+        </nav>
+        <button type="button" class="nav-toggle ml-auto" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav">
+            <span class="sr-only">Menu</span><span aria-hidden="true">Menu</span>
+        </button>
+    </div>
+    <nav id="mobile-nav" class="nav-mobile" hidden aria-label="Main, mobile">
+        <a href="../../index.html">Home</a>
+        <a href="../../index.html#curriculum">Curriculum</a>
+        <a href="../Resources/resources.html">Resources</a>
+        <a href="../Not_just_chat_bot.html">AI Mastery</a>
+        <a href="AssetCollection.html" aria-current="page">Skills</a>
+        <a href="https://github.com/DipeshAdhi/Learning_AI_LLM" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="../AI-Ethics/ethics.html" class="nav-eth">Ethical use</a>
+    </nav>
+</header>
+
+<main id="main">
+    <section class="asset-hero">
+        <div class="asset-hero-inner">
+            <p class="asset-kicker"><span class="asset-kicker-dot" aria-hidden="true"></span> Contextbook / Skill collection</p>
+            <h1>Give your AI<br><em>a better way to work.</em></h1>
+            <p class="asset-lede">Skills are small, reusable instructions that help an AI move from a blank chat to a repeatable way of thinking. Browse the collection, open the source, and make it yours.</p>
+            <div class="asset-actions">
+                <a href="#skills" class="asset-button asset-button-primary">Browse the collection <span aria-hidden="true">↓</span></a>
+                <a href="../../index.html" class="asset-button asset-button-quiet">Back to home <span aria-hidden="true">↗</span></a>
+            </div>
+        </div>
+        <div class="asset-hero-note" aria-hidden="true">Reusable context<br>for better output.</div>
+    </section>
+
+    <section id="skills" class="asset-collection">
+        <div class="asset-section-heading">
+            <div>
+                <p class="asset-kicker">01 / The collection</p>
+                <h2>Start with a skill.<br><span>Keep the useful parts.</span></h2>
+            </div>
+            <p>Each file is plain text on purpose. Read the instructions, adapt the voice, and keep only what earns its place in your workflow.</p>
+        </div>
+
+        <div class="asset-grid">
+            <a class="skill-card skill-card-green" href="../../skill%20collection/Fable5SKILL.md">
+                <div class="skill-window skill-window-chat">
+                    <div class="chat-pill"><span class="chat-mark">✦</span> Help me create a skill</div>
+                    <p class="chat-copy">A good skill turns a useful moment into a repeatable method. Let's capture what worked and make it available next time.</p>
+                    <div class="chat-status"><span>✓</span> Reading the skill builder<br><span>✓</span> Shaping the instructions<br><span>→</span> Ready to save</div>
+                    <div class="skill-file"><span class="file-icon">▤</span><span><strong>Fable5SKILL</strong><small>Skill file</small></span><span class="file-arrow">↗</span></div>
+                </div>
+                <div class="skill-card-caption"><span>01</span><strong>Fable 5 skill</strong><small>Read the source file</small></div>
+            </a>
+
+            <a class="skill-card skill-card-mint" href="../../skill%20collection/wisdom-guided_SKILL.md">
+                <div class="skill-window skill-window-code">
+                    <div class="code-top"><span></span><span></span><span></span></div>
+                    <pre>---
+name: wisdom-guided
+description: A calm framework for making
+better decisions with AI.
+---
+
+## When to use this skill
+Use it when the answer needs context,
+tradeoffs, and a little more patience.
+
+- Ask before assuming
+- Name the uncertainty
+- Prefer durable choices</pre>
+                </div>
+                <div class="skill-card-caption"><span>02</span><strong>Wisdom-guided skill</strong><small>Build better judgement</small></div>
+            </a>
+
+            <a class="skill-card skill-card-sand" href="../../skill%20collection/WritingSKILL.md">
+                <div class="skill-window skill-window-writing"><span class="writing-number">01</span><span class="writing-line wide"></span><span class="writing-line"></span><span class="writing-line short"></span><span class="writing-highlight">Write with intention.</span><span class="writing-line wide"></span><span class="writing-line"></span></div>
+                <div class="skill-card-caption"><span>03</span><strong>Writing skill</strong><small>Make the words do work</small></div>
+            </a>
+
+            <a class="skill-card skill-card-blue" href="../../skill%20collection/FrontendDesignSKILL.md">
+                <div class="skill-window skill-window-layout"><div class="layout-block layout-large"></div><div class="layout-block layout-small"></div><div class="layout-block layout-small"></div><div class="layout-block layout-wide"></div></div>
+                <div class="skill-card-caption"><span>04</span><strong>Frontend design skill</strong><small>Turn intent into interfaces</small></div>
+            </a>
+        </div>
+    </section>
+
+    <section class="asset-next">
+        <div><p class="asset-kicker">02 / Keep exploring</p><h2>Skills are one layer<br>of the bigger picture.</h2></div>
+        <div class="asset-next-links"><a href="../Phase/phase-2.html"><span>Continue learning</span><strong>Context engineering ↗</strong></a><a href="../Resources/resources.html"><span>Go deeper</span><strong>Curated resources ↗</strong></a></div>
+    </section>
+</main>
+
+<footer class="asset-footer">
+    <div><a href="../../index.html" class="font-display text-[17px] font-extrabold tracking-tight">Context<span class="text-sig">book</span></a><p>Learn to use AI properly.</p></div>
+    <nav aria-label="Footer"><a href="../../index.html">Home</a><a href="../Phase/phase-1.html">Start here</a><a href="../AI-Ethics/ethics.html">Ethical use</a><a href="https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview" target="_blank" rel="noopener noreferrer">Claude Agent Skills docs ↗</a><a href="https://claude.com/skills" target="_blank" rel="noopener noreferrer">Claude skills ↗</a><a href="https://github.com/alirezarezvani/claude-skills" target="_blank" rel="noopener noreferrer">Example skill library ↗</a></nav>
+</footer>
+
+<script src="../../assets/js/nav.js"></script>
+</body>
+</html>
